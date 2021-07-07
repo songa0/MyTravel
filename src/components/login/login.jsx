@@ -1,9 +1,9 @@
 import React from "react";
-import useHistory from "react-router";
+//import useHistory from "react-router";
 import styles from "./login.module.css";
 
 const Login = ({ authService }) => {
-  const history = useHistory();
+  //const history = useHistory();
   const onLogin = (event) => {
     authService //
       .login(event.currentTarget.textContent)
