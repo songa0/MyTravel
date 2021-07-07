@@ -1,0 +1,14 @@
+@value makerGrey from './common/colors.css';
+
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  background-color: makerGrey;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}

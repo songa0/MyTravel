@@ -1,0 +1,11 @@
+@value makerBlack: black;
+@value makerWhite: white;
+@value makerLightGrey: #e8e7e6;
+@value makerLightPink: #facfd6;
+@value makerGrey: #626262;
+@value makerGreen: #bbded6;
+@value makerBlue: #0d3f67;
+@value makerPink: pink;
+@value makerShadow: rgba(217, 217, 217, 1);
+@value makerColorful: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+@value makerWheat: wheat;

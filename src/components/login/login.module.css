@@ -1,0 +1,31 @@
+@value makerGreen, makerBlue,makerWhite from '../../common/colors.css';
+
+.button {
+  border-radius: 20px;
+  width: 90%;
+  font-size: 1.5rem;
+  margin-top: 1em;
+  padding: 0.3em;
+  border: 2px solid makerBlue;
+}
+.header {
+  background-color: makerBlue;
+  color: makerWhite;
+  margin: 0;
+  height: 4rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 4rem;
+}
+.content {
+  padding: 1em 1em 2em 1em;
+}
+.login {
+  background-color: white;
+  width: 30rem;
+}
+.text {
+  font-size: 1.8rem;
+  font-weight: 500;
+  padding: 0.3em;
+}
