@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Keyword from "../keyword/keyword";
 import Title from "../title/title";
 import styles from "./diary.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import TravelListItem from "../../travel_list_item/travelListItem";
 
 const Diary = (props) => {
   const [travel, setTravel] = useState({
@@ -109,11 +112,18 @@ const Diary = (props) => {
   return (
     <section className={styles.diary}>
       <Title name="여행 일기" />
-      <div>
+      <div className={styles.search}>
         <input className={styles.searchInput} type="text" />
-        <button></button>
+        <FontAwesomeIcon icon={faSearch} />
       </div>
       <Keyword travel={travel} />
+      <ul className={styles.list}>
+        {Object.keys(travel).map((key) => (
+          <li key={key}>
+            <TravelListItem />
+          </li>
+        ))}
+      </ul>
     </section>
   );
 };
