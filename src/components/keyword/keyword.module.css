@@ -1,0 +1,15 @@
+@value makerBlack, makerLightGrey,makerGrey from '../../common/colors.css';
+
+.keyword {
+  color: makerBlack;
+  border: 1px solid makerLightGrey;
+  padding: 0.4em;
+  margin-right: 0.8em;
+  font-size: 0.8rem;
+  border-radius: 15%;
+  background-color: makerLightGrey;
+  font-weight: 600;
+}
+.keywords {
+  padding: 0.5em;
+}

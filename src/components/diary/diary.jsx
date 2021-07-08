@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Keyword from "../keyword/keyword";
+import Title from "../title/title";
+import styles from "./diary.module.css";
 
 const Diary = (props) => {
   const [travel, setTravel] = useState({
@@ -58,24 +61,60 @@ const Diary = (props) => {
       location: "서울",
       startDate: "2021.05.20",
       endDate: "2021.05.21",
-    },
-    3: {
-      id: 3,
-      title: "개굴이의 일본 다녀온 후기",
+      keyword: ["뷰맛집", "벚꽃여행"],
+      travel: {
+        1: {
+          date: "2021.05.20",
+          spot: {
+            1: {
+              name: "남산타워",
+              latitude: 37.55129696841767,
+              longitude: 126.98823732686407,
+              imgUrl: "",
+              content:
+                "남산!  N서울타워! 오늘은 날씨 덕분인지 뷰가 굉장히 좋네요.",
+            },
+            2: {
+              name: "남대문 시장",
+              latitude: 37.55942522450706,
+              longitude: 126.97767992686425,
+              imgUrl: "",
+              content: "가격 저렴하고 좋은 물건 많은 곳",
+            },
+          },
+        },
+        2: {
+          date: "2021.05.21",
+          spot: {
+            1: {
+              name: "롯데월드",
+              latitude: 37.5112093950493,
+              longitude: 127.09815626919173,
+              imgUrl: "",
+              content: "아틀란티스가 제일 재미있다. ",
+            },
+            2: {
+              name: "석촌호수",
+              latitude: 37.51029905767279,
+              longitude: 127.10309629397291,
+              imgUrl: "",
+              content:
+                "인공호수 하지만 너무 예쁘게 잘 꾸며둔 공간이라고 생각합니다.",
+            },
+          },
+        },
+      },
     },
   });
   return (
-    <>
-      <h2>여행 일기</h2>
+    <section className={styles.diary}>
+      <Title name="여행 일기" />
       <div>
-        <input type="text" />
+        <input className={styles.searchInput} type="text" />
         <button></button>
       </div>
-      <div>
-        <span>혼자여행</span>
-        <span>액티비티</span>
-      </div>
-    </>
+      <Keyword travel={travel} />
+    </section>
   );
 };
 

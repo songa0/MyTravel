@@ -1,0 +1,7 @@
+@value makerGreen, makerBlue,makerWhite from '../../common/colors.css';
+
+.diary {
+  background-color: makerWhite;
+  width: 50rem;
+  height: 100vh;
+}

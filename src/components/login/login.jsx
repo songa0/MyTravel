@@ -1,14 +1,22 @@
 import React from "react";
-//import useHistory from "react-router";
+import { useHistory } from "react-router";
 import styles from "./login.module.css";
 
 const Login = ({ authService }) => {
-  //const history = useHistory();
+  const history = useHistory();
   const onLogin = (event) => {
     authService //
       .login(event.currentTarget.textContent)
-      .then((result) => {
+      .then(({ user }) => {
         //result가 있으면 화면 이동
+        if (user) {
+          console.log(user);
+          history.push({
+            pathname: "./diary",
+            state: { id: user.uid },
+          });
+        } else {
+        }
       });
   };
   return (
