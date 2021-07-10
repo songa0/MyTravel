@@ -4,7 +4,7 @@ import Title from "../title/title";
 import styles from "./diary.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import TravelListItem from "../../travel_list_item/travelListItem";
+import TravelListItem from "../travel_list_item/travelListItem";
 
 const Diary = (props) => {
   const [travel, setTravel] = useState({
@@ -15,6 +15,7 @@ const Diary = (props) => {
       location: "제주도",
       startDate: "2021.04.20",
       endDate: "2021.04.22",
+      like: 3,
       travel: {
         1: {
           date: "2021.04.20",
@@ -65,6 +66,7 @@ const Diary = (props) => {
       startDate: "2021.05.20",
       endDate: "2021.05.21",
       keyword: ["뷰맛집", "벚꽃여행"],
+      like: 5,
       travel: {
         1: {
           date: "2021.05.20",
@@ -119,8 +121,8 @@ const Diary = (props) => {
       <Keyword travel={travel} />
       <ul className={styles.list}>
         {Object.keys(travel).map((key) => (
-          <li key={key}>
-            <TravelListItem />
+          <li className={styles.list_item} key={key}>
+            <TravelListItem travelInfo={travel[key]} />
           </li>
         ))}
       </ul>
