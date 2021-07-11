@@ -12,7 +12,7 @@ const App = ({ authService }) => {
             <Login authService={authService} />
           </Route>
           <Route path="/diary">
-            <Diary />
+            <Diary authService={authService} />
           </Route>
         </Switch>
       </div>

@@ -24,7 +24,6 @@ const Login = ({ authService }) => {
   };
 
   useEffect(() => {
-    console.log("useEffect");
     authService.onAuthStateChanged((user) => {
       user && goToDiary(user.uid);
     });

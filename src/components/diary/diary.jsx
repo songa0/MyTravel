@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Keyword from "../keyword/keyword";
 import Title from "../title/title";
 import styles from "./diary.module.css";
+import { useHistory } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import TravelListItem from "../travel_list_item/travelListItem";
+import Button from "../button/button";
+import Header from "../header/header";
 
-const Diary = (props) => {
+const Diary = ({ authService }) => {
+  const history = useHistory();
+
   const [travel, setTravel] = useState({
     1: {
       id: 1,
@@ -111,9 +116,23 @@ const Diary = (props) => {
       },
     },
   });
+
+  useEffect(() => {
+    authService.onAuthStateChanged((user) => {
+      if (!user) {
+        history.push({
+          pathname: "/",
+        });
+      }
+    });
+  });
   return (
     <section className={styles.diary}>
-      <Title name="여행 일기" />
+      <Header
+        titleName="여행 일기"
+        buttonName="Logout"
+        clickEvent={authService.logout}
+      />
       <div className={styles.search}>
         <input className={styles.searchInput} type="text" />
         <FontAwesomeIcon icon={faSearch} />
