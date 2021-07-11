@@ -16,6 +16,12 @@ class authService {
         Error("Invalid Provider Name");
     }
   }
+
+  onAuthStateChanged(onUserChanged) {
+    firebaseAuth.onAuthStateChanged((user) => {
+      onUserChanged(user);
+    });
+  }
 }
 
 export default authService;
