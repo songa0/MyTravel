@@ -27,6 +27,7 @@
   min-width: 30rem;
   margin: 1em auto;
   padding: 0.5px;
+  border-radius: 5px;
   background-color: makerLightGrey;
 }
 
@@ -35,4 +36,5 @@
   margin: 0.5em;
   background-color: makerWhite;
   text-align: left;
+  border-radius: 5px;
 }

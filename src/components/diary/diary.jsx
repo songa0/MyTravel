@@ -12,6 +12,7 @@ import Header from "../header/header";
 const Diary = ({ authService }) => {
   const history = useHistory();
   const searchInput = useRef();
+  const [userId, setUserId] = useState(null);
   const [travel, setTravel] = useState({
     1: {
       id: 1,
@@ -118,7 +119,9 @@ const Diary = ({ authService }) => {
   });
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
-      if (!user) {
+      if (user) {
+        setUserId(user.uid);
+      } else {
         history.push({
           pathname: "/",
         });
@@ -242,7 +245,6 @@ const Diary = ({ authService }) => {
             travel[key].title.includes(searchInput.current.value)
           )
           .map((key) => travel[key]);
-        console.log(filteredTravel);
         return filteredTravel;
       });
     }
@@ -253,6 +255,13 @@ const Diary = ({ authService }) => {
       clickSearchBtn();
     }
   };
+  const goToDetail = (event) => {
+    history.push({
+      pathname: "/diary/detail",
+      state: { detailId: event.target.id },
+    });
+  };
+
   return (
     <section className={styles.diary}>
       <Header
@@ -270,9 +279,9 @@ const Diary = ({ authService }) => {
         <FontAwesomeIcon icon={faSearch} onClick={clickSearchBtn} />
       </div>
       <Keyword travel={travel} />
-      <ul className={styles.list}>
+      <ul className={styles.list} onClick={goToDetail}>
         {Object.keys(travel).map((key) => (
-          <li className={styles.list_item} key={key}>
+          <li className={styles.list_item} key={key} id={key}>
             <TravelListItem travelInfo={travel[key]} />
           </li>
         ))}
