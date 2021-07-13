@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import Keyword from "../keyword/keyword";
-import Title from "../title/title";
 import styles from "./diary.module.css";
 import { useHistory } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import TravelListItem from "../travel__list__item/travel_list_item";
-import Button from "../button/button";
+import DiaryListItem from "../diary__list__item/diary_list_item";
 import Header from "../header/header";
 
 const Diary = ({ authService }) => {
@@ -282,7 +280,7 @@ const Diary = ({ authService }) => {
       <ul className={styles.list} onClick={goToDetail}>
         {Object.keys(travel).map((key) => (
           <li className={styles.list_item} key={key} id={key}>
-            <TravelListItem travelInfo={travel[key]} />
+            <DiaryListItem travelInfo={travel[key]} />
           </li>
         ))}
       </ul>

@@ -2,7 +2,7 @@ import styles from "./app.module.css";
 import Login from "./components/login/login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Diary from "./components/diary/diary";
-import DiaryDetail from "./components/diaryDetail/diaryDetail";
+import Travel from "./components/travel/travel";
 
 const App = ({ authService }) => {
   return (
@@ -16,7 +16,7 @@ const App = ({ authService }) => {
             <Diary authService={authService} />
           </Route>
           <Route exact path="/diary/detail">
-            <DiaryDetail authService={authService} />
+            <Travel authService={authService} />
           </Route>
           <Route path="/diary/detail/:id"></Route>
         </Switch>

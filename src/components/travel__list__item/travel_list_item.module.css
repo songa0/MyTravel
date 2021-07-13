@@ -1,11 +1,14 @@
-@value makerGrey,makerWhite,makerLightGrey,makerBlack from '../../common/colors.css';
-
-.like {
-  float: right;
-  color: makerGrey;
+.day {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding-right: 1rem;
 }
 
-.number {
-  padding-left: 0.3em;
-  color: makerBlack;
+.date {
+  padding-right: 3rem;
+}
+.date__item {
+  text-align: left;
+}
+.icon {
 }
