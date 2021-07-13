@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Header from "../header/header";
+import styles from "./diaryDetail.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt, faCalendar } from "@fortawesome/free-solid-svg-icons";
+import TravelDateItem from "../travel__date__item/travel_date_item";
+
 const DiaryDetail = ({ authService }) => {
   const history = useHistory();
+  const [mouseOver, setMouseOver] = useState(false);
   const [travelDtl, setTravelDtl] = useState({
     id: 1,
     title: "개굴이의 맛집 기행-!",
@@ -67,14 +73,40 @@ const DiaryDetail = ({ authService }) => {
       }
     });
   });
+
+  const goToDayDetail = (event) => {
+    history.push({
+      pathname: `/diary/detail/${event.currentTarget.id}`,
+      state: { day: event.currentTarget.id },
+    });
+  };
+
   return (
-    <>
+    <section className={styles.section}>
       <Header
         titleName={travelDtl.title}
         buttonName="Logout"
         clickEvent={authService.logout}
       />
-    </>
+      <div className={styles.schedule}>
+        <FontAwesomeIcon icon={faMapMarkerAlt} />
+        <span className={styles.text}> {travelDtl.location}</span>
+      </div>
+      <div className={styles.schedule}>
+        <FontAwesomeIcon icon={faCalendar} />
+        <span className={styles.text}>
+          {travelDtl.startDate} ~ {travelDtl.endDate}
+        </span>
+      </div>
+      <div className={styles.map}>google map api</div>
+      <ul className={styles.list}>
+        {Object.keys(travelDtl.travel).map((key) => (
+          <li key={key} id={key} onClick={goToDayDetail}>
+            <TravelDateItem day={key} date={travelDtl.travel[key].date} />
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };
 

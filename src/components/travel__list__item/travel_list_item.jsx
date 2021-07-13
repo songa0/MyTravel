@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./travelListItem.module.css";
+import styles from "./travel_list_item.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 

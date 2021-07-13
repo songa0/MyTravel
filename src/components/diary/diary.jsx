@@ -5,7 +5,7 @@ import styles from "./diary.module.css";
 import { useHistory } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import TravelListItem from "../travel_list_item/travelListItem";
+import TravelListItem from "../travel__list__item/travel_list_item";
 import Button from "../button/button";
 import Header from "../header/header";
 

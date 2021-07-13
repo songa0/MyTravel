@@ -1,0 +1,24 @@
+@value makerWhite,makerLightGrey from '../../common/colors.css';
+
+.section {
+  background-color: makerWhite;
+  width: 50rem;
+  height: 100vh;
+}
+.list {
+  list-style-type: none;
+}
+.schedule {
+  text-align: left;
+  padding-left: 1rem;
+}
+.text {
+  padding-left: 1rem;
+}
+.map {
+  margin-top: 2rem;
+  width: 50rem;
+  height: 50%;
+  min-height: 20rem;
+  background-color: makerLightGrey;
+}
