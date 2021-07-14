@@ -9,24 +9,25 @@
 }
 .section {
   background-color: makerWhite;
-  width: 50rem;
+  width: 60rem;
   margin: 0 auto;
 }
 
 .list {
-  list-style-type: none;
-  width: 83%;
+  width: 100%;
   min-width: 30rem;
   margin: 1em auto;
   padding: 0.5px;
   border-radius: 5px;
-  background-color: makerLightGrey;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .list_item {
-  padding: 0.5em;
+  display: inline-block;
   margin: 0.5em;
   background-color: makerWhite;
   text-align: left;
-  border-radius: 5px;
+  border-radius: 7px;
+  box-shadow: 2px 2px 15px 5px #969696;
 }

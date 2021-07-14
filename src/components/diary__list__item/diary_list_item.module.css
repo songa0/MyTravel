@@ -1,11 +1,35 @@
-@value makerGrey,makerWhite,makerLightGrey,makerBlack from '../../common/colors.css';
+@value makerGrey,makerWhite,makerLightGrey,makerBlack,makerPink from '../../common/colors.css';
 
 .like {
   float: right;
   color: makerGrey;
+  padding-right: 0.3rem;
+  color: makerPink;
 }
 
 .number {
   padding-left: 0.3em;
   color: makerBlack;
+}
+.img {
+  width: 300px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.desc {
+  padding: 0.8rem;
+}
+.title {
+  font-weight: 600;
+  font-family: "Courier New", Courier, monospace;
+}
+.desc__text {
+  padding-left: 0.5rem;
+  color: makerBlack;
+}
+.detail {
+  margin-top: 0.2rem;
+  padding: 0.2rem;
+  color: makerGrey;
 }

@@ -18,6 +18,7 @@ const Diary = ({ authService }) => {
       location: "제주도",
       startDate: "2021.04.20",
       endDate: "2021.04.22",
+      imgUrl: "/images/beach.jpg",
       like: 3,
       travel: {
         1: {
@@ -27,7 +28,7 @@ const Diary = ({ authService }) => {
               name: "협재해변",
               latitude: 33.39402420202895,
               longitude: 126.23959922229415,
-              imgUrl: "",
+              imgUrl: "/images/beach.jpg",
               content: "바다색 예쁘고 좋아요 역시 제주도 대표해변!!",
             },
             2: {
@@ -60,6 +61,17 @@ const Diary = ({ authService }) => {
             },
           },
         },
+        3: {
+          id: 3,
+          title: "개굴이의 여행-!",
+          location: "서울",
+          startDate: "2021.06.20",
+          endDate: "2021.06.21",
+          keyword: ["뷰맛집", "벚꽃여행"],
+          like: 5,
+          imgUrl: "/images/seoultower.jpg",
+          travel: {},
+        },
       },
     },
     2: {
@@ -69,6 +81,7 @@ const Diary = ({ authService }) => {
       startDate: "2021.05.20",
       endDate: "2021.05.21",
       keyword: ["뷰맛집", "벚꽃여행"],
+      imgUrl: "/images/seoultower.jpg",
       like: 5,
       travel: {
         1: {
@@ -78,7 +91,7 @@ const Diary = ({ authService }) => {
               name: "남산타워",
               latitude: 37.55129696841767,
               longitude: 126.98823732686407,
-              imgUrl: "",
+              imgUrl: "/images/seoultower.jpg",
               content:
                 "남산!  N서울타워! 오늘은 날씨 덕분인지 뷰가 굉장히 좋네요.",
             },
@@ -113,6 +126,28 @@ const Diary = ({ authService }) => {
         },
       },
     },
+    3: {
+      id: 3,
+      title: "개굴이의 여행-!",
+      location: "서울",
+      startDate: "2021.06.20",
+      endDate: "2021.06.21",
+      keyword: ["뷰맛집", "벚꽃여행"],
+      like: 5,
+      imgUrl: "/images/seoultower.jpg",
+      travel: {},
+    },
+    4: {
+      id: 4,
+      title: "개굴이의 여행-!",
+      location: "서울",
+      startDate: "2021.06.20",
+      endDate: "2021.06.21",
+      keyword: ["뷰맛집", "벚꽃여행"],
+      like: 5,
+      imgUrl: "/images/seoultower.jpg",
+      travel: {},
+    },
   });
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
@@ -135,6 +170,7 @@ const Diary = ({ authService }) => {
         location: "제주도",
         startDate: "2021.04.20",
         endDate: "2021.04.22",
+        imgUrl: "/images/beach.jpg",
         like: 3,
         travel: {
           1: {
@@ -144,7 +180,7 @@ const Diary = ({ authService }) => {
                 name: "협재해변",
                 latitude: 33.39402420202895,
                 longitude: 126.23959922229415,
-                imgUrl: "",
+                imgUrl: "/images/beach.jpg",
                 content: "바다색 예쁘고 좋아요 역시 제주도 대표해변!!",
               },
               2: {
@@ -186,6 +222,7 @@ const Diary = ({ authService }) => {
         startDate: "2021.05.20",
         endDate: "2021.05.21",
         keyword: ["뷰맛집", "벚꽃여행"],
+        imgUrl: "/images/seoultower.jpg",
         like: 5,
         travel: {
           1: {
@@ -195,7 +232,7 @@ const Diary = ({ authService }) => {
                 name: "남산타워",
                 latitude: 37.55129696841767,
                 longitude: 126.98823732686407,
-                imgUrl: "",
+                imgUrl: "/images/seoultower.jpg",
                 content:
                   "남산!  N서울타워! 오늘은 날씨 덕분인지 뷰가 굉장히 좋네요.",
               },
@@ -230,6 +267,17 @@ const Diary = ({ authService }) => {
           },
         },
       },
+      3: {
+        id: 3,
+        title: "개굴이의 여행-!",
+        location: "서울",
+        startDate: "2021.06.20",
+        endDate: "2021.06.21",
+        keyword: ["뷰맛집", "벚꽃여행"],
+        like: 5,
+        imgUrl: "/images/seoultower.jpg",
+        travel: {},
+      },
     });
   };
   const clickSearchBtn = (searchText) => {
@@ -260,13 +308,18 @@ const Diary = ({ authService }) => {
       </header>
       <section className={styles.section}>
         <Keyword travel={travel} />
-        <ul className={styles.list} onClick={goToDetail}>
+        <div className={styles.list}>
           {Object.keys(travel).map((key) => (
-            <li className={styles.list_item} key={key} id={key}>
+            <div
+              className={styles.list_item}
+              key={key}
+              id={key}
+              onClick={goToDetail}
+            >
               <DiaryListItem travelInfo={travel[key]} />
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </section>
     </div>
   );
