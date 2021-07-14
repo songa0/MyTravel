@@ -1,8 +1,0 @@
-@value makerBlack, makerLightGrey from '../../common/colors.css';
-
-.button {
-  height: 30px;
-  background-color: makerLightGrey;
-  border: none;
-  border-radius: 10px;
-}

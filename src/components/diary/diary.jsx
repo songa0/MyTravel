@@ -2,14 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import Keyword from "../keyword/keyword";
 import styles from "./diary.module.css";
 import { useHistory } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 import DiaryListItem from "../diary__list__item/diary_list_item";
-import Header from "../header/header";
+import Nav from "../nav/nav";
+import Search from "../search/search";
 
 const Diary = ({ authService }) => {
   const history = useHistory();
-  const searchInput = useRef();
   const [userId, setUserId] = useState(null);
   const [travel, setTravel] = useState({
     1: {
@@ -233,26 +232,19 @@ const Diary = ({ authService }) => {
       },
     });
   };
-  const clickSearchBtn = () => {
+  const clickSearchBtn = (searchText) => {
     //다시 읽어오기
     readLatestData();
-    if (searchInput.current.value) {
+    if (searchText) {
       setTravel((travel) => {
         const filteredTravel = Object.keys(travel)
-          .filter((key) =>
-            travel[key].title.includes(searchInput.current.value)
-          )
+          .filter((key) => travel[key].title.includes(searchText))
           .map((key) => travel[key]);
         return filteredTravel;
       });
     }
   };
 
-  const handelKeyPress = (event) => {
-    if (event.charCode === 13) {
-      clickSearchBtn();
-    }
-  };
   const goToDetail = (event) => {
     history.push({
       pathname: "/diary/detail",
@@ -261,30 +253,22 @@ const Diary = ({ authService }) => {
   };
 
   return (
-    <section className={styles.diary}>
-      <Header
-        titleName="여행 일기"
-        buttonName="Logout"
-        clickEvent={authService.logout}
-      />
-      <div className={styles.search}>
-        <input
-          className={styles.searchInput}
-          type="text"
-          ref={searchInput}
-          onKeyPress={handelKeyPress}
-        />
-        <FontAwesomeIcon icon={faSearch} onClick={clickSearchBtn} />
-      </div>
-      <Keyword travel={travel} />
-      <ul className={styles.list} onClick={goToDetail}>
-        {Object.keys(travel).map((key) => (
-          <li className={styles.list_item} key={key} id={key}>
-            <DiaryListItem travelInfo={travel[key]} />
-          </li>
-        ))}
-      </ul>
-    </section>
+    <div className={styles.diary}>
+      <header className={styles.header}>
+        <Nav clickEvent={authService.logout} />
+        <Search buttonClick={clickSearchBtn} />
+      </header>
+      <section className={styles.section}>
+        <Keyword travel={travel} />
+        <ul className={styles.list} onClick={goToDetail}>
+          {Object.keys(travel).map((key) => (
+            <li className={styles.list_item} key={key} id={key}>
+              <DiaryListItem travelInfo={travel[key]} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
   );
 };
 

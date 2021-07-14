@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import Header from "../header/header";
+import Nav from "../nav/nav";
 import styles from "./travel.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faCalendar } from "@fortawesome/free-solid-svg-icons";
@@ -82,11 +82,7 @@ const DiaryDetail = ({ authService }) => {
 
   return (
     <section className={styles.section}>
-      <Header
-        titleName={travelDtl.title}
-        buttonName="Logout"
-        clickEvent={authService.logout}
-      />
+      <Nav clickEvent={authService.logout} />
       <div className={styles.schedule}>
         <FontAwesomeIcon icon={faMapMarkerAlt} />
         <span className={styles.text}> {travelDtl.location}</span>

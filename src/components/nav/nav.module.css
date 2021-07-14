@@ -1,0 +1,23 @@
+.header {
+  width: 90%;
+  height: 2rem;
+  margin: 1rem 0rem 0rem 0rem;
+}
+.button {
+  border: none;
+}
+.list {
+  list-style-type: none;
+  text-align: right;
+  height: 2rem;
+  margin: 0;
+  padding: 0 3rem;
+  text-align: right;
+  float: right;
+}
+.list li {
+  float: left;
+  padding-right: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}

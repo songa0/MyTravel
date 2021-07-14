@@ -1,26 +1,18 @@
 @value makerGreen, makerBlue,makerWhite,makerLightGrey from '../../common/colors.css';
 
 .diary {
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+}
+.header {
+}
+.section {
   background-color: makerWhite;
   width: 50rem;
-  height: 100vh;
-}
-.searchInput {
-  width: 95%;
-  border: 0;
-  background-color: makerLightGrey;
-}
-.searchInput:focus {
-  outline: none;
-}
-.search {
-  background-color: makerLightGrey;
-  width: 85%;
-  min-width: 30rem;
   margin: 0 auto;
-  height: 1.7rem;
-  border-radius: 5px;
 }
+
 .list {
   list-style-type: none;
   width: 83%;
