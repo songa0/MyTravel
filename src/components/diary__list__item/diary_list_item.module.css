@@ -13,6 +13,7 @@
 }
 .img {
   width: 300px;
+  height: 200px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -27,6 +28,7 @@
 .desc__text {
   padding-left: 0.5rem;
   color: makerBlack;
+  font-size: 0.9rem;
 }
 .detail {
   margin-top: 0.2rem;

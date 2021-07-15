@@ -2,14 +2,17 @@ import React, { useEffect, useRef, useState } from "react";
 import Keyword from "../keyword/keyword";
 import styles from "./diary.module.css";
 import { useHistory } from "react-router";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import DiaryListItem from "../diary__list__item/diary_list_item";
 import Nav from "../nav/nav";
 import Search from "../search/search";
+import DiaryAdd from "../diary__add/diary_add";
 
 const Diary = ({ authService }) => {
   const history = useHistory();
   const [userId, setUserId] = useState(null);
+  const [popupClick, setPopupClick] = useState(false);
   const [travel, setTravel] = useState({
     1: {
       id: 1,
@@ -69,7 +72,7 @@ const Diary = ({ authService }) => {
           endDate: "2021.06.21",
           keyword: ["뷰맛집", "벚꽃여행"],
           like: 5,
-          imgUrl: "/images/seoultower.jpg",
+          imgUrl: "/images/hanok.jpg",
           travel: {},
         },
       },
@@ -134,7 +137,7 @@ const Diary = ({ authService }) => {
       endDate: "2021.06.21",
       keyword: ["뷰맛집", "벚꽃여행"],
       like: 5,
-      imgUrl: "/images/seoultower.jpg",
+      imgUrl: "/images/hanok.jpg",
       travel: {},
     },
     4: {
@@ -275,7 +278,7 @@ const Diary = ({ authService }) => {
         endDate: "2021.06.21",
         keyword: ["뷰맛집", "벚꽃여행"],
         like: 5,
-        imgUrl: "/images/seoultower.jpg",
+        imgUrl: "/images/hanok.jpg",
         travel: {},
       },
     });
@@ -300,6 +303,12 @@ const Diary = ({ authService }) => {
     });
   };
 
+  const closePopup = () => {
+    setPopupClick(false);
+  };
+  const openPopup = () => {
+    setPopupClick(true);
+  };
   return (
     <div className={styles.diary}>
       <header className={styles.header}>
@@ -321,6 +330,14 @@ const Diary = ({ authService }) => {
           ))}
         </div>
       </section>
+      <button className={styles.plus} onClick={openPopup}>
+        <FontAwesomeIcon icon={faPlus} size="xl" />
+      </button>
+      {popupClick && (
+        <div className={styles.popup}>
+          <DiaryAdd closePopup={closePopup} />
+        </div>
+      )}
     </div>
   );
 };

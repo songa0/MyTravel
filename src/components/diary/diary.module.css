@@ -5,12 +5,11 @@
   width: 100vw;
   background-color: white;
 }
-.header {
-}
+
 .section {
   background-color: makerWhite;
   width: 60rem;
-  margin: 0 auto;
+  margin: 1rem auto;
 }
 
 .list {
@@ -30,4 +29,27 @@
   text-align: left;
   border-radius: 7px;
   box-shadow: 2px 2px 15px 5px #969696;
+}
+.plus {
+  position: absolute;
+  right: 20rem;
+  bottom: 2rem;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  background-color: #e85a71;
+  color: #d9e1e8;
+}
+
+.popup {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 0;
+  margin: 0;
 }

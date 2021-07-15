@@ -1,0 +1,49 @@
+@value makerGreen, makerBlue,makerWhite,makerLightGrey from '../../common/colors.css';
+.header {
+  height: 2rem;
+  background-color: makerBlue;
+  color: makerWhite;
+  text-align: right;
+  font-size: 20px;
+}
+.section {
+  z-index: 100;
+  position: fixed;
+  top: 10rem;
+  left: 38rem;
+  width: 40rem;
+  height: 35rem;
+}
+.form {
+  background-color: makerWhite;
+  text-align: left;
+  padding: 2rem;
+  height: 100%;
+}
+.input {
+  font-size: 0.8em;
+  width: 100%;
+  outline: 0;
+  margin-bottom: 3rem;
+  padding: 0.5rem 0rem;
+  display: block;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid makerBlack;
+}
+.dates {
+  display: flex;
+}
+.date {
+  font-size: 0.8em;
+  width: 45%;
+}
+.title {
+}
+.icon {
+  margin-right: 0.5rem;
+}
+.close {
+  margin-right: 1rem;
+}
