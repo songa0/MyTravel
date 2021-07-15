@@ -148,7 +148,7 @@ const Diary = ({ authService }) => {
       endDate: "2021.06.21",
       keyword: ["뷰맛집", "벚꽃여행"],
       like: 5,
-      imgUrl: "/images/seoultower.jpg",
+      imgUrl: "",
       travel: {},
     },
   });

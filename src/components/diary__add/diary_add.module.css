@@ -1,30 +1,31 @@
-@value makerGreen, makerBlue,makerWhite,makerLightGrey from '../../common/colors.css';
+@value makerGreen, makerBlue,makerWhite,makerLightGrey,makerDarkBlue, makerGrey from '../../common/colors.css';
 .header {
   height: 2rem;
-  background-color: makerBlue;
+  background-color: makerGreen;
   color: makerWhite;
   text-align: right;
   font-size: 20px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .section {
   z-index: 100;
-  position: fixed;
-  top: 10rem;
-  left: 38rem;
-  width: 40rem;
-  height: 35rem;
+  width: 30rem;
+  height: 37rem;
 }
 .form {
   background-color: makerWhite;
   text-align: left;
   padding: 2rem;
   height: 100%;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .input {
   font-size: 0.8em;
   width: 100%;
   outline: 0;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   padding: 0.5rem 0rem;
   display: block;
   border-top: 0;
@@ -39,10 +40,21 @@
   font-size: 0.8em;
   width: 45%;
 }
-.title {
+.submit {
+  background-color: makerDarkBlue;
+  color: makerWhite;
+  border: 0;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
 }
+.button {
+  text-align: center;
+}
+
 .icon {
   margin-right: 0.5rem;
+  color: makerGrey;
 }
 .close {
   margin-right: 1rem;

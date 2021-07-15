@@ -5,6 +5,7 @@ import {
   faHeart,
   faCalendar,
   faMapMarkerAlt,
+  faExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 
 const TravelListItem = ({ travelInfo }) => {
@@ -13,7 +14,19 @@ const TravelListItem = ({ travelInfo }) => {
   return (
     <div className={styles.item}>
       <div>
-        <img src={imgUrl} className={styles.img} />
+        {imgUrl ? (
+          <img src={imgUrl} className={styles.img} />
+        ) : (
+          <div className={[styles.noimage, styles.img].join(" ")}>
+            <FontAwesomeIcon
+              icon={faExclamation}
+              className={styles.exclamation}
+            />
+            <div>
+              No Image <br /> Available
+            </div>
+          </div>
+        )}
       </div>
       <div className={styles.desc}>
         <div>

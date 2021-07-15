@@ -35,3 +35,15 @@
   padding: 0.2rem;
   color: makerGrey;
 }
+.noimage {
+  background-color: makerLightGrey;
+
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.exclamation {
+  font-size: 3rem;
+}

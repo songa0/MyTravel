@@ -32,8 +32,8 @@
 }
 .plus {
   position: absolute;
-  right: 20rem;
-  bottom: 2rem;
+  right: 300px;
+  bottom: 25px;
   border: none;
   width: 40px;
   height: 40px;
@@ -52,4 +52,7 @@
   background-color: rgba(0, 0, 0, 0.6);
   padding: 0;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
