@@ -9,7 +9,7 @@ import Nav from "../nav/nav";
 import Search from "../search/search";
 import DiaryAdd from "../diary__add/diary_add";
 
-const Diary = ({ authService }) => {
+const Diary = ({ authService, dbService }) => {
   const history = useHistory();
   const [userId, setUserId] = useState(null);
   const [popupClick, setPopupClick] = useState(false);
@@ -309,6 +309,10 @@ const Diary = ({ authService }) => {
   const openPopup = () => {
     setPopupClick(true);
   };
+
+  const addDiary = (diary) => {
+    dbService.writeData(userId, diary);
+  };
   return (
     <div className={styles.diary}>
       <header className={styles.header}>
@@ -331,11 +335,11 @@ const Diary = ({ authService }) => {
         </div>
       </section>
       <button className={styles.plus} onClick={openPopup}>
-        <FontAwesomeIcon icon={faPlus} size="xl" />
+        <FontAwesomeIcon icon={faPlus} />
       </button>
       {popupClick && (
         <div className={styles.popup}>
-          <DiaryAdd closePopup={closePopup} />
+          <DiaryAdd closePopup={closePopup} addDiary={addDiary} />
         </div>
       )}
     </div>

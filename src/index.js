@@ -4,11 +4,14 @@ import "./index.css";
 import App from "./app";
 import reportWebVitals from "./reportWebVitals";
 import authService from "./service/auth_service";
+import DBService from "./service/db_service";
 
 const auth = new authService();
+const db = new DBService();
+
 ReactDOM.render(
   <React.StrictMode>
-    <App authService={auth} />
+    <App authService={auth} dbService={db} />
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -10,7 +10,7 @@ import {
 
 const TravelListItem = ({ travelInfo }) => {
   const { title, like, imgUrl, location, startDate, endDate } = travelInfo;
-  console.log(travelInfo);
+
   return (
     <div className={styles.item}>
       <div>
