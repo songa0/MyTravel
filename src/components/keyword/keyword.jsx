@@ -3,13 +3,14 @@ import styles from "./keyword.module.css";
 
 const Keyword = ({ travel }) => {
   const keywords = new Set();
-  Object.keys(travel).map(
-    (tKey) =>
-      travel[tKey].keyword &&
-      Object.keys(travel[tKey].keyword).map((kKey) =>
-        keywords.add(travel[tKey].keyword[kKey])
-      )
-  );
+  travel &&
+    Object.keys(travel).map(
+      (tKey) =>
+        travel[tKey].keyword &&
+        Object.keys(travel[tKey].keyword).map((kKey) =>
+          keywords.add(travel[tKey].keyword[kKey])
+        )
+    );
 
   const keywordsArray = Array.from(keywords);
 

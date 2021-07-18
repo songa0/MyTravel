@@ -30,7 +30,6 @@ const DiaryAdd = ({ closePopup, addDiary }) => {
       like: 0,
       travel: "",
     };
-    console.log(diary);
     addDiary(diary);
   };
   return (
