@@ -15,7 +15,7 @@ const TravelListItem = ({ travelInfo }) => {
     <div className={styles.item}>
       <div>
         {imgUrl ? (
-          <img src={imgUrl} className={styles.img} />
+          <img src={imgUrl} className={styles.img} alt="main" />
         ) : (
           <div className={[styles.noimage, styles.img].join(" ")}>
             <FontAwesomeIcon

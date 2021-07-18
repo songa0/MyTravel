@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Keyword from "../keyword/keyword";
 import styles from "./diary.module.css";
 import { useHistory } from "react-router";
@@ -32,26 +32,17 @@ const Diary = ({ authService, dbService }) => {
     });
 
     return () => stopSync();
-  });
+  }, [userId, dbService]);
 
-  const readLatestData = () => {
-    dbService.readData(userId, (data) => {
-      setTravel(data);
-    });
-    console.log("ReadLatest");
+  const searchData = (text) => {
+    const stopSync = dbService.searchData(userId, text, (data) =>
+      setTravel(data)
+    );
+    return () => stopSync();
   };
-  const clickSearchBtn = (searchText) => {
-    //다시 읽어오기
-    readLatestData();
 
-    if (searchText) {
-      setTravel((travel) => {
-        const filteredTravel = Object.keys(travel)
-          .filter((key) => travel[key].title.includes(searchText))
-          .map((key) => travel[key]);
-        return filteredTravel;
-      });
-    }
+  const clickSearchBtn = (searchText) => {
+    searchData(searchText);
   };
 
   const goToDetail = (event) => {
