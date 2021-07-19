@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./diary_add.module.css";
 
-const DiaryAdd = ({ closePopup, addDiary }) => {
+const DiaryAdd = ({ closePopup, addDiary, fileUploader }) => {
   const titleRef = useRef();
   const locationRef = useRef();
   const startDtRef = useRef();
@@ -31,6 +31,10 @@ const DiaryAdd = ({ closePopup, addDiary }) => {
       travel: "",
     };
     addDiary(diary);
+  };
+
+  const onFileChange = (event) => {
+    fileUploader.upload(event.target.files[0]);
   };
   return (
     <section className={styles.section}>
@@ -78,9 +82,9 @@ const DiaryAdd = ({ closePopup, addDiary }) => {
         <input type="text" className={styles.input} ref={keywordRef} />
         <div>
           <FontAwesomeIcon icon={faCamera} className={styles.icon} />
-          Photo
+          Main Photo
         </div>
-        <input type="file" className={styles.input} />
+        <input type="file" className={styles.input} onChange={onFileChange} />
         <div className={styles.button}>
           <button className={styles.submit} onClick={addDiaryData}>
             Submit

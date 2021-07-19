@@ -6,7 +6,7 @@ import Travel from "./components/travel/travel";
 import Schedule from "./components/schedule/schedule";
 import DiaryAdd from "./components/diary__add/diary_add";
 
-const App = ({ authService, dbService }) => {
+const App = ({ authService, dbService, fileUploader }) => {
   return (
     <Router>
       <div className={styles.app}>
@@ -15,7 +15,11 @@ const App = ({ authService, dbService }) => {
             <Login authService={authService} />
           </Route>
           <Route exact path="/diary">
-            <Diary authService={authService} dbService={dbService} />
+            <Diary
+              authService={authService}
+              dbService={dbService}
+              fileUploader={fileUploader}
+            />
           </Route>
           <Route exact path="/diary/detail">
             <Travel authService={authService} dbService={dbService} />

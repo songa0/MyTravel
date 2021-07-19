@@ -9,7 +9,7 @@ import Nav from "../nav/nav";
 import Search from "../search/search";
 import DiaryAdd from "../diary__add/diary_add";
 
-const Diary = ({ authService, dbService }) => {
+const Diary = ({ authService, dbService, fileUploader }) => {
   const history = useHistory();
   const [userId, setUserId] = useState(null);
   const [popupClick, setPopupClick] = useState(false);
@@ -91,7 +91,11 @@ const Diary = ({ authService, dbService }) => {
       </button>
       {popupClick && (
         <div className={styles.popup}>
-          <DiaryAdd addDiary={addDiary} closePopup={closePopup} />
+          <DiaryAdd
+            addDiary={addDiary}
+            closePopup={closePopup}
+            fileUploader={fileUploader}
+          />
         </div>
       )}
     </div>

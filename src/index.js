@@ -5,13 +5,15 @@ import App from "./app";
 import reportWebVitals from "./reportWebVitals";
 import authService from "./service/auth_service";
 import DBService from "./service/db_service";
+import FileUploader from "./service/file_uploader";
 
 const auth = new authService();
 const db = new DBService();
+const uploader = new FileUploader();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App authService={auth} dbService={db} />
+    <App authService={auth} dbService={db} fileUploader={uploader} />
   </React.StrictMode>,
   document.getElementById("root")
 );
