@@ -10,7 +10,6 @@ class DBService {
     starCountRef.on("value", (snapshot) => {
       const data = snapshot.val();
       data && updateData(data);
-      console.log(data);
     });
     return () => starCountRef.off();
   }
@@ -32,6 +31,15 @@ class DBService {
     } else {
       this.readData(userId, updateData);
     }
+  }
+
+  readDetailData(userId, detailId, updateData) {
+    const starCountRef = firebaseDatabase.ref(`${userId}/diary/${detailId}`);
+    starCountRef.once("value", (snapshot) => {
+      const data = snapshot.val();
+      console.log(data);
+      data && updateData(data);
+    });
   }
 }
 

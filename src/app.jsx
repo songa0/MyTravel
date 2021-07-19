@@ -18,7 +18,7 @@ const App = ({ authService, dbService }) => {
             <Diary authService={authService} dbService={dbService} />
           </Route>
           <Route exact path="/diary/detail">
-            <Travel authService={authService} />
+            <Travel authService={authService} dbService={dbService} />
           </Route>
           <Route path="/diary/detail/:id">
             <Schedule authService={authService} />

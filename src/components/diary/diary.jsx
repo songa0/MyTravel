@@ -46,9 +46,10 @@ const Diary = ({ authService, dbService }) => {
   };
 
   const goToDetail = (event) => {
+    // console.dir(event.currentTarget);
     history.push({
       pathname: "/diary/detail",
-      state: { detailId: event.target.id },
+      state: { detailId: event.currentTarget.id },
     });
   };
 
