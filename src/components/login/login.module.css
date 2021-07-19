@@ -1,12 +1,16 @@
-@value makerGreen, makerBlue,makerWhite from '../../common/colors.css';
+@value makerGreen, makerBlue,makerWhite, makerLightGrey, makerGrey,makerLightRed from '../../common/colors.css';
 
 .button {
-  border-radius: 20px;
-  width: 90%;
+  border: 0;
+  width: 330px;
   font-size: 1.5rem;
-  margin-top: 1em;
   padding: 0.3em;
-  border: 2px solid makerBlue;
+  height: 90px;
+}
+
+.button img {
+  width: 100%;
+  height: 100%;
 }
 .header {
   background-color: makerBlue;
@@ -20,12 +24,46 @@
 .content {
   padding: 1em 1em 2em 1em;
 }
-.login {
+.section {
   background-color: white;
   width: 30rem;
+  height: 40rem;
+  padding: 2rem;
 }
-.text {
-  font-size: 1.8rem;
+.title {
+  font-size: 2rem;
   font-weight: 500;
   padding: 0.3em;
+  margin-bottom: 1rem;
+}
+
+.email {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text {
+  width: 80%;
+  height: 40px;
+  margin-bottom: 1rem;
+  border: 2px solid makerLightGrey;
+  border-radius: 3px;
+}
+
+.login {
+  width: 300px;
+  height: 60px;
+  border: 0;
+  background-color: makerLightRed;
+  border-radius: 10px;
+  color: makerWhite;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.or {
+  color: makerGrey;
+  padding: 1.5rem;
+  font-size: 1.2rem;
 }

@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useHistory } from "react-router";
 import styles from "./login.module.css";
 
 const Login = ({ authService }) => {
   const history = useHistory();
+  const googleLogin = useRef();
   const onLogin = (event) => {
     authService //
-      .login(event.currentTarget.textContent)
+      .login(event.target.alt)
       .then(({ user }) => {
         //result가 있으면 화면 이동
         if (user) {
@@ -29,15 +30,20 @@ const Login = ({ authService }) => {
     });
   });
   return (
-    <section className={styles.login}>
-      <div className={styles.header}>Travel Diary</div>
-      <div className={styles.content}>
-        <div className={styles.text}>Login</div>
-        <button className={styles.button} onClick={onLogin}>
-          Google
+    <section className={styles.section}>
+      <div className={styles.title}>Sign in</div>
+      <div className={styles.email}>
+        <input type="email" placeholder="Email" className={styles.text} />
+        <input type="password" placeholder="Password" className={styles.text} />
+        <button className={styles.login}>Login</button>
+      </div>
+      <div className={styles.or}>or</div>
+      <div className={styles.social}>
+        <button className={styles.button} onClick={onLogin} ref={googleLogin}>
+          <img src="./images/google_signin_dark.png" alt="Google" />
         </button>
         <button className={styles.button} onClick={onLogin}>
-          Github
+          <img src="./images/github_signin_dark.png" alt="Github" />
         </button>
       </div>
     </section>
