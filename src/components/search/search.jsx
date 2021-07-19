@@ -18,7 +18,11 @@ const Search = ({ buttonClick }) => {
 
   return (
     <div className={styles.search}>
-      <img src="/images/background.jpg" className={styles.img} />
+      <img
+        src="/images/background.jpg"
+        className={styles.img}
+        alt="background"
+      />
       <div className={styles.input}>
         <input
           className={styles.searchInput}
