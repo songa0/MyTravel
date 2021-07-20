@@ -4,6 +4,7 @@
   border: 0;
   height: 30px;
   width: 95%;
+
   background-color: makerWhite;
 }
 .searchInput:focus {
@@ -14,12 +15,13 @@
   position: absolute;
   width: 50%;
   height: 30px;
+  min-width: 600px;
   background-color: makerWhite;
   border-radius: 10px;
 }
 .search {
   width: 100%;
-  min-width: 20rem;
+  min-width: 1200px;
   margin: 0 auto;
   height: 10rem;
   border-radius: 5px;
