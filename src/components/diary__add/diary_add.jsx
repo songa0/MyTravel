@@ -16,9 +16,14 @@ const DiaryAdd = ({ closePopup, addDiary, fileUploader }) => {
   const startDtRef = useRef();
   const endDtRef = useRef();
   const keywordRef = useRef();
+  const fileRef = useRef();
 
-  const addDiaryData = (event) => {
+  const addDiaryData = async (event) => {
     event.preventDefault();
+    let fileInfo;
+    if (fileRef.current.files) {
+      fileInfo = await fileUploader.upload(fileRef.current.files[0]);
+    }
 
     const diary = {
       id: Date.now(),
@@ -29,13 +34,11 @@ const DiaryAdd = ({ closePopup, addDiary, fileUploader }) => {
       endDate: endDtRef.current.value || "",
       like: 0,
       travel: "",
+      imgUrl: fileInfo.secure_url || "",
     };
     addDiary(diary);
   };
 
-  const onFileChange = (event) => {
-    fileUploader.upload(event.target.files[0]);
-  };
   return (
     <section className={styles.section}>
       <div className={styles.header}>
@@ -84,7 +87,7 @@ const DiaryAdd = ({ closePopup, addDiary, fileUploader }) => {
           <FontAwesomeIcon icon={faCamera} className={styles.icon} />
           Main Photo
         </div>
-        <input type="file" className={styles.input} onChange={onFileChange} />
+        <input type="file" className={styles.input} ref={fileRef} />
         <div className={styles.button}>
           <button className={styles.submit} onClick={addDiaryData}>
             Submit

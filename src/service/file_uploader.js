@@ -5,12 +5,12 @@ class FileUploader {
     formData.append("file", file);
     formData.append("upload_preset", "c9j5liah");
 
-    fetch(url, {
+    const response = await fetch(url, {
       method: "POST",
       body: formData,
-    })
-      .then((response) => response.text())
-      .then(console.log);
+    });
+
+    return await response.json();
   }
 }
 
