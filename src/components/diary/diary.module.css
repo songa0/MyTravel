@@ -3,6 +3,8 @@
 .diary {
   height: 100vh;
   width: 100vw;
+  min-width: 1200px;
+  min-height: 900px;
   background-color: white;
 }
 
@@ -31,9 +33,9 @@
   box-shadow: 2px 2px 15px 5px #969696;
 }
 .plus {
-  position: absolute;
-  right: 300px;
-  bottom: 25px;
+  position: fixed;
+  right: 15%;
+  bottom: 3%;
   border: none;
   width: 40px;
   height: 40px;

@@ -28,14 +28,15 @@ const DiaryAdd = ({ closePopup, addDiary, fileUploader }) => {
     const diary = {
       id: Date.now(),
       title: titleRef.current.value || "",
-      keyword: "",
+      keyword: keywordRef.current.value.split(","),
       location: locationRef.current.value || "",
       startDate: startDtRef.current.value || "",
       endDate: endDtRef.current.value || "",
       like: 0,
       travel: "",
-      imgUrl: fileInfo.secure_url || "",
+      imgUrl: fileInfo?.secure_url || "",
     };
+
     addDiary(diary);
   };
 
@@ -82,7 +83,12 @@ const DiaryAdd = ({ closePopup, addDiary, fileUploader }) => {
           <FontAwesomeIcon icon={faHashtag} className={styles.icon} />
           Keyword
         </div>
-        <input type="text" className={styles.input} ref={keywordRef} />
+        <input
+          type="text"
+          className={styles.input}
+          ref={keywordRef}
+          placeholder="드라이브, 바다"
+        />
         <div>
           <FontAwesomeIcon icon={faCamera} className={styles.icon} />
           Main Photo
