@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./keyword.module.css";
 
-const Keyword = ({ travel }) => {
+const Keyword = ({ travel, clickEvent }) => {
   const keywords = new Set();
   travel &&
     Object.keys(travel).map(
@@ -13,12 +13,14 @@ const Keyword = ({ travel }) => {
     );
 
   const keywordsArray = Array.from(keywords);
-
+  const filterData = (event) => {
+    clickEvent(event.currentTarget.textContent);
+  };
   return (
     <div className={styles.keywords}>
       {keywordsArray &&
         Object.keys(keywordsArray).map((key) => (
-          <span key={key} className={styles.keyword}>
+          <span key={key} className={styles.keyword} onClick={filterData}>
             {keywordsArray[key]}
           </span>
         ))}

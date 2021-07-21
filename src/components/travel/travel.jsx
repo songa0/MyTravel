@@ -17,7 +17,6 @@ const DiaryDetail = ({ authService, dbService }) => {
       history.location.state.detailId,
       (data) => {
         setTravelDtl(data);
-        console.log(data);
       }
     );
   }, [userId, history.location.state.detailId, dbService]);

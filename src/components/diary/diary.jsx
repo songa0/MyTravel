@@ -35,7 +35,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
   }, [userId, dbService]);
 
   const searchData = (text) => {
-    const stopSync = dbService.searchData(userId, text, (data) =>
+    const stopSync = dbService.searchData(userId, "title", text, (data) =>
       setTravel(data)
     );
     return () => stopSync();
@@ -51,6 +51,16 @@ const Diary = ({ authService, dbService, fileUploader }) => {
       pathname: "/diary/detail",
       state: { detailId: event.currentTarget.id },
     });
+  };
+
+  const filterData = (text) => {
+    const stopSync = dbService.searchDataWithKeyword(
+      userId,
+      "keyword",
+      text,
+      (data) => setTravel(data)
+    );
+    return () => stopSync();
   };
 
   const closePopup = () => {
@@ -71,7 +81,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
         <Search buttonClick={clickSearchBtn} />
       </header>
       <section className={styles.section}>
-        <Keyword travel={travel} />
+        <Keyword travel={travel} clickEvent={filterData} />
         <div className={styles.list}>
           {travel &&
             Object.keys(travel).map((key) => (

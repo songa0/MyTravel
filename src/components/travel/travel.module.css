@@ -3,7 +3,7 @@
 .section {
   background-color: makerWhite;
   width: 50rem;
-  height: 100vh;
+  height: 100%;
 }
 .list {
   list-style-type: none;

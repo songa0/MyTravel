@@ -1,11 +1,9 @@
 @value makerGreen, makerBlue,makerWhite,makerLightGrey,makerLightRed from '../../common/colors.css';
 
 .diary {
-  height: 100vh;
-  width: 100vw;
-  min-width: 1200px;
-  min-height: 900px;
-  background-color: white;
+  height: 100%;
+  width: 100%;
+  background-color: makerWhite;
 }
 
 .section {
