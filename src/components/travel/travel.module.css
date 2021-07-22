@@ -1,9 +1,11 @@
-@value makerWhite,makerLightGrey from '../../common/colors.css';
+@value makerWhite,makerLightGrey,makerGrey,makerLightRed from '../../common/colors.css';
 
 .section {
   background-color: makerWhite;
-  width: 50rem;
-  height: 100%;
+  width: 60rem;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: row;
 }
 .list {
   list-style-type: none;
@@ -12,13 +14,38 @@
   text-align: left;
   padding-left: 1rem;
 }
-.text {
-  padding-left: 1rem;
+
+.textArea {
+  width: 50%;
+  padding-top: 60px;
 }
 .map {
   margin-top: 2rem;
-  width: 50rem;
-  height: 50%;
+  width: 40rem;
+  height: 40rem;
   min-height: 20rem;
   background-color: makerLightGrey;
+}
+.map img {
+  width: 100%;
+  height: 100%;
+}
+.travel {
+  width: 100%;
+  height: 100%;
+  background-color: makerWhite;
+}
+.icon {
+  color: makerGrey;
+  margin-right: 1rem;
+}
+.title__icon {
+  color: makerLightRed;
+  margin-right: 0.5rem;
+}
+.title {
+  text-align: left;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }

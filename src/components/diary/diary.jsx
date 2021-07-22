@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import DiaryListItem from "../diary__list__item/diary_list_item";
 import Nav from "../nav/nav";
-import Search from "../search/search";
+import Header from "../header/header";
 import DiaryAdd from "../diary__add/diary_add";
 
 const Diary = ({ authService, dbService, fileUploader }) => {
@@ -78,7 +78,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
     <div className={styles.diary}>
       <header className={styles.header}>
         <Nav clickEvent={authService.logout} />
-        <Search buttonClick={clickSearchBtn} />
+        <Header buttonClick={clickSearchBtn} searchBar="true" />
       </header>
       <section className={styles.section}>
         <Keyword travel={travel} clickEvent={filterData} />

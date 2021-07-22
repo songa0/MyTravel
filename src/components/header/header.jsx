@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
-import styles from "./search.module.css";
+import styles from "./header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const Search = ({ buttonClick }) => {
+const Header = ({ buttonClick, searchBar }) => {
   const searchInput = useRef();
 
   const handelKeyPress = (event) => {
@@ -23,17 +23,19 @@ const Search = ({ buttonClick }) => {
         className={styles.img}
         alt="background"
       />
-      <div className={styles.input}>
-        <input
-          className={styles.searchInput}
-          type="text"
-          ref={searchInput}
-          onKeyPress={handelKeyPress}
-        />
-        <FontAwesomeIcon icon={faSearch} onClick={handleClick} />
-      </div>
+      {searchBar && (
+        <div className={styles.input}>
+          <input
+            className={styles.searchInput}
+            type="text"
+            ref={searchInput}
+            onKeyPress={handelKeyPress}
+          />
+          <FontAwesomeIcon icon={faSearch} onClick={handleClick} />
+        </div>
+      )}
     </div>
   );
 };
 
-export default Search;
+export default Header;
