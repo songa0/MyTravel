@@ -12,10 +12,15 @@
   color: makerBlack;
 }
 .img {
-  width: 300px;
-  height: 200px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: fill;
+}
+
+.imgArea {
+  width: 100%;
+  height: 250px;
 }
 
 .desc {
@@ -37,7 +42,6 @@
 }
 .noimage {
   background-color: makerLightGrey;
-
   font-size: 2rem;
   display: flex;
   flex-direction: column;
@@ -46,4 +50,15 @@
 }
 .exclamation {
   font-size: 3rem;
+}
+@media screen and (max-width: 800px) {
+  .imgArea {
+    height: 180px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .imgArea {
+    height: 200px;
+  }
 }

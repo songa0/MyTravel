@@ -13,7 +13,7 @@ const TravelListItem = ({ travelInfo }) => {
 
   return (
     <div className={styles.item}>
-      <div>
+      <div className={styles.imgArea}>
         {imgUrl ? (
           <img src={imgUrl} className={styles.img} alt="main" />
         ) : (

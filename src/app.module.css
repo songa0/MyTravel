@@ -11,6 +11,5 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  min-width: 1200px;
-  min-height: 900px;
+  width: 100vw;
 }
