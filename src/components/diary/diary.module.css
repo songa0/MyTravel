@@ -33,6 +33,9 @@
   width: 25%;
   height: 15%;
 }
+.header {
+  width: 100%;
+}
 .plus {
   position: fixed;
   right: 15%;

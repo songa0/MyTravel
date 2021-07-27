@@ -51,6 +51,7 @@
 .exclamation {
   font-size: 3rem;
 }
+
 @media screen and (max-width: 800px) {
   .imgArea {
     height: 180px;

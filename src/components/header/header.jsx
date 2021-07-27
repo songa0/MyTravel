@@ -18,12 +18,14 @@ const Header = ({ buttonClick, searchBar }) => {
 
   return (
     <div className={styles.search}>
-      <img
+      <img src="/images/hand.png" className={styles.img} alt="background" />
+      {/* <img
         src="/images/background.jpg"
         className={styles.img}
         alt="background"
-      />
-      {searchBar && (
+      /> */}
+      <span className={styles.title}>Search Trips</span>
+      {/* {searchBar && (
         <div className={styles.input}>
           <input
             className={styles.searchInput}
@@ -33,7 +35,7 @@ const Header = ({ buttonClick, searchBar }) => {
           />
           <FontAwesomeIcon icon={faSearch} onClick={handleClick} />
         </div>
-      )}
+      )} */}
     </div>
   );
 };

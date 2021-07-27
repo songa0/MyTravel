@@ -10,7 +10,13 @@
 .searchInput:focus {
   outline: none;
 }
-
+.title {
+  color: makerWhite;
+  font-size: 4rem;
+  padding-top: 1.5rem;
+  font-weight: 650;
+  z-index: 1000;
+}
 .input {
   position: absolute;
   width: 50%;
@@ -21,16 +27,16 @@
 }
 .search {
   width: 100%;
-  min-width: 1200px;
-  margin: 0 auto;
-  height: 10rem;
-  border-radius: 5px;
+  height: 15rem;
+  min-height: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #e85a71;
 }
 .img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  position: absolute;
+  width: 300px;
+  top: 3px;
+  clip: rect(0 500px 180px 0px);
 }
