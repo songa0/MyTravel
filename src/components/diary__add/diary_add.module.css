@@ -1,4 +1,4 @@
-@value makerGreen, makerBlue,makerWhite,makerLightGrey,makerDarkBlue, makerGrey from '../../common/colors.css';
+@value makerGreen, makerBlue,makerWhite,makerLightGrey,makerDarkBlue, makerGrey, makerLightRed from '../../common/colors.css';
 .header {
   height: 2rem;
   background-color: #45d9fd;
@@ -9,8 +9,7 @@
   border-top-right-radius: 5px;
 }
 .section {
-  z-index: 100;
-  width: 30rem;
+  width: 53rem;
   height: 37rem;
 }
 .form {
@@ -20,6 +19,9 @@
   height: 100%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+.item {
+  display: flex;
 }
 .input {
   font-size: 0.8em;
@@ -58,4 +60,9 @@
 }
 .close {
   margin-right: 1rem;
+}
+.left,
+.right {
+  width: 45%;
+  margin: 1rem;
 }
