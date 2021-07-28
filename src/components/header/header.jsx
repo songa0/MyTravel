@@ -25,17 +25,18 @@ const Header = ({ buttonClick, searchBar }) => {
         alt="background"
       /> */}
       <span className={styles.title}>Search Trips</span>
-      {/* {searchBar && (
+      {searchBar && (
         <div className={styles.input}>
           <input
             className={styles.searchInput}
             type="text"
             ref={searchInput}
+            placeholder="Search..."
             onKeyPress={handelKeyPress}
           />
           <FontAwesomeIcon icon={faSearch} onClick={handleClick} />
         </div>
-      )} */}
+      )}
     </div>
   );
 };
