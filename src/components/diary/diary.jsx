@@ -97,7 +97,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
         </div>
       </section>
       <button className={styles.plus} onClick={openPopup}>
-        <FontAwesomeIcon icon={faPlus} />
+        <FontAwesomeIcon icon={faPlus} size="lg" />
       </button>
       {popupClick && (
         <div className={styles.popup}>

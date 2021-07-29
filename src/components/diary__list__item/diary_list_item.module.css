@@ -17,10 +17,17 @@
   border-radius: 5px;
   object-fit: fill;
 }
+.img:hover {
+  opacity: 0.4;
+}
 
+.img__btn {
+  position: absolute;
+}
 .imgArea {
   width: 95%;
   height: 260px;
+  position: relative;
 }
 
 .desc {

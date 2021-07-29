@@ -45,6 +45,11 @@ const DiaryAdd = ({ closePopup, addDiary, fileUploader }) => {
       like: 0,
       travel: "",
       imgUrl: fileInfo?.secure_url || "",
+      sight: sightRef.current.value || "",
+      smell: smellRef.current.value || "",
+      hearing: hearingRef.current.value || "",
+      taste: tasteRef.current.value || "",
+      touch: touchRef.current.value || "",
     };
 
     addDiary(diary);

@@ -6,6 +6,8 @@ import {
   faCalendar,
   faMapMarkerAlt,
   faExclamation,
+  faInfo,
+  faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 const TravelListItem = ({ travelInfo }) => {
