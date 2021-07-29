@@ -12,7 +12,7 @@
 
 .section {
   background-color: makerWhite;
-  width: 70%;
+  width: 90%;
   min-width: 320px;
 }
 
@@ -20,14 +20,13 @@
   width: 100%;
   margin: 1em auto;
   padding: 0.5px;
-  border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
 }
 
 .list_item {
   display: inline-block;
-  padding: 0.5em;
+  padding: 0.5rem 0.8rem;
   background-color: makerWhite;
   text-align: left;
   width: 25%;
@@ -38,11 +37,11 @@
 }
 .plus {
   position: fixed;
-  right: 15%;
+  right: 3%;
   bottom: 3%;
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 30px;
   background-color: makerLightRed;
   color: #d9e1e8;
