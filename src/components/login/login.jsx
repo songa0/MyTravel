@@ -1,4 +1,4 @@
-import { faBorderNone } from "@fortawesome/free-solid-svg-icons";
+import {} from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useRef } from "react";
 import { useHistory } from "react-router";
 import styles from "./login.module.css";
