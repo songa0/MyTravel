@@ -1,3 +1,21 @@
-알게된 것  
-jsx에서는 forEach 쓰면 아무것도 리턴하지 않는다.  
-set -> array 만들때는 Array.from 함수를 사용한다.  
+**1. 프로젝트 설명**
+ - Google/Github 계정으로 로그인한다.
+ - 로그인 후 메인 화면의 오른쪽 하단 버튼을 눌러 여행지 기록을 추가한다.
+ - 팝업에 여행지의 기본 정보 및 다섯 가지 감각을 통해 느낀 것들을 기록한다.
+ - 등록한 여행지를 카드 형식으로 볼 수 있다.
+ - 카드 위에 마우스를 올리면 Info, Delete 버튼이 나타난다.(구현 예정)
+ - Info를 누르면 여행지의 상세 기록 내용을 볼 수 있다. (구현 예정)
+ - Delete를 누르면 여행지 기록이 삭제된다. (구현 예정)
+ 
+**2. 완성본**
+ - 로그인 화면
+![image](https://user-images.githubusercontent.com/17793440/127652045-850d2a0c-246b-4192-a294-342267c24e86.png)
+
+ - 메인 화면
+![image](https://user-images.githubusercontent.com/17793440/127652089-6e813e00-0227-49e0-9d27-dc242f038a48.png)  
+
+**3. 프로젝트를 통해 알게된 것**
+  - jsx에서는 forEach 쓰면 아무것도 리턴하지 않는다.  
+  - set -> array 만들때는 Array.from 함수를 사용한다.  
+  - Netlify 배포 후에 Firebase API를 사용하기 위해서는 Netlify에 API Key를 등록한다.
+  
