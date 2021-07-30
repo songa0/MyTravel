@@ -1,3 +1,4 @@
+import { faBorderNone } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useRef } from "react";
 import { useHistory } from "react-router";
 import styles from "./login.module.css";
@@ -31,21 +32,39 @@ const Login = ({ authService }) => {
   });
   return (
     <section className={styles.section}>
-      <div className={styles.title}>Sign in</div>
+      <div className={styles.login}>
+        <div className={styles.title}>Login</div>
+        <div className={styles.subTitle}>
+          The journey not the arrival matters.
+        </div>
+        <div className={styles.social}>
+          <button className={styles.button} onClick={onLogin} ref={googleLogin}>
+            <img src="./images/google_signin_dark.png" alt="Google" />
+          </button>
+          <button className={styles.button} onClick={onLogin}>
+            <img src="./images/github_signin_dark.png" alt="Github" />
+          </button>
+        </div>
+      </div>
+      <div className={styles.main__img}>
+        <img src="./images/login_img.png" alt="login" />
+      </div>
+      {/* <div className={styles.or}>or</div>
       <div className={styles.email}>
-        <input type="email" placeholder="Email" className={styles.text} />
-        <input type="password" placeholder="Password" className={styles.text} />
+        <input
+          type="email"
+          placeholder="Email"
+          className={styles.text}
+          disabled
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          className={styles.text}
+          disabled
+        />
         <button className={styles.login}>Login</button>
-      </div>
-      <div className={styles.or}>or</div>
-      <div className={styles.social}>
-        <button className={styles.button} onClick={onLogin} ref={googleLogin}>
-          <img src="./images/google_signin_dark.png" alt="Google" />
-        </button>
-        <button className={styles.button} onClick={onLogin}>
-          <img src="./images/github_signin_dark.png" alt="Github" />
-        </button>
-      </div>
+      </div> */}
     </section>
   );
 };

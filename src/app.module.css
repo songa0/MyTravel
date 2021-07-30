@@ -1,13 +1,14 @@
-@value makerGrey from './common/colors.css';
+@value makerLightYellow from './common/colors.css';
 
 * {
   box-sizing: border-box;
 }
 
 .app {
-  background-color: makerGrey;
+  background-color: makerLightYellow;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
 }

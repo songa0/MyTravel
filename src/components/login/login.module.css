@@ -2,10 +2,10 @@
 
 .button {
   border: 0;
-  width: 330px;
+  width: 320px;
   font-size: 1.5rem;
   padding: 0.3em;
-  height: 90px;
+  height: 80px;
   background-color: makerWhite;
 }
 
@@ -27,15 +27,26 @@
 }
 .section {
   background-color: white;
-  width: 30rem;
+  width: 60rem;
   height: 40rem;
-  padding: 2rem;
+  display: flex;
+  border-radius: 10px;
+  flex-direction: row;
 }
 .title {
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 700;
   padding: 0.3em;
-  margin-bottom: 1rem;
+  text-align: left;
+  margin-left: 1rem;
+  margin-top: 5rem;
+}
+.subTitle {
+  text-align: left;
+  margin-bottom: 2rem;
+  margin-left: 1.5rem;
+  font-size: 0.8rem;
+  color: makerGrey;
 }
 
 .email {
@@ -54,14 +65,7 @@
 }
 
 .login {
-  width: 300px;
-  height: 60px;
-  border: 0;
-  background-color: makerLightRed;
-  border-radius: 10px;
-  color: makerWhite;
-  font-size: 1.5rem;
-  margin-top: 1rem;
+  padding: 2rem;
 }
 
 .or {
@@ -69,4 +73,11 @@
   padding: 1.5rem;
   font-size: 1.2rem;
   font-weight: 500;
+}
+.main__img {
+  width: 80%;
+  margin-top: 2rem;
+}
+.main__img img {
+  width: 100%;
 }
