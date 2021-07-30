@@ -28,7 +28,7 @@
 .section {
   background-color: white;
   width: 60rem;
-  height: 40rem;
+  height: 35rem;
   display: flex;
   border-radius: 10px;
   flex-direction: row;
@@ -75,8 +75,8 @@
   font-weight: 500;
 }
 .main__img {
-  width: 80%;
-  margin-top: 2rem;
+  width: 70%;
+  margin-top: 1rem;
 }
 .main__img img {
   width: 100%;
