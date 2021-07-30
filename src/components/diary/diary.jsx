@@ -34,6 +34,19 @@ const Diary = ({ authService, dbService, fileUploader }) => {
     return () => stopSync();
   }, [userId, dbService]);
 
+  useEffect(() => {
+    const escPressFunc = (event) => {
+      if (popupClick && event.keyCode === 27) {
+        closePopup();
+      }
+    };
+    document.addEventListener("keydown", escPressFunc, false);
+
+    return () => {
+      window.removeEventListener("keydown", escPressFunc);
+    };
+  });
+
   const searchData = (text) => {
     const stopSync = dbService.searchData(userId, "title", text, (data) =>
       setTravel(data)

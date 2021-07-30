@@ -1,4 +1,4 @@
-@value makerBlack, makerLightGrey,makerWhite from '../../common/colors.css';
+@value makerBlack, makerLightGrey,makerWhite, makerPink from '../../common/colors.css';
 
 .searchInput {
   border: 0;
@@ -34,7 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e85a71;
+  background-color: makerPink;
 }
 .img {
   position: absolute;

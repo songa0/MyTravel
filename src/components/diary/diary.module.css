@@ -1,4 +1,4 @@
-@value makerGreen, makerBlue,makerWhite,makerLightGrey,makerLightRed from '../../common/colors.css';
+@value makerGreen, makerBlue,makerWhite,makerLightGrey,makerPink from '../../common/colors.css';
 
 .diary {
   height: 100%;
@@ -43,7 +43,7 @@
   width: 45px;
   height: 45px;
   border-radius: 30px;
-  background-color: makerLightRed;
+  background-color: makerPink;
   color: #d9e1e8;
 }
 

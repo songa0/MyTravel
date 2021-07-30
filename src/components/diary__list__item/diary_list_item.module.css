@@ -1,10 +1,10 @@
-@value makerGrey,makerWhite,makerLightGrey,makerBlack,makerPink from '../../common/colors.css';
+@value makerGrey,makerWhite,makerLightGrey,makerBlack,makerPink,makerLightPink from '../../common/colors.css';
 
 .like {
   float: right;
   color: makerGrey;
   padding-right: 0.3rem;
-  color: makerPink;
+  color: makerLightPink;
 }
 
 .number {

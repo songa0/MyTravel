@@ -1,7 +1,7 @@
-@value makerGreen, makerBlue,makerWhite,makerLightGrey,makerDarkBlue, makerGrey, makerLightRed from '../../common/colors.css';
+@value makerWhite,makerDarkBlue, makerGrey, makerBlack from '../../common/colors.css';
 .header {
   height: 2rem;
-  background-color: #45d9fd;
+  background-color: makerWhite;
   color: makerWhite;
   text-align: right;
   font-size: 20px;
@@ -10,7 +10,7 @@
 }
 .section {
   width: 53rem;
-  height: 37rem;
+  height: 38rem;
 }
 .form {
   background-color: makerWhite;
@@ -43,11 +43,13 @@
   width: 45%;
 }
 .submit {
-  background-color: makerDarkBlue;
+  background-color: #4cb4ce;
   color: makerWhite;
   border: 0;
-  width: 100px;
-  height: 30px;
+  width: 160px;
+  height: 35px;
+  font-size: 1rem;
+  margin-top: 0.5rem;
   border-radius: 10px;
 }
 .button {
@@ -60,6 +62,7 @@
 }
 .close {
   margin-right: 1rem;
+  color: makerBlack;
 }
 .left,
 .right {
