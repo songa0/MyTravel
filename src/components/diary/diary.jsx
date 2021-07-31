@@ -104,7 +104,10 @@ const Diary = ({ authService, dbService, fileUploader }) => {
                 id={key}
                 onClick={goToDetail}
               >
-                <DiaryListItem travelInfo={travel[key]} />
+                <DiaryListItem
+                  travelInfo={travel[key]}
+                  onImgClick={goToDetail}
+                />
               </div>
             ))}
         </div>
