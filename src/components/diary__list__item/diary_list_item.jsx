@@ -10,7 +10,7 @@ import {
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
-const TravelListItem = ({ travelInfo, onImgClick }) => {
+const TravelListItem = ({ travelInfo, onImgClick, deleteData, detailId }) => {
   const { title, like, imgUrl, location, startDate, endDate } = travelInfo;
   const [isMouseOn, setIsMouseOn] = useState(false);
 
@@ -20,8 +20,27 @@ const TravelListItem = ({ travelInfo, onImgClick }) => {
   const mouseOut = () => {
     setIsMouseOn(false);
   };
+
+  const onClickItem = (event) => {
+    const id = event.currentTarget.dataset.id;
+    if (
+      event.target.dataset.type === "delete" ||
+      event.target.parentNode.dataset.type === "delete" ||
+      event.target.parentNode.parentNode.dataset.type === "delete"
+    ) {
+      deleteData(id);
+    } else {
+      onImgClick(id);
+    }
+  };
   return (
-    <div className={styles.item} onMouseOver={mouseOver} onMouseOut={mouseOut}>
+    <div
+      className={styles.item}
+      onMouseOver={mouseOver}
+      onMouseOut={mouseOut}
+      onClick={onClickItem}
+      data-id={detailId}
+    >
       <div className={styles.imgArea}>
         {imgUrl ? (
           <img src={imgUrl} className={styles.img} alt="main" />
@@ -41,10 +60,10 @@ const TravelListItem = ({ travelInfo, onImgClick }) => {
             isMouseOn ? [styles.btn__area, styles.show].join(" ") : styles.hide
           }
         >
-          <button>
-            <FontAwesomeIcon icon={faInfo} onClick={onImgClick} size="1x" />
+          <button data-type="detail">
+            <FontAwesomeIcon icon={faInfo} size="1x" />
           </button>
-          <button>
+          <button data-type="delete">
             <FontAwesomeIcon icon={faTrashAlt} size="1x" />
           </button>
         </div>

@@ -39,6 +39,6 @@
 .img {
   position: absolute;
   width: 300px;
-  top: 90px;
+  top: 88px;
   clip: rect(0 500px 180px 0px);
 }

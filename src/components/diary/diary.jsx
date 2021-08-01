@@ -58,12 +58,15 @@ const Diary = ({ authService, dbService, fileUploader }) => {
     searchData(searchText);
   };
 
-  const goToDetail = (event) => {
-    // console.dir(event.currentTarget);
+  const goToDetail = (diaryId) => {
     history.push({
       pathname: "/diary/detail",
-      state: { detailId: event.currentTarget.id },
+      state: { detailId: diaryId },
     });
+  };
+
+  const deleteData = (diaryId) => {
+    dbService.deleteData(userId, diaryId);
   };
 
   const filterData = (text) => {
@@ -98,15 +101,12 @@ const Diary = ({ authService, dbService, fileUploader }) => {
         <div className={styles.list}>
           {travel &&
             Object.keys(travel).map((key) => (
-              <div
-                className={styles.list_item}
-                key={key}
-                id={key}
-                onClick={goToDetail}
-              >
+              <div className={styles.list_item} key={key}>
                 <DiaryListItem
                   travelInfo={travel[key]}
                   onImgClick={goToDetail}
+                  deleteData={deleteData}
+                  detailId={key}
                 />
               </div>
             ))}

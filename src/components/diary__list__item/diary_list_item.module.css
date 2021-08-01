@@ -57,6 +57,7 @@
   padding: 0.5rem;
   margin-right: 0.5rem;
   margin-top: 30px;
+  cursor: pointer;
 }
 .imgArea {
   width: 95%;

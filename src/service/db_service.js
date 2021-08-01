@@ -73,6 +73,10 @@ class DBService {
       data && updateData(data);
     });
   }
+
+  deleteData(userId, detailId) {
+    firebaseDatabase.ref(`${userId}/diary/${detailId}`).remove();
+  }
 }
 
 export default DBService;
