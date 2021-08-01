@@ -8,12 +8,15 @@ import DiaryListItem from "../diary__list__item/diary_list_item";
 import Nav from "../nav/nav";
 import Header from "../header/header";
 import DiaryAdd from "../diary__add/diary_add";
+import Travel from "../travel/travel";
 
 const Diary = ({ authService, dbService, fileUploader }) => {
   const history = useHistory();
   const [userId, setUserId] = useState(null);
   const [popupClick, setPopupClick] = useState(false);
   const [travel, setTravel] = useState({});
+  const [detailClick, setDetailClick] = useState(false);
+
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
@@ -38,6 +41,9 @@ const Diary = ({ authService, dbService, fileUploader }) => {
     const escPressFunc = (event) => {
       if (popupClick && event.keyCode === 27) {
         closePopup();
+      }
+      if (detailClick && event.keyCode === 27) {
+        setDetailClick(false);
       }
     };
     document.addEventListener("keydown", escPressFunc, false);
@@ -90,6 +96,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
     dbService.writeData(userId, diary);
     closePopup();
   };
+
   return (
     <div className={styles.diary}>
       <header className={styles.header}>
@@ -104,7 +111,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
               <div className={styles.list_item} key={key}>
                 <DiaryListItem
                   travelInfo={travel[key]}
-                  onImgClick={goToDetail}
+                  onImgClick={setDetailClick}
                   deleteData={deleteData}
                   detailId={key}
                 />
@@ -122,6 +129,12 @@ const Diary = ({ authService, dbService, fileUploader }) => {
             closePopup={closePopup}
             fileUploader={fileUploader}
           />
+        </div>
+      )}
+
+      {detailClick && (
+        <div className={[styles.popup, styles.detail].join(" ")}>
+          <Travel dbService={dbService} authService={authService} />
         </div>
       )}
     </div>

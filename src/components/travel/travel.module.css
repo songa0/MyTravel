@@ -1,9 +1,9 @@
 @value makerWhite,makerLightGrey,makerGrey,makerLightRed from '../../common/colors.css';
 
-.section {
+.travel {
   background-color: makerWhite;
-  width: 60rem;
-  margin: 1rem auto;
+  width: 100%;
+  height: 95%;
   display: flex;
   flex-direction: row;
 }
@@ -30,11 +30,7 @@
   width: 100%;
   height: 100%;
 }
-.travel {
-  width: 100%;
-  height: 100%;
-  background-color: makerWhite;
-}
+
 .icon {
   color: makerGrey;
   margin-right: 1rem;

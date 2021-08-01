@@ -30,7 +30,7 @@ const TravelListItem = ({ travelInfo, onImgClick, deleteData, detailId }) => {
     ) {
       deleteData(id);
     } else {
-      onImgClick(id);
+      onImgClick(true);
     }
   };
   return (

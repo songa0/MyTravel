@@ -64,6 +64,10 @@
   align-items: center;
 }
 
+.detail {
+  align-items: flex-end;
+}
+
 @media screen and (max-width: 1450px) {
   .list_item {
     width: 30%;
