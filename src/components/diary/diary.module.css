@@ -56,7 +56,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 0;
   margin: 0;
   display: flex;
@@ -65,7 +65,9 @@
 }
 
 .detail {
+  flex-direction: column;
   align-items: flex-end;
+  justify-content: flex-end;
 }
 
 @media screen and (max-width: 1450px) {

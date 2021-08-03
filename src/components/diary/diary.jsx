@@ -3,7 +3,7 @@ import Keyword from "../keyword/keyword";
 import styles from "./diary.module.css";
 import { useHistory } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 import DiaryListItem from "../diary__list__item/diary_list_item";
 import Nav from "../nav/nav";
 import Header from "../header/header";
@@ -16,6 +16,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
   const [popupClick, setPopupClick] = useState(false);
   const [travel, setTravel] = useState({});
   const [detailClick, setDetailClick] = useState(false);
+  const [detailId, setDetailId] = useState(null);
 
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
@@ -97,6 +98,11 @@ const Diary = ({ authService, dbService, fileUploader }) => {
     closePopup();
   };
 
+  const openDetailPopup = (detailId) => {
+    setDetailClick(true);
+    setDetailId(detailId);
+  };
+
   return (
     <div className={styles.diary}>
       <header className={styles.header}>
@@ -111,7 +117,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
               <div className={styles.list_item} key={key}>
                 <DiaryListItem
                   travelInfo={travel[key]}
-                  onImgClick={setDetailClick}
+                  clickDetail={openDetailPopup}
                   deleteData={deleteData}
                   detailId={key}
                 />
@@ -134,7 +140,13 @@ const Diary = ({ authService, dbService, fileUploader }) => {
 
       {detailClick && (
         <div className={[styles.popup, styles.detail].join(" ")}>
-          <Travel dbService={dbService} authService={authService} />
+          <Travel
+            dbService={dbService}
+            authService={authService}
+            openPopup={setDetailClick}
+            detailId={detailId}
+            userId={userId}
+          />
         </div>
       )}
     </div>

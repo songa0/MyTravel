@@ -10,7 +10,7 @@ import {
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
-const TravelListItem = ({ travelInfo, onImgClick, deleteData, detailId }) => {
+const TravelListItem = ({ travelInfo, clickDetail, deleteData, detailId }) => {
   const { title, like, imgUrl, location, startDate, endDate } = travelInfo;
   const [isMouseOn, setIsMouseOn] = useState(false);
 
@@ -30,7 +30,7 @@ const TravelListItem = ({ travelInfo, onImgClick, deleteData, detailId }) => {
     ) {
       deleteData(id);
     } else {
-      onImgClick(true);
+      clickDetail(id);
     }
   };
   return (
