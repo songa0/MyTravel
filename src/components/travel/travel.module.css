@@ -45,3 +45,8 @@
   font-weight: 600;
   margin-bottom: 1rem;
 }
+.close__icon {
+  color: makerWhite;
+  margin-right: 10px;
+  margin-bottom: 3px;
+}
