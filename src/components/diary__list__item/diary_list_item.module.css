@@ -94,6 +94,17 @@
   font-size: 3rem;
 }
 
+.show {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 1s, opacity 1s;
+}
+
+.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
 @media screen and (max-width: 800px) {
   .imgArea {
     height: 180px;
@@ -110,15 +121,4 @@
   .btn__area {
     top: 155px;
   }
-}
-
-.show {
-  visibility: visible;
-  opacity: 1;
-  transition: visibility 1s, opacity 1s;
-}
-
-.hide {
-  opacity: 0;
-  visibility: hidden;
 }

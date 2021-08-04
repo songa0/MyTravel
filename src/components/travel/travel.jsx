@@ -39,33 +39,38 @@ const Travel = ({ authService, dbService, openPopup, detailId, userId }) => {
           onClick={closeWindow}
         />
       </header>
-      <section className={styles.travel}>
-        <div className={styles.textArea}>
-          <div className={styles.title}>
-            <FontAwesomeIcon icon={faStar} className={styles.title__icon} />
-            <span>{travelDtl.title}</span>
+      <section>
+        <div className={styles.travel}>
+          <div className={styles.textArea}>
+            <div className={styles.title}>
+              <FontAwesomeIcon icon={faStar} className={styles.title__icon} />
+              <span>{travelDtl.title}</span>
+            </div>
+            <div className={styles.schedule}>
+              <FontAwesomeIcon icon={faMapMarkerAlt} className={styles.icon} />
+              <span className={styles.text}> {travelDtl.location}</span>
+            </div>
+            <div className={styles.schedule}>
+              <FontAwesomeIcon icon={faCalendar} className={styles.icon} />
+              <span className={styles.text}>
+                {travelDtl.startDate} ~ {travelDtl.endDate}
+              </span>
+            </div>
+            <ul className={styles.list}>
+              {travelDtl.travel &&
+                Object.keys(travelDtl.travel).map((key) => (
+                  <li key={key} id={key}>
+                    <TravelListItem
+                      day={key}
+                      date={travelDtl.travel[key].date}
+                    />
+                  </li>
+                ))}
+            </ul>
           </div>
-          <div className={styles.schedule}>
-            <FontAwesomeIcon icon={faMapMarkerAlt} className={styles.icon} />
-            <span className={styles.text}> {travelDtl.location}</span>
+          <div className={styles.map}>
+            <img src="/images/map.png" alt="google map api" />
           </div>
-          <div className={styles.schedule}>
-            <FontAwesomeIcon icon={faCalendar} className={styles.icon} />
-            <span className={styles.text}>
-              {travelDtl.startDate} ~ {travelDtl.endDate}
-            </span>
-          </div>
-          <ul className={styles.list}>
-            {travelDtl.travel &&
-              Object.keys(travelDtl.travel).map((key) => (
-                <li key={key} id={key}>
-                  <TravelListItem day={key} date={travelDtl.travel[key].date} />
-                </li>
-              ))}
-          </ul>
-        </div>
-        <div className={styles.map}>
-          <img src="/images/map.png" alt="google map api" />
         </div>
       </section>
     </>
