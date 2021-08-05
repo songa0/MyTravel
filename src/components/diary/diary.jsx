@@ -104,7 +104,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
   };
 
   return (
-    <div className={styles.diary}>
+    <div className={[styles.diary].join(" ")}>
       <header className={styles.header}>
         <Nav clickEvent={authService.logout} />
         <Header buttonClick={clickSearchBtn} searchBar="true" />

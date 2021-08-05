@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import TravelListItem from "../travel__list__item/travel_list_item";
 
-const Travel = ({ authService, dbService, openPopup, detailId, userId }) => {
+const Travel = ({ dbService, openPopup, detailId, userId }) => {
   const [travelDtl, setTravelDtl] = useState({});
   useEffect(() => {
     //history.location.state.detailId로 데이터 가져오기
@@ -65,8 +65,8 @@ const Travel = ({ authService, dbService, openPopup, detailId, userId }) => {
                 ))}
             </ul>
           </div>
-          <div className={styles.map}>
-            <img src="/images/map.png" alt="google map api" />
+          <div className={styles.photo}>
+            <img src={travelDtl.imgUrl} alt="uploaded" />
           </div>
         </div>
       </section>

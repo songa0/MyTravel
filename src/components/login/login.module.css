@@ -1,4 +1,4 @@
-@value makerGreen, makerBlue,makerWhite, makerLightGrey, makerGrey,makerLightRed from '../../common/colors.css';
+@value makerWhite, makerLightGrey, makerGrey,makerLightYellow from '../../common/colors.css';
 
 .button {
   border: 0;
@@ -80,4 +80,13 @@
 }
 .main__img img {
   width: 100%;
+}
+
+.bg {
+  background-color: makerLightYellow;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
