@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
-import Nav from "../nav/nav";
 import styles from "./travel.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,7 +8,6 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import TravelListItem from "../travel__list__item/travel_list_item";
-import Header from "../header/header";
 
 const Travel = ({ authService, dbService, openPopup, detailId, userId }) => {
   const [travelDtl, setTravelDtl] = useState({});

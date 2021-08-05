@@ -3,7 +3,7 @@ import Keyword from "../keyword/keyword";
 import styles from "./diary.module.css";
 import { useHistory } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import DiaryListItem from "../diary__list__item/diary_list_item";
 import Nav from "../nav/nav";
 import Header from "../header/header";
@@ -65,12 +65,12 @@ const Diary = ({ authService, dbService, fileUploader }) => {
     searchData(searchText);
   };
 
-  const goToDetail = (diaryId) => {
-    history.push({
-      pathname: "/diary/detail",
-      state: { detailId: diaryId },
-    });
-  };
+  // const goToDetail = (diaryId) => {
+  //   history.push({
+  //     pathname: "/diary/detail",
+  //     state: { detailId: diaryId },
+  //   });
+  // };
 
   const deleteData = (diaryId) => {
     dbService.deleteData(userId, diaryId);
