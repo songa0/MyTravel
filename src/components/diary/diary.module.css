@@ -63,7 +63,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition-delay: 2s;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
 }
 
 .detail {
@@ -86,5 +87,14 @@
 @media screen and (max-width: 500px) {
   .list_item {
     width: 90%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

@@ -7,10 +7,13 @@
   font-size: 20px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
 }
 .section {
   width: 53rem;
   height: 38rem;
+  border-radius: 5px;
 }
 .form {
   background-color: makerWhite;
@@ -61,8 +64,6 @@
   color: makerGrey;
 }
 .close {
-  margin-right: 1rem;
-  margin-top: 0.5rem;
   color: makerBlack;
 }
 .left,
