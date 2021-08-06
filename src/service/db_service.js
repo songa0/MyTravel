@@ -7,10 +7,12 @@ class DBService {
 
   readData(userId, updateData) {
     const starCountRef = firebaseDatabase.ref(`${userId}/diary`);
+
     starCountRef.on("value", (snapshot) => {
       const data = snapshot.val();
       data && updateData(data);
     });
+
     return () => starCountRef.off();
   }
   //userId, 기준, 찾을 Text, callback 함수

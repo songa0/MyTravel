@@ -1,11 +1,17 @@
 @value makerWhite,makerLightGrey,makerGrey,makerLightRed from '../../common/colors.css';
 
-section {
+.section {
   background-color: makerWhite;
   width: 100%;
   display: flex;
   flex-direction: column;
   border-top-left-radius: 15px;
+  min-height: 1200px;
+}
+.header {
+  height: 50px;
+  display: flex;
+  align-items: center;
 }
 .travel {
   width: 50rem;
@@ -26,7 +32,6 @@ section {
   margin-top: 2rem;
   width: 100%;
   min-height: 20rem;
-  background-color: makerLightGrey;
 }
 .photo img {
   width: 100%;
@@ -52,4 +57,10 @@ section {
   color: makerWhite;
   margin-right: 10px;
   margin-bottom: 3px;
+}
+
+.sense {
+  text-align: left;
+  margin-top: 1rem;
+  padding: 0 1rem;
 }

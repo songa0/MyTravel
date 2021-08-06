@@ -6,16 +6,21 @@ import {
   faCalendar,
   faStar,
   faTimes,
+  faEye,
+  faAssistiveListeningSystems,
+  faHandSpock,
+  faTeethOpen,
+  faAirFreshener,
 } from "@fortawesome/free-solid-svg-icons";
 import TravelListItem from "../travel__list__item/travel_list_item";
 
 const Travel = ({ dbService, openPopup, detailId, userId }) => {
   const [travelDtl, setTravelDtl] = useState({});
+
   useEffect(() => {
     //history.location.state.detailId로 데이터 가져오기
     dbService.readDetailData(userId, detailId, (data) => {
       setTravelDtl(data);
-      console.log(data);
     });
   }, [dbService, detailId, userId]);
 
@@ -28,7 +33,7 @@ const Travel = ({ dbService, openPopup, detailId, userId }) => {
   const closeWindow = () => openPopup(false);
   return (
     <>
-      <header>
+      <header className={styles.header}>
         <FontAwesomeIcon
           icon={faTimes}
           size="lg"
@@ -36,7 +41,7 @@ const Travel = ({ dbService, openPopup, detailId, userId }) => {
           onClick={closeWindow}
         />
       </header>
-      <section>
+      <section className={styles.section}>
         <div className={styles.travel}>
           <div className={styles.textArea}>
             <div className={styles.title}>
@@ -67,6 +72,31 @@ const Travel = ({ dbService, openPopup, detailId, userId }) => {
           </div>
           <div className={styles.photo}>
             <img src={travelDtl.imgUrl} alt="uploaded" />
+          </div>
+          <div className={styles.sense}>
+            <div>
+              <FontAwesomeIcon icon={faEye} className={styles.icon} />
+              <span>{travelDtl.sight}</span>
+            </div>
+            <div>
+              <FontAwesomeIcon
+                icon={faAssistiveListeningSystems}
+                className={styles.icon}
+              />
+              <span>{travelDtl.hearing}</span>
+            </div>
+            <div>
+              <FontAwesomeIcon icon={faAirFreshener} className={styles.icon} />
+              <span>{travelDtl.smell}</span>
+            </div>
+            <div>
+              <FontAwesomeIcon icon={faHandSpock} className={styles.icon} />
+              <span>{travelDtl.touch}</span>
+            </div>
+            <div>
+              <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
+              <span>{travelDtl.taste}</span>
+            </div>
           </div>
         </div>
       </section>
