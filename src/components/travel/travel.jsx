@@ -97,26 +97,6 @@ const Travel = ({ dbService, openPopup, detailId, userId }) => {
               <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
               <span>{travelDtl.taste}</span>
             </div>
-            <div>
-              <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
-              <span>{travelDtl.taste}</span>
-            </div>
-            <div>
-              <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
-              <span>{travelDtl.taste}</span>
-            </div>
-            <div>
-              <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
-              <span>{travelDtl.taste}</span>
-            </div>
-            <div>
-              <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
-              <span>{travelDtl.taste}</span>
-            </div>
-            <div>
-              <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
-              <span>{travelDtl.taste}</span>
-            </div>
           </div>
         </div>
       </section>
