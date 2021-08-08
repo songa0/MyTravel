@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./keyword.module.css";
 
 const Keyword = ({ travel, clickEvent }) => {

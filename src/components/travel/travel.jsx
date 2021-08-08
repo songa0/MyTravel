@@ -24,12 +24,6 @@ const Travel = ({ dbService, openPopup, detailId, userId }) => {
     });
   }, [dbService, detailId, userId]);
 
-  // const goToDayDetail = (event) => {
-  //   history.push({
-  //     pathname: `/diary/detail/${event.currentTarget.id}`,
-  //     state: { day: event.currentTarget.id },
-  //   });
-  // };
   const closeWindow = () => openPopup(false);
   return (
     <>

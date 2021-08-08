@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import Keyword from "../keyword/keyword";
 import styles from "./diary.module.css";
 import { useHistory } from "react-router";
@@ -93,7 +93,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
   };
 
   return (
-    <div className={[styles.diary].join(" ")}>
+    <div className={styles.diary}>
       <header className={styles.header}>
         <Nav clickLogout={authService.logout} />
         <Header buttonClick={searchData} searchBar="true" />

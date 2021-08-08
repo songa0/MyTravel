@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { memo, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendar,
@@ -15,7 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./diary_add.module.css";
 
-const DiaryAdd = ({ closePopup, addDiary, fileUploader }) => {
+const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
   const titleRef = useRef();
   const locationRef = useRef();
   const startDtRef = useRef();
@@ -156,6 +156,6 @@ const DiaryAdd = ({ closePopup, addDiary, fileUploader }) => {
       </form>
     </section>
   );
-};
+});
 
 export default DiaryAdd;

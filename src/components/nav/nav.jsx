@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./nav.module.css";
 import { useHistory } from "react-router";
 
-const Nav = ({ clickLogout }) => {
+const Nav = memo(({ clickLogout }) => {
   const history = useHistory();
 
   const goToHome = () => {
@@ -18,6 +18,6 @@ const Nav = ({ clickLogout }) => {
       </ul>
     </div>
   );
-};
+});
 
 export default Nav;
