@@ -61,17 +61,6 @@ const Diary = ({ authService, dbService, fileUploader }) => {
     return () => stopSync();
   };
 
-  const clickSearchBtn = (searchText) => {
-    searchData(searchText);
-  };
-
-  // const goToDetail = (diaryId) => {
-  //   history.push({
-  //     pathname: "/diary/detail",
-  //     state: { detailId: diaryId },
-  //   });
-  // };
-
   const deleteData = (diaryId) => {
     dbService.deleteData(userId, diaryId);
   };
@@ -106,8 +95,8 @@ const Diary = ({ authService, dbService, fileUploader }) => {
   return (
     <div className={[styles.diary].join(" ")}>
       <header className={styles.header}>
-        <Nav clickEvent={authService.logout} />
-        <Header buttonClick={clickSearchBtn} searchBar="true" />
+        <Nav clickLogout={authService.logout} />
+        <Header buttonClick={searchData} searchBar="true" />
       </header>
       <section className={styles.section}>
         <Keyword travel={travel} clickEvent={filterData} />

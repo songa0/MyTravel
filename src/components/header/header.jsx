@@ -16,8 +16,13 @@ const Header = ({ buttonClick, searchBar }) => {
     buttonClick(searchInput.current.value);
   };
 
+  const logoClick = () => {
+    buttonClick();
+    searchInput.current.value = "";
+  };
+
   return (
-    <div className={styles.search}>
+    <div className={styles.search} onClick={logoClick}>
       <img src="/images/hand.png" className={styles.img} alt="background" />
       {/* <img
         src="/images/background.jpg"

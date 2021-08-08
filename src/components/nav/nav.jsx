@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./nav.module.css";
 import { useHistory } from "react-router";
 
-const Nav = ({ clickEvent }) => {
+const Nav = ({ clickLogout }) => {
   const history = useHistory();
 
   const goToHome = () => {
@@ -14,7 +14,7 @@ const Nav = ({ clickEvent }) => {
     <div className={styles.header}>
       <ul className={styles.list}>
         <li onClick={goToHome}>Home</li>
-        <li onClick={clickEvent}>Logout</li>
+        <li onClick={clickLogout}>Logout</li>
       </ul>
     </div>
   );
