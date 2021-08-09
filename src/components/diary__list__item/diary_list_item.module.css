@@ -1,5 +1,9 @@
 @value makerGrey,makerWhite,makerLightGrey,makerBlack,makerPink,makerLightPink from '../../common/colors.css';
 
+.item {
+  cursor: pointer;
+}
+
 .like {
   float: right;
   color: makerGrey;
@@ -11,6 +15,13 @@
   padding-left: 0.3em;
   color: makerBlack;
 }
+
+.imgArea {
+  width: 95%;
+  height: 260px;
+  position: relative;
+}
+
 .img {
   width: 100%;
   height: 100%;
@@ -18,10 +29,19 @@
   object-fit: fill;
   transition-duration: 1s;
 }
+
 .img:hover {
   opacity: 0.6;
 }
 
+.noimage {
+  background-color: makerLightGrey;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .btn__area {
   position: absolute;
   top: 185px;
@@ -59,11 +79,6 @@
   margin-top: 30px;
   cursor: pointer;
 }
-.imgArea {
-  width: 95%;
-  height: 260px;
-  position: relative;
-}
 
 .desc {
   padding: 0.8rem;
@@ -82,14 +97,7 @@
   padding: 0.2rem;
   color: makerGrey;
 }
-.noimage {
-  background-color: makerLightGrey;
-  font-size: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+
 .exclamation {
   font-size: 3rem;
 }

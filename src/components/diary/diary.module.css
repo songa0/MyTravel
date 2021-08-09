@@ -49,6 +49,7 @@
   border-radius: 30px;
   background-color: makerPink;
   color: #d9e1e8;
+  cursor: pointer;
 }
 
 .popup {

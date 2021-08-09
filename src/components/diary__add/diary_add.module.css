@@ -45,16 +45,7 @@
   font-size: 0.8em;
   width: 45%;
 }
-.submit {
-  background-color: #4cb4ce;
-  color: makerWhite;
-  border: 0;
-  width: 160px;
-  height: 35px;
-  font-size: 1rem;
-  margin-top: 0.5rem;
-  border-radius: 10px;
-}
+
 .button {
   text-align: center;
 }
@@ -65,9 +56,22 @@
 }
 .close {
   color: makerBlack;
+  cursor: pointer;
 }
 .left,
 .right {
   width: 45%;
   margin: 1rem;
+}
+
+.submit {
+  background-color: #4cb4ce;
+  color: makerWhite;
+  border: 0;
+  width: 160px;
+  height: 35px;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  cursor: pointer;
 }
