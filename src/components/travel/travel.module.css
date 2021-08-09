@@ -65,3 +65,20 @@
   margin-top: 1rem;
   padding: 0 1rem;
 }
+
+.buttons {
+  position: fixed;
+  top: 90px;
+  right: 50px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.edit {
+  margin-bottom: 1rem;
+}
+
+.hide {
+  display: none;
+}
