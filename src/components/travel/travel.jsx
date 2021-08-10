@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./travel.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,20 +13,66 @@ import {
   faAirFreshener,
   faEdit,
   faCheckSquare,
+  faExclamation,
 } from "@fortawesome/free-solid-svg-icons";
-import TravelListItem from "../travel__list__item/travel_list_item";
 
-const Travel = ({ dbService, openPopup, detailId, userId }) => {
+const Travel = ({
+  updateDiary,
+  openPopup,
+  detailId,
+  userId,
+  readDetailData,
+}) => {
+  const titleRef = useRef();
+  const locationRef = useRef();
+  const startDtRef = useRef();
+  const endDtRef = useRef();
+  const keywordRef = useRef();
+  const sightRef = useRef();
+  const smellRef = useRef();
+  const hearingRef = useRef();
+  const tasteRef = useRef();
+  const touchRef = useRef();
+
   const [travelDtl, setTravelDtl] = useState({});
   const [clickEdit, setClickEdit] = useState(false);
   useEffect(() => {
     //history.location.state.detailId로 데이터 가져오기
-    dbService.readDetailData(userId, detailId, (data) => {
+    readDetailData(userId, detailId, (data) => {
       setTravelDtl(data);
     });
-  }, [dbService, detailId, userId]);
+  }, [readDetailData, detailId, userId]);
 
   const closeWindow = () => openPopup(false);
+  const setEditBtn = () => {
+    setClickEdit(true);
+    titleRef.current.value = travelDtl.title || "";
+    locationRef.current.value = travelDtl.location || "";
+    startDtRef.current.value = travelDtl.startDate || "";
+    endDtRef.current.value = travelDtl.endDate || "";
+    //keywordRef.current.value =travelDtl.
+    sightRef.current.value = travelDtl.sight || "";
+    smellRef.current.value = travelDtl.smell || "";
+    hearingRef.current.value = travelDtl.hearing || "";
+    tasteRef.current.value = travelDtl.taste || "";
+    touchRef.current.value = travelDtl.touch || "";
+  };
+  const saveData = () => {
+    const diary = {
+      ...travelDtl,
+      title: titleRef.current.value || "",
+      location: locationRef.current.value || "",
+      startDate: startDtRef.current.value || "",
+      endDate: endDtRef.current.value || "",
+      sight: sightRef.current.value || "",
+      smell: smellRef.current.value || "",
+      hearing: hearingRef.current.value || "",
+      taste: tasteRef.current.value || "",
+      touch: touchRef.current.value || "",
+    };
+
+    updateDiary(diary);
+  };
   return (
     <>
       <header className={styles.header}>
@@ -54,20 +100,21 @@ const Travel = ({ dbService, openPopup, detailId, userId }) => {
                 {travelDtl.startDate} ~ {travelDtl.endDate}
               </span>
             </div>
-            <ul className={styles.list}>
-              {travelDtl.travel &&
-                Object.keys(travelDtl.travel).map((key) => (
-                  <li key={key} id={key}>
-                    <TravelListItem
-                      day={key}
-                      date={travelDtl.travel[key].date}
-                    />
-                  </li>
-                ))}
-            </ul>
           </div>
           <div className={styles.photo}>
-            <img src={travelDtl.imgUrl} alt="uploaded" />
+            {travelDtl.imgUrl ? (
+              <img src={travelDtl.imgUrl} alt="uploaded" />
+            ) : (
+              <div className={styles.noImage}>
+                <FontAwesomeIcon
+                  icon={faExclamation}
+                  className={styles.exclamation}
+                />
+                <div>
+                  No Image <br /> Available
+                </div>
+              </div>
+            )}
           </div>
           <div className={styles.sense}>
             <div>
@@ -100,68 +147,57 @@ const Travel = ({ dbService, openPopup, detailId, userId }) => {
           <div className={styles.textArea}>
             <div className={styles.title}>
               <FontAwesomeIcon icon={faStar} className={styles.title__icon} />
-              <input type="text" value={travelDtl.title} />
+              <input type="text" ref={titleRef} />
             </div>
             <div className={styles.schedule}>
               <FontAwesomeIcon icon={faMapMarkerAlt} className={styles.icon} />
-              <input
-                type="text"
-                className={styles.text}
-                value={travelDtl.location}
-              />
+              <input type="text" className={styles.text} ref={locationRef} />
             </div>
             <div className={styles.schedule}>
               <FontAwesomeIcon icon={faCalendar} className={styles.icon} />
-              <input
-                type="date"
-                value={travelDtl.startDate}
-                className={styles.text}
-              />
+              <input type="date" ref={startDtRef} className={styles.text} />
               ~
-              <input
-                type="date"
-                value={travelDtl.endDate}
-                className={styles.text}
-              />
+              <input type="date" ref={endDtRef} className={styles.text} />
             </div>
-            <ul className={styles.list}>
-              {travelDtl.travel &&
-                Object.keys(travelDtl.travel).map((key) => (
-                  <li key={key} id={key}>
-                    <TravelListItem
-                      day={key}
-                      date={travelDtl.travel[key].date}
-                    />
-                  </li>
-                ))}
-            </ul>
           </div>
           <div className={styles.photo}>
-            <img src={travelDtl.imgUrl} alt="uploaded" />
+            {travelDtl.imgUrl ? (
+              <img src={travelDtl.imgUrl} alt="uploaded" />
+            ) : (
+              <div className={styles.noImage}>
+                <FontAwesomeIcon
+                  icon={faExclamation}
+                  className={styles.exclamation}
+                />
+                <div>
+                  No Image <br /> Available
+                </div>
+              </div>
+            )}
           </div>
           <div className={styles.sense}>
             <div>
               <FontAwesomeIcon icon={faEye} className={styles.icon} />
-              <input type="text" value={travelDtl.sight} />
+              <input type="text" ref={sightRef} />
             </div>
             <div>
               <FontAwesomeIcon
                 icon={faAssistiveListeningSystems}
                 className={styles.icon}
               />
-              <input type="text" value={travelDtl.hearing} />
+              <input type="text" ref={hearingRef} />
             </div>
             <div>
               <FontAwesomeIcon icon={faAirFreshener} className={styles.icon} />
-              <input type="text" value={travelDtl.smell} />
+              <input type="text" ref={smellRef} />
             </div>
             <div>
               <FontAwesomeIcon icon={faHandSpock} className={styles.icon} />
-              <input type="text" value={travelDtl.touch} />
+              <input type="text" ref={touchRef} />
             </div>
             <div>
               <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
-              <input type="text" value={travelDtl.taste} />
+              <input type="text" ref={tasteRef} />
             </div>
           </div>
         </div>
@@ -169,10 +205,10 @@ const Travel = ({ dbService, openPopup, detailId, userId }) => {
           <FontAwesomeIcon
             icon={faEdit}
             className={styles.edit}
-            onClick={() => setClickEdit(true)}
+            onClick={setEditBtn}
             size="lg"
           />
-          <FontAwesomeIcon icon={faCheckSquare} size="lg" />
+          <FontAwesomeIcon icon={faCheckSquare} size="lg" onClick={saveData} />
         </div>
       </section>
     </>

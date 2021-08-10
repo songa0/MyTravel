@@ -87,6 +87,9 @@ const Diary = ({ authService, dbService, fileUploader }) => {
     closePopup();
   };
 
+  const updateDiary = (diary) => {
+    dbService.writeData(userId, diary);
+  };
   const openDetailPopup = (detailId) => {
     setDetailClick(true);
     setDetailId(detailId);
@@ -133,8 +136,8 @@ const Diary = ({ authService, dbService, fileUploader }) => {
       {detailClick && (
         <div className={[styles.popup, styles.detail].join(" ")}>
           <Travel
-            dbService={dbService}
-            authService={authService}
+            updateDiary={updateDiary}
+            readDetailData={dbService.readDetailData}
             openPopup={setDetailClick}
             detailId={detailId}
             userId={userId}

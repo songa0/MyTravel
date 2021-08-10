@@ -70,10 +70,13 @@ class DBService {
 
   readDetailData(userId, detailId, updateData) {
     const starCountRef = firebaseDatabase.ref(`${userId}/diary/${detailId}`);
-    starCountRef.once("value", (snapshot) => {
-      const data = snapshot.val();
-      data && updateData(data);
-    });
+    starCountRef
+      .once("value", (snapshot) => {
+        const data = snapshot.val();
+
+        data && updateData(data);
+      })
+      .catch((error) => console.log(error));
   }
 
   deleteData(userId, detailId) {
