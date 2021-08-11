@@ -1,4 +1,4 @@
-@value makerWhite,makerLightGrey,makerGrey,makerLightRed from '../../common/colors.css';
+@value makerWhite,makerLightGrey,makerGrey,makerLightRed,makerLightBlue from '../../common/colors.css';
 
 .section {
   background-color: makerWhite;
@@ -39,19 +39,52 @@
   border-radius: 5px;
 }
 
-.icon {
-  color: makerGrey;
-  margin-right: 1rem;
-}
-.title__icon {
-  color: makerLightRed;
-  margin-right: 0.5rem;
-}
 .title {
   text-align: left;
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 1rem;
+}
+
+.sense__name {
+  text-align: center;
+  width: 105px;
+  color: makerWhite;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-right: 10px;
+  background-color: makerLightBlue;
+  border-radius: 50px;
+  padding: 5px 4px;
+  display: inline-block;
+}
+
+.comment {
+  text-align: center;
+  width: 200px;
+  color: makerWhite;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-right: 10px;
+  background-color: makerLightRed;
+  border-radius: 50px;
+  padding: 5px 4px;
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.textarea {
+  width: 80%;
+  height: 100px;
+  font-size: 1rem;
+  outline: none;
+}
+.icon {
+  margin-right: 10px;
+}
+.title__icon {
+  color: makerLightRed;
+  margin-right: 0.5rem;
 }
 .close__icon {
   color: makerWhite;
@@ -65,7 +98,18 @@
   margin-top: 1rem;
   padding: 0 1rem;
 }
+.sense > div {
+  margin-bottom: 1rem;
+}
 
+.sense input {
+  width: 80%;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid makerGrey;
+  outline: none;
+  font-size: 1rem;
+}
 .buttons {
   position: fixed;
   top: 90px;
@@ -93,4 +137,8 @@
   width: 100%;
   min-height: 500px;
   border-radius: 5px;
+}
+
+.review {
+  margin-top: 10px;
 }

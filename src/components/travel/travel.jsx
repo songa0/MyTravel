@@ -14,6 +14,7 @@ import {
   faEdit,
   faCheckSquare,
   faExclamation,
+  faComment,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Travel = ({
@@ -33,6 +34,7 @@ const Travel = ({
   const hearingRef = useRef();
   const tasteRef = useRef();
   const touchRef = useRef();
+  const commentRef = useRef();
 
   const [travelDtl, setTravelDtl] = useState({});
   const [clickEdit, setClickEdit] = useState(false);
@@ -69,9 +71,15 @@ const Travel = ({
       hearing: hearingRef.current.value || "",
       taste: tasteRef.current.value || "",
       touch: touchRef.current.value || "",
+      comment: commentRef.current.value || "",
     };
 
     updateDiary(diary);
+    setClickEdit(false);
+
+    readDetailData(userId, detailId, (data) => {
+      setTravelDtl(data);
+    });
   };
   return (
     <>
@@ -118,27 +126,60 @@ const Travel = ({
           </div>
           <div className={styles.sense}>
             <div>
-              <FontAwesomeIcon icon={faEye} className={styles.icon} />
+              <div className={styles.sense__name}>
+                <FontAwesomeIcon icon={faEye} className={styles.icon} />
+                Sight
+              </div>
               <span>{travelDtl.sight}</span>
             </div>
+
             <div>
-              <FontAwesomeIcon
-                icon={faAssistiveListeningSystems}
-                className={styles.icon}
-              />
+              <div className={styles.sense__name}>
+                <FontAwesomeIcon
+                  icon={faAirFreshener}
+                  className={styles.icon}
+                />
+                Smell
+              </div>
+              <span>{travelDtl.smell}</span>
+            </div>
+
+            <div>
+              <div className={styles.sense__name}>
+                <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
+                Taste
+              </div>
+              <span>{travelDtl.taste}</span>
+            </div>
+            <div>
+              <div className={styles.sense__name}>
+                <FontAwesomeIcon
+                  icon={faAssistiveListeningSystems}
+                  className={styles.icon}
+                />
+                Hearing
+              </div>
               <span>{travelDtl.hearing}</span>
             </div>
             <div>
-              <FontAwesomeIcon icon={faAirFreshener} className={styles.icon} />
-              <span>{travelDtl.smell}</span>
-            </div>
-            <div>
-              <FontAwesomeIcon icon={faHandSpock} className={styles.icon} />
+              <div className={styles.sense__name}>
+                <FontAwesomeIcon icon={faHandSpock} className={styles.icon} />
+                Touch
+              </div>
               <span>{travelDtl.touch}</span>
             </div>
+
             <div>
-              <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
-              <span>{travelDtl.taste}</span>
+              <div className={styles.comment}>
+                <FontAwesomeIcon
+                  icon={faComment}
+                  className={styles.icon}
+                  size="1x"
+                />
+                General Comment
+              </div>
+              <br />
+              <div>{travelDtl.comment}</div>
             </div>
           </div>
         </div>
@@ -177,27 +218,59 @@ const Travel = ({
           </div>
           <div className={styles.sense}>
             <div>
-              <FontAwesomeIcon icon={faEye} className={styles.icon} />
+              <div className={styles.sense__name}>
+                <FontAwesomeIcon icon={faEye} className={styles.icon} />
+                Sight
+              </div>
               <input type="text" ref={sightRef} />
             </div>
+
             <div>
-              <FontAwesomeIcon
-                icon={faAssistiveListeningSystems}
-                className={styles.icon}
-              />
-              <input type="text" ref={hearingRef} />
-            </div>
-            <div>
-              <FontAwesomeIcon icon={faAirFreshener} className={styles.icon} />
+              <div className={styles.sense__name}>
+                <FontAwesomeIcon
+                  icon={faAirFreshener}
+                  className={styles.icon}
+                />
+                Smell
+              </div>
               <input type="text" ref={smellRef} />
             </div>
+
             <div>
-              <FontAwesomeIcon icon={faHandSpock} className={styles.icon} />
+              <div className={styles.sense__name}>
+                <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
+                Taste
+              </div>
+              <input type="text" ref={tasteRef} />
+            </div>
+            <div>
+              <div className={styles.sense__name}>
+                <FontAwesomeIcon icon={faHandSpock} className={styles.icon} />
+                Touch
+              </div>
               <input type="text" ref={touchRef} />
             </div>
             <div>
-              <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
-              <input type="text" ref={tasteRef} />
+              <div className={styles.sense__name}>
+                <FontAwesomeIcon
+                  icon={faAssistiveListeningSystems}
+                  className={styles.icon}
+                />
+                Hearing
+              </div>
+              <input type="text" ref={hearingRef} />
+            </div>
+            <div>
+              <div className={styles.comment}>
+                <FontAwesomeIcon
+                  icon={faComment}
+                  className={styles.icon}
+                  size="1x"
+                />
+                General Comment
+              </div>
+              <br />
+              <textarea className={styles.textarea} ref={commentRef}></textarea>
             </div>
           </div>
         </div>

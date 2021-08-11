@@ -1,4 +1,4 @@
-@value makerWhite,makerDarkBlue, makerGrey, makerBlack from '../../common/colors.css';
+@value makerWhite,makerDarkBlue, makerGrey, makerBlack,makerLightBlue from '../../common/colors.css';
 .header {
   height: 2rem;
   background-color: makerWhite;
@@ -65,7 +65,7 @@
 }
 
 .submit {
-  background-color: #4cb4ce;
+  background-color: makerLightBlue;
   color: makerWhite;
   border: 0;
   width: 160px;
