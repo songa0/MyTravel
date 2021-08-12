@@ -7,6 +7,7 @@
   flex-direction: column;
   border-top-left-radius: 15px;
   overflow-y: scroll;
+  min-height: 56rem;
 }
 .header {
   height: 50px;

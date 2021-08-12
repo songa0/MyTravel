@@ -125,62 +125,71 @@ const Travel = ({
             )}
           </div>
           <div className={styles.sense}>
-            <div>
-              <div className={styles.sense__name}>
-                <FontAwesomeIcon icon={faEye} className={styles.icon} />
-                Sight
+            {travelDtl.sight && (
+              <div>
+                <div className={styles.sense__name}>
+                  <FontAwesomeIcon icon={faEye} className={styles.icon} />
+                  Sight
+                </div>
+                <span>{travelDtl.sight}</span>
               </div>
-              <span>{travelDtl.sight}</span>
-            </div>
-
-            <div>
-              <div className={styles.sense__name}>
-                <FontAwesomeIcon
-                  icon={faAirFreshener}
-                  className={styles.icon}
-                />
-                Smell
+            )}
+            {travelDtl.smell && (
+              <div>
+                <div className={styles.sense__name}>
+                  <FontAwesomeIcon
+                    icon={faAirFreshener}
+                    className={styles.icon}
+                  />
+                  Smell
+                </div>
+                <span>{travelDtl.smell}</span>
               </div>
-              <span>{travelDtl.smell}</span>
-            </div>
-
-            <div>
-              <div className={styles.sense__name}>
-                <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
-                Taste
+            )}
+            {travelDtl.taste && (
+              <div>
+                <div className={styles.sense__name}>
+                  <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
+                  Taste
+                </div>
+                <span>{travelDtl.taste}</span>
               </div>
-              <span>{travelDtl.taste}</span>
-            </div>
-            <div>
-              <div className={styles.sense__name}>
-                <FontAwesomeIcon
-                  icon={faAssistiveListeningSystems}
-                  className={styles.icon}
-                />
-                Hearing
+            )}
+            {travelDtl.hearing && (
+              <div>
+                <div className={styles.sense__name}>
+                  <FontAwesomeIcon
+                    icon={faAssistiveListeningSystems}
+                    className={styles.icon}
+                  />
+                  Hearing
+                </div>
+                <span>{travelDtl.hearing}</span>
               </div>
-              <span>{travelDtl.hearing}</span>
-            </div>
-            <div>
-              <div className={styles.sense__name}>
-                <FontAwesomeIcon icon={faHandSpock} className={styles.icon} />
-                Touch
+            )}
+            {travelDtl.touch && (
+              <div>
+                <div className={styles.sense__name}>
+                  <FontAwesomeIcon icon={faHandSpock} className={styles.icon} />
+                  Touch
+                </div>
+                <span>{travelDtl.touch}</span>
               </div>
-              <span>{travelDtl.touch}</span>
-            </div>
-
-            <div>
-              <div className={styles.comment}>
-                <FontAwesomeIcon
-                  icon={faComment}
-                  className={styles.icon}
-                  size="1x"
-                />
-                General Comment
+            )}
+            {travelDtl.comment && (
+              <div>
+                <div className={styles.comment}>
+                  <FontAwesomeIcon
+                    icon={faComment}
+                    className={styles.icon}
+                    size="1x"
+                  />
+                  General Comment
+                </div>
+                <br />
+                <div>{travelDtl.comment}</div>
               </div>
-              <br />
-              <div>{travelDtl.comment}</div>
-            </div>
+            )}
           </div>
         </div>
 
