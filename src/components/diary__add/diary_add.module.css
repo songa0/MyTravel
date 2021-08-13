@@ -14,6 +14,7 @@
   width: 53rem;
   height: 38rem;
   border-radius: 5px;
+  min-width: 480px;
 }
 .form {
   background-color: makerWhite;
@@ -22,6 +23,7 @@
   height: 100%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  overflow-y: scroll;
 }
 .item {
   display: flex;
@@ -74,4 +76,22 @@
   margin-top: 0.5rem;
   border-radius: 10px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .section {
+    width: 30rem;
+    height: 40rem;
+    border-radius: 5px;
+  }
+
+  .item {
+    flex-direction: column;
+  }
+
+  .left,
+  .right {
+    width: 90%;
+    margin: 1rem;
+  }
 }

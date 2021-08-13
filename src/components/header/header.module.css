@@ -51,15 +51,25 @@
   .searchInput {
     width: 90%;
   }
+  .title {
+    font-size: 4rem;
+  }
 }
 
 @media screen and (max-width: 1100px) {
   .input {
     width: 35%;
   }
+  .title {
+    font-size: 3.5rem;
+  }
 }
 @media screen and (max-width: 500px) {
   .input {
     width: 20%;
+  }
+  .title {
+    color: makerWhite;
+    font-size: 3rem;
   }
 }
