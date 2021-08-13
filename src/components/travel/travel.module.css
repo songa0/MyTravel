@@ -104,13 +104,17 @@
   margin-bottom: 1rem;
 }
 
-.sense input {
+.input {
   width: 80%;
   height: 30px;
   border: none;
   border-bottom: 1px solid makerGrey;
   outline: none;
   font-size: 1rem;
+}
+
+.date {
+  width: 40%;
 }
 .buttons {
   position: fixed;

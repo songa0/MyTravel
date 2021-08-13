@@ -197,17 +197,25 @@ const Travel = ({
           <div className={styles.textArea}>
             <div className={styles.title}>
               <FontAwesomeIcon icon={faStar} className={styles.title__icon} />
-              <input type="text" ref={titleRef} />
+              <input type="text" ref={titleRef} className={styles.input} />
             </div>
             <div className={styles.schedule}>
               <FontAwesomeIcon icon={faMapMarkerAlt} className={styles.icon} />
-              <input type="text" className={styles.text} ref={locationRef} />
+              <input type="text" className={styles.input} ref={locationRef} />
             </div>
             <div className={styles.schedule}>
               <FontAwesomeIcon icon={faCalendar} className={styles.icon} />
-              <input type="date" ref={startDtRef} className={styles.text} />
+              <input
+                type="date"
+                ref={startDtRef}
+                className={[styles.input, styles.date].join(" ")}
+              />
               ~
-              <input type="date" ref={endDtRef} className={styles.text} />
+              <input
+                type="date"
+                ref={endDtRef}
+                className={[styles.input, styles.date].join(" ")}
+              />
             </div>
           </div>
           <div className={styles.photo}>
@@ -231,7 +239,7 @@ const Travel = ({
                 <FontAwesomeIcon icon={faEye} className={styles.icon} />
                 Sight
               </div>
-              <input type="text" ref={sightRef} />
+              <input type="text" ref={sightRef} className={styles.input} />
             </div>
 
             <div>
@@ -242,7 +250,7 @@ const Travel = ({
                 />
                 Smell
               </div>
-              <input type="text" ref={smellRef} />
+              <input type="text" ref={smellRef} className={styles.input} />
             </div>
 
             <div>
@@ -250,14 +258,14 @@ const Travel = ({
                 <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
                 Taste
               </div>
-              <input type="text" ref={tasteRef} />
+              <input type="text" ref={tasteRef} className={styles.input} />
             </div>
             <div>
               <div className={styles.sense__name}>
                 <FontAwesomeIcon icon={faHandSpock} className={styles.icon} />
                 Touch
               </div>
-              <input type="text" ref={touchRef} />
+              <input type="text" ref={touchRef} className={styles.input} />
             </div>
             <div>
               <div className={styles.sense__name}>
@@ -267,7 +275,7 @@ const Travel = ({
                 />
                 Hearing
               </div>
-              <input type="text" ref={hearingRef} />
+              <input type="text" ref={hearingRef} className={styles.input} />
             </div>
             <div>
               <div className={styles.comment}>
