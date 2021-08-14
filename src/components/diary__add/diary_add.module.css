@@ -11,10 +11,11 @@
   padding-top: 0.5rem;
 }
 .section {
-  width: 53rem;
+  width: 60%;
+  min-width: 400px;
   height: 38rem;
   border-radius: 5px;
-  min-width: 480px;
+  min-width: 400px;
   margin: auto;
   margin-top: 3%;
 }
@@ -83,7 +84,6 @@
 
 @media screen and (max-width: 900px) {
   .section {
-    width: 30rem;
     height: 40rem;
     border-radius: 5px;
   }
