@@ -12,6 +12,7 @@
   height: 50px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 }
 .travel {
   width: 50rem;
