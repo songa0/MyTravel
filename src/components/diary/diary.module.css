@@ -65,6 +65,7 @@
   margin: 0;
   animation-name: fadeIn;
   animation-duration: 0.5s;
+  display: flex;
 }
 
 .detail {

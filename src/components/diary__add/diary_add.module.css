@@ -13,11 +13,10 @@
 .section {
   width: 60%;
   min-width: 400px;
-  height: 38rem;
   border-radius: 5px;
   min-width: 400px;
   margin: auto;
-  margin-top: 3%;
+  margin-top: 5%;
 }
 .form {
   background-color: makerWhite;
