@@ -5,15 +5,15 @@
  - 등록한 여행지를 카드 형식으로 볼 수 있다.
  - 카드 위에 마우스를 올리면 Info, Delete 버튼이 나타난다.
  - Info를 누르면 여행지의 상세 기록 내용을 볼 수 있다.
- - 상세 기록 페이지에서 정보 수정이 가능하다. (구현 예정)
- - Delete를 누르면 여행지 기록이 삭제된다. (구현 예정)
+ - 상세 기록 페이지에서 정보 수정이 가능하다.
+ - Delete를 누르면 여행지 기록이 삭제된다.
  
 **2. 완성본**
  - 로그인 화면
-![image](https://user-images.githubusercontent.com/17793440/127652045-850d2a0c-246b-4192-a294-342267c24e86.png)
+<img src = "https://user-images.githubusercontent.com/17793440/127652045-850d2a0c-246b-4192-a294-342267c24e86.png" width="750px"/>
 
  - 메인 화면
-![image](https://user-images.githubusercontent.com/17793440/127652089-6e813e00-0227-49e0-9d27-dc242f038a48.png)  
+<img src = "https://user-images.githubusercontent.com/17793440/129448348-bef1b269-c2d0-49ad-8ad4-ec6b9bfff2ba.png"  width="750px"/>  
 
 **3. 프로젝트를 통해 알게된 것**
   - jsx에서는 forEach 쓰면 아무것도 리턴하지 않는다.  
