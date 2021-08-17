@@ -17,6 +17,7 @@
   min-width: 400px;
   margin: auto;
   margin-top: 5%;
+  position: relative;
 }
 .form {
   background-color: makerWhite;
@@ -81,6 +82,32 @@
   cursor: pointer;
 }
 
+.alert {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  background: makerWhite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 8px 1px #424242;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 3rem 6rem;
+}
+.alert__icon {
+  color: makerLightBlue;
+  margin-bottom: 1rem;
+  font-size: 4rem;
+}
+.alert__header {
+  position: absolute;
+  top: 0;
+  text-align: right;
+  width: 100%;
+  font-size: 1.5rem;
+}
 @media screen and (max-width: 900px) {
   .section {
     height: 40rem;

@@ -1,4 +1,4 @@
-import React, { memo, useRef } from "react";
+import React, { memo, useCallback, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendar,
@@ -30,6 +30,10 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
 
   const addDiaryData = async (event) => {
     event.preventDefault();
+    if (!titleRef.current.value) {
+      alert("Please enter Title");
+      return;
+    }
     let fileInfo;
     if (fileRef.current.files) {
       fileInfo = await fileUploader.upload(fileRef.current.files[0]);
@@ -154,6 +158,16 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
           </button>
         </div>
       </form>
+      {/* <div className={styles.alert}>
+        <div className={styles.alert__header}>
+          <FontAwesomeIcon icon={faTimes} className={styles.icon} />
+        </div>
+        <FontAwesomeIcon
+          icon={faExclamationTriangle}
+          className={styles.alert__icon}
+        />
+        <div>Please enter title</div>
+      </div> */}
     </section>
   );
 });
