@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Keyword from "../keyword/keyword";
 import styles from "./diary.module.css";
 import { useHistory } from "react-router";
@@ -54,46 +54,61 @@ const Diary = ({ authService, dbService, fileUploader }) => {
     };
   });
 
-  const searchData = (text) => {
-    const stopSync = dbService.searchData(userId, "title", text, (data) =>
-      setTravel(data)
-    );
-    return () => stopSync();
-  };
+  const searchData = useCallback(
+    (text) => {
+      const stopSync = dbService.searchData(userId, "title", text, (data) =>
+        setTravel(data)
+      );
+      return () => stopSync();
+    },
+    [dbService, userId]
+  );
 
-  const deleteData = (diaryId) => {
-    dbService.deleteData(userId, diaryId);
-  };
+  const deleteData = useCallback(
+    (diaryId) => {
+      dbService.deleteData(userId, diaryId);
+    },
+    [dbService, userId]
+  );
 
-  const filterData = (text) => {
-    const stopSync = dbService.searchDataWithKeyword(
-      userId,
-      "keyword",
-      text,
-      (data) => setTravel(data)
-    );
-    return () => stopSync();
-  };
+  const filterData = useCallback(
+    (text) => {
+      const stopSync = dbService.searchDataWithKeyword(
+        userId,
+        "keyword",
+        text,
+        (data) => setTravel(data)
+      );
+      return () => stopSync();
+    },
+    [dbService, userId]
+  );
 
-  const closePopup = () => {
+  const closePopup = useCallback(() => {
     setPopupClick(false);
-  };
-  const openPopup = () => {
+  }, []);
+  const openPopup = useCallback(() => {
     setPopupClick(true);
-  };
+  }, []);
 
-  const addDiary = (diary) => {
-    dbService.writeData(userId, diary);
-    closePopup();
-  };
+  const addDiary = useCallback(
+    (diary) => {
+      dbService.writeData(userId, diary);
+      closePopup();
+    },
+    [dbService, userId, closePopup]
+  );
 
-  const updateDiary = (diary) => {
-    dbService.writeData(userId, diary);
-  };
-  const openDetailPopup = (detailId) => {
+  const updateDiary = useCallback(
+    (diary) => {
+      dbService.writeData(userId, diary);
+    },
+    [dbService, userId]
+  );
+  const openDetailPopup = useCallback((detailId) => {
     setDetailClick(true);
     setDetailId(detailId);
-  };
+  }, []);
 
   return (
     <div className={styles.diary}>
