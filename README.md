@@ -9,21 +9,25 @@
  - Info를 누르면 여행지의 상세 기록 내용을 볼 수 있다.
  - 상세 기록 페이지에서 정보 수정이 가능하다.
  - Delete를 누르면 여행지 기록이 삭제된다.
- 
+<br/>
+
 **2. 완성본**
   
 <img src="https://user-images.githubusercontent.com/17793440/131830778-e342d06f-097c-4772-a999-a2676db5be3d.png" width="950px"/>
 <img src="https://user-images.githubusercontent.com/17793440/131830960-fe04ea8d-8c4d-42be-8a8a-f5cba06fd276.png" width="960px"/>
-
+<br/>
+  
 **3. 보완할 점**
  - 첨부파일 수정 기능 추가  
  - 여러 이미지 첨부하여 앨범 형식으로 볼 수 있는 기능 추가  
  - 무한 스크롤 추가  
-
+<br/>
+  
 **4. 한계**  
  - 백엔드 구현없이 firebase realtime db를 사용하다보니, 검색 기능이 정교하지 않다.  
    검색 시, 텍스트의 앞부분이 일치하는 것만 반환한다.  
-   
+<br/>
+     
 **5. 프로젝트를 통해 알게된 것**
   - jsx에서는 forEach 쓰면 아무것도 리턴하지 않는다.  
   - set -> array 만들때는 Array.from 함수를 사용한다.  
