@@ -11,7 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const TravelListItem = ({ travelInfo, clickDetail, deleteData, detailId }) => {
-  const { title, like, imgUrl, location, startDate, endDate } = travelInfo;
+  const { title, imgUrl, location, startDate, endDate } = travelInfo;
   const [isMouseOn, setIsMouseOn] = useState(false);
 
   const mouseOver = () => {

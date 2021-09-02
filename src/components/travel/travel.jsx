@@ -60,6 +60,10 @@ const Travel = ({
     touchRef.current.value = travelDtl.touch || "";
   };
   const saveData = () => {
+    if (!clickEdit) {
+      alert("Please click this button after editing.");
+      return;
+    }
     const diary = {
       ...travelDtl,
       title: titleRef.current.value || "",
