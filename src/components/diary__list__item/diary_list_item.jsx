@@ -73,7 +73,7 @@ const TravelListItem = ({ travelInfo, clickDetail, deleteData, detailId }) => {
           <span className={styles.title}>{title}</span>
           <span className={styles.like}>
             <FontAwesomeIcon icon={faHeart} size="xs" />
-            <span className={styles.number}>{like}</span>
+            <span className={styles.number}></span>
           </span>
         </div>
         <div className={styles.detail}>
