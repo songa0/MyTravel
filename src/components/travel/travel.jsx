@@ -47,6 +47,9 @@ const Travel = ({
 
   const closeWindow = () => openPopup(false);
   const setEditBtn = () => {
+    if (clickEdit) {
+      return;
+    }
     setClickEdit(true);
     titleRef.current.value = travelDtl.title || "";
     locationRef.current.value = travelDtl.location || "";
@@ -223,6 +226,8 @@ const Travel = ({
             </div>
           </div>
           <div className={styles.photo}>
+            <button>Change file</button>
+            <input type="file" />
             {travelDtl.imgUrl ? (
               <img src={travelDtl.imgUrl} alt="uploaded" />
             ) : (
