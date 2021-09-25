@@ -43,7 +43,7 @@ const TravelListItem = ({ travelInfo, clickDetail, deleteData, detailId }) => {
     >
       <div className={styles.imgArea}>
         {imgUrl ? (
-          <img src={imgUrl} className={styles.img} alt="main" />
+          <img src={imgUrl[0]} className={styles.img} alt="main" />
         ) : (
           <div className={[styles.noimage, styles.img].join(" ")}>
             <FontAwesomeIcon

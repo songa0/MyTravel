@@ -118,7 +118,7 @@ const Travel = ({
           </div>
           <div className={styles.photo}>
             {travelDtl.imgUrl ? (
-              <img src={travelDtl.imgUrl} alt="uploaded" />
+              <img src={travelDtl.imgUrl[0]} alt="uploaded" />
             ) : (
               <div className={styles.noImage}>
                 <FontAwesomeIcon

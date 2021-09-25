@@ -48,7 +48,7 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
       endDate: endDtRef.current.value || "",
       like: 0,
       travel: "",
-      imgUrl: fileInfo?.secure_url || "",
+      imgUrl: [fileInfo?.secure_url || ""],
       sight: sightRef.current.value || "",
       smell: smellRef.current.value || "",
       hearing: hearingRef.current.value || "",
