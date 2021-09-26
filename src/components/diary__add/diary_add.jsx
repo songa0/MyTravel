@@ -158,16 +158,6 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
           </button>
         </div>
       </form>
-      {/* <div className={styles.alert}>
-        <div className={styles.alert__header}>
-          <FontAwesomeIcon icon={faTimes} className={styles.icon} />
-        </div>
-        <FontAwesomeIcon
-          icon={faExclamationTriangle}
-          className={styles.alert__icon}
-        />
-        <div>Please enter title</div>
-      </div> */}
     </section>
   );
 });

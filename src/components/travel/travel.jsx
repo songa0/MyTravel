@@ -28,7 +28,6 @@ const Travel = ({
   const locationRef = useRef();
   const startDtRef = useRef();
   const endDtRef = useRef();
-  //const keywordRef = useRef();
   const sightRef = useRef();
   const smellRef = useRef();
   const hearingRef = useRef();
@@ -55,7 +54,6 @@ const Travel = ({
     locationRef.current.value = travelDtl.location || "";
     startDtRef.current.value = travelDtl.startDate || "";
     endDtRef.current.value = travelDtl.endDate || "";
-    //keywordRef.current.value =travelDtl.
     sightRef.current.value = travelDtl.sight || "";
     smellRef.current.value = travelDtl.smell || "";
     hearingRef.current.value = travelDtl.hearing || "";
@@ -261,7 +259,6 @@ const Travel = ({
               </div>
               <input type="text" ref={smellRef} className={styles.input} />
             </div>
-
             <div>
               <div className={styles.sense__name}>
                 <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
