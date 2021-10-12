@@ -35,7 +35,8 @@ URL : https://my-travel-diary.netlify.app/
 <br/>
      
 **5. 프로젝트를 통해 알게된 것**
-  - jsx에서는 forEach 쓰면 아무것도 리턴하지 않는다.  
+  - jsx에서는 forEach 쓰면 아무것도 리턴하지 않는다.   
+    -> 대신 map 함수를 써야한다. forEach의 경우 아무것도 리턴하지 않지만 map 함수는 결과를 리턴한다.  
   - set -> array 만들때는 Array.from 함수를 사용한다.  
   - className을 여러 개 등록할 때는 배열로 만든 후 join 함수를 사용한다. ex) [a, b].join(' ')
   - Netlify 배포 후에 Firebase API를 사용하기 위해서는 Netlify에 API Key를 등록한다.
