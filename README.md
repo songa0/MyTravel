@@ -22,7 +22,7 @@ URL : https://my-travel-diary.netlify.app/
 <img src="https://user-images.githubusercontent.com/17793440/131830960-fe04ea8d-8c4d-42be-8a8a-f5cba06fd276.png" width="960px"/>
 <br/>
   
-**3. 보완할 점**
+**3. 보완할 점**  
  **기능**  
  - 첨부파일 수정 기능 추가  
  - 여러 이미지 첨부하여 앨범 형식으로 볼 수 있는 기능 추가  
