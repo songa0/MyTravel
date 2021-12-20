@@ -16,21 +16,13 @@ import {
 import styles from "./diary_add.module.css";
 
 const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
-  const titleRef = useRef();
-  const locationRef = useRef();
-  const startDtRef = useRef();
-  const endDtRef = useRef();
-  const keywordRef = useRef();
-  const fileRef = useRef();
-  const sightRef = useRef();
-  const smellRef = useRef();
-  const hearingRef = useRef();
-  const tasteRef = useRef();
-  const touchRef = useRef();
 
+  const fileRef = useRef();
+  const formRef = useRef();
   const addDiaryData = async (event) => {
     event.preventDefault();
-    if (!titleRef.current.value) {
+    
+    if (!event.target[0].value) {
       alert("Please enter Title");
       return;
     }
@@ -41,24 +33,28 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
 
     const diary = {
       id: Date.now(),
-      title: titleRef.current.value || "",
-      keyword: keywordRef.current.value.split(","),
-      location: locationRef.current.value || "",
-      startDate: startDtRef.current.value || "",
-      endDate: endDtRef.current.value || "",
+      title: event.target[0].value || "",
+      keyword: event.target[1].value.split(","),
+      location: event.target[2].value || "",
+      startDate: event.target[3].value || "",
+      endDate: event.target[4].value || "",
       like: 0,
       travel: "",
       imgUrl: [fileInfo?.secure_url || ""],
-      sight: sightRef.current.value || "",
-      smell: smellRef.current.value || "",
-      hearing: hearingRef.current.value || "",
-      taste: tasteRef.current.value || "",
-      touch: touchRef.current.value || "",
+      sight: event.target[6].value || "",
+      smell: event.target[7].value || "",
+      hearing: event.target[8].value || "",
+      taste: event.target[9].value || "",
+      touch: event.target[10].value || "",
     };
 
     addDiary(diary);
   };
-
+  
+  formRef&&formRef.current&&formRef.current.addEventListener("keydown", e => {    
+    if(e.keyCode===13) e.preventDefault();
+  });
+  
   return (
     <section className={styles.section}>
       <div className={styles.header}>
@@ -68,19 +64,19 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
           onClick={closePopup}
         />
       </div>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={addDiaryData} ref={formRef}>
         <div className={styles.item}>
           <div className={styles.left}>
             <div className={styles.title}>
               <FontAwesomeIcon icon={faStar} className={styles.icon} />
               Title
             </div>
-            <input type="text" className={styles.input} ref={titleRef} />
+            <input type="text" className={styles.input}/>
             <div>
               <FontAwesomeIcon icon={faMapMarkerAlt} className={styles.icon} />
               Location
             </div>
-            <input type="text" className={styles.input} ref={locationRef} />
+            <input type="text" className={styles.input} />
             <div>
               <FontAwesomeIcon icon={faCalendar} className={styles.icon} />
               Date
@@ -90,14 +86,14 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
                 type="date"
                 className={[styles.input, styles.date].join(" ")}
                 placeholder="YYYY-MM-DD"
-                ref={startDtRef}
+                
               />
               &nbsp;&nbsp; ~ &nbsp;&nbsp;
               <input
                 type="date"
                 className={[styles.input, styles.date].join(" ")}
                 placeholder="YYYY-MM-DD"
-                ref={endDtRef}
+                
               />
             </div>
             <div>
@@ -107,7 +103,7 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
             <input
               type="text"
               className={styles.input}
-              ref={keywordRef}
+              
               placeholder="드라이브, 바다"
             />
             <div>
@@ -122,19 +118,19 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
               <FontAwesomeIcon icon={faEye} className={styles.icon} />
               Sight
             </div>
-            <input type="text" className={styles.input} ref={sightRef} />
+            <input type="text" className={styles.input} />
 
             <div>
               <FontAwesomeIcon icon={faAirFreshener} className={styles.icon} />
               Smell
             </div>
-            <input type="text" className={styles.input} ref={smellRef} />
+            <input type="text" className={styles.input} />
 
             <div>
               <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
               Taste
             </div>
-            <input type="text" className={styles.input} ref={tasteRef} />
+            <input type="text" className={styles.input}/>
 
             <div>
               <FontAwesomeIcon
@@ -143,17 +139,17 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
               />
               Hearing
             </div>
-            <input type="text" className={styles.input} ref={hearingRef} />
+            <input type="text" className={styles.input} />
 
             <div>
               <FontAwesomeIcon icon={faHandSpock} className={styles.icon} />
               Touch
             </div>
-            <input type="text" className={styles.input} ref={touchRef} />
+            <input type="text" className={styles.input}/>
           </div>
         </div>
         <div className={styles.button}>
-          <button className={styles.submit} onClick={addDiaryData}>
+          <button className={styles.submit}> 
             Submit
           </button>
         </div>
