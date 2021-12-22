@@ -18,8 +18,8 @@ import styles from "./diary_add.module.css";
 const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
 
   const fileRef = useRef();
-  const formRef = useRef();
   const addDiaryData = async (event) => {
+    
     event.preventDefault();
     
     if (!event.target[0].value) {
@@ -30,31 +30,28 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
     if (fileRef.current.files) {
       fileInfo = await fileUploader.upload(fileRef.current.files[0]);
     }
-
+    console.dir(event.target);
     const diary = {
       id: Date.now(),
       title: event.target[0].value || "",
-      keyword: event.target[1].value.split(","),
-      location: event.target[2].value || "",
-      startDate: event.target[3].value || "",
-      endDate: event.target[4].value || "",
+      location: event.target[1].value.split(","),
+      startDate: event.target[2].value || "",
+      endDate: event.target[3].value || "",
+      keyword: event.target[4].value || "",
       like: 0,
       travel: "",
       imgUrl: [fileInfo?.secure_url || ""],
       sight: event.target[6].value || "",
       smell: event.target[7].value || "",
-      hearing: event.target[8].value || "",
-      taste: event.target[9].value || "",
+      taste: event.target[8].value || "",
+      hearing: event.target[9].value || "",
       touch: event.target[10].value || "",
     };
 
     addDiary(diary);
   };
   
-  formRef&&formRef.current&&formRef.current.addEventListener("keydown", e => {    
-    if(e.keyCode===13) e.preventDefault();
-  });
-  
+
   return (
     <section className={styles.section}>
       <div className={styles.header}>
@@ -64,7 +61,7 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
           onClick={closePopup}
         />
       </div>
-      <form className={styles.form} onSubmit={addDiaryData} ref={formRef}>
+      <form className={styles.form} onSubmit={addDiaryData} onKeyPress={e=> {if(e.key==='Enter'){e.preventDefault();}}}>
         <div className={styles.item}>
           <div className={styles.left}>
             <div className={styles.title}>
