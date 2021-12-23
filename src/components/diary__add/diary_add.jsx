@@ -30,7 +30,7 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
     if (fileRef.current.files) {
       fileInfo = await fileUploader.upload(fileRef.current.files[0]);
     }
-    console.dir(event.target);
+    
     const diary = {
       id: Date.now(),
       title: event.target[0].value || "",
@@ -47,7 +47,7 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
       hearing: event.target[9].value || "",
       touch: event.target[10].value || "",
     };
-
+    console.log(diary);
     addDiary(diary);
   };
   

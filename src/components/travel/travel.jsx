@@ -11,8 +11,6 @@ import {
   faHandSpock,
   faTeethOpen,
   faAirFreshener,
-  faEdit,
-  faCheckSquare,
   faExclamation,
   faComment,
 } from "@fortawesome/free-solid-svg-icons";
@@ -24,19 +22,11 @@ const Travel = ({
   userId,
   readDetailData,
 }) => {
-  const titleRef = useRef();
-  const locationRef = useRef();
-  const startDtRef = useRef();
-  const endDtRef = useRef();
-  const sightRef = useRef();
-  const smellRef = useRef();
-  const hearingRef = useRef();
-  const tasteRef = useRef();
-  const touchRef = useRef();
-  const commentRef = useRef();
+  const formRef = useRef();
 
   const [travelDtl, setTravelDtl] = useState({});
   const [clickEdit, setClickEdit] = useState(false);
+
   useEffect(() => {
     //history.location.state.detailId로 데이터 가져오기
     readDetailData(userId, detailId, (data) => {
@@ -50,35 +40,41 @@ const Travel = ({
       return;
     }
     setClickEdit(true);
-    titleRef.current.value = travelDtl.title || "";
-    locationRef.current.value = travelDtl.location || "";
-    startDtRef.current.value = travelDtl.startDate || "";
-    endDtRef.current.value = travelDtl.endDate || "";
-    sightRef.current.value = travelDtl.sight || "";
-    smellRef.current.value = travelDtl.smell || "";
-    hearingRef.current.value = travelDtl.hearing || "";
-    tasteRef.current.value = travelDtl.taste || "";
-    touchRef.current.value = travelDtl.touch || "";
+    formRef.current[0].value = travelDtl.title || "";
+    formRef.current[1].value = travelDtl.location || "";
+    formRef.current[2].value = travelDtl.startDate || "";
+    formRef.current[3].value = travelDtl.endDate   || "";
+
+    formRef.current[5].value = travelDtl.sight     || "";
+    formRef.current[6].value = travelDtl.smell     || "";
+    formRef.current[7].value = travelDtl.taste   || "";
+    formRef.current[8].value = travelDtl.hearing     || "";
+    formRef.current[9].value = travelDtl.touch    || "";
+    formRef.current[10].value = travelDtl.comment ||"";
+
   };
-  const saveData = () => {
+  const saveData = (e) => {
+    e.preventDefault();
+
     if (!clickEdit) {
       alert("Please click this button after editing.");
       return;
     }
+
     const diary = {
       ...travelDtl,
-      title: titleRef.current.value || "",
-      location: locationRef.current.value || "",
-      startDate: startDtRef.current.value || "",
-      endDate: endDtRef.current.value || "",
-      sight: sightRef.current.value || "",
-      smell: smellRef.current.value || "",
-      hearing: hearingRef.current.value || "",
-      taste: tasteRef.current.value || "",
-      touch: touchRef.current.value || "",
-      comment: commentRef.current.value || "",
+      title:     e.target[0].value || "",
+      location:  e.target[1].value || "",
+      startDate: e.target[2].value || "",
+      endDate:   e.target[3].value || "",
+      sight:     e.target[5].value || "",
+      smell:     e.target[6].value || "",
+      hearing:   e.target[7].value || "",
+      touch:     e.target[8].value || "",
+      taste:     e.target[9].value || "",
+      comment:   e.target[10].value || "",
     };
-
+    
     updateDiary(diary);
     setClickEdit(false);
 
@@ -195,36 +191,37 @@ const Travel = ({
                 <div>{travelDtl.comment}</div>
               </div>
             )}
+            
           </div>
+          <button className={styles.button} onClick={setEditBtn}> 
+              Edit
+            </button>
         </div>
 
-        <div className={clickEdit ? styles.travel : styles.hide}>
+        <form className={clickEdit ? styles.travel : styles.hide} onSubmit={saveData} ref={formRef} onKeyPress={e=> {if(e.key==='Enter'){e.preventDefault();}}} >
           <div className={styles.textArea}>
             <div className={styles.title}>
               <FontAwesomeIcon icon={faStar} className={styles.title__icon} />
-              <input type="text" ref={titleRef} className={styles.input} />
+              <input type="text" className={styles.input} />
             </div>
             <div className={styles.schedule}>
               <FontAwesomeIcon icon={faMapMarkerAlt} className={styles.icon} />
-              <input type="text" className={styles.input} ref={locationRef} />
+              <input type="text" className={styles.input} />
             </div>
             <div className={styles.schedule}>
               <FontAwesomeIcon icon={faCalendar} className={styles.icon} />
               <input
                 type="date"
-                ref={startDtRef}
                 className={[styles.input, styles.date].join(" ")}
               />
               ~
               <input
                 type="date"
-                ref={endDtRef}
                 className={[styles.input, styles.date].join(" ")}
               />
             </div>
           </div>
           <div className={styles.photo}>
-            <button>Change file</button>
             <input type="file" />
             {travelDtl.imgUrl ? (
               <img src={travelDtl.imgUrl} alt="uploaded" />
@@ -246,7 +243,7 @@ const Travel = ({
                 <FontAwesomeIcon icon={faEye} className={styles.icon} />
                 Sight
               </div>
-              <input type="text" ref={sightRef} className={styles.input} />
+              <input type="text" className={styles.input} />
             </div>
 
             <div>
@@ -257,21 +254,14 @@ const Travel = ({
                 />
                 Smell
               </div>
-              <input type="text" ref={smellRef} className={styles.input} />
+              <input type="text" className={styles.input} />
             </div>
             <div>
               <div className={styles.sense__name}>
                 <FontAwesomeIcon icon={faTeethOpen} className={styles.icon} />
                 Taste
               </div>
-              <input type="text" ref={tasteRef} className={styles.input} />
-            </div>
-            <div>
-              <div className={styles.sense__name}>
-                <FontAwesomeIcon icon={faHandSpock} className={styles.icon} />
-                Touch
-              </div>
-              <input type="text" ref={touchRef} className={styles.input} />
+              <input type="text" className={styles.input} />
             </div>
             <div>
               <div className={styles.sense__name}>
@@ -281,8 +271,16 @@ const Travel = ({
                 />
                 Hearing
               </div>
-              <input type="text" ref={hearingRef} className={styles.input} />
+              <input type="text" className={styles.input} />
             </div>
+            <div>
+              <div className={styles.sense__name}>
+                <FontAwesomeIcon icon={faHandSpock} className={styles.icon} />
+                Touch
+              </div>
+              <input type="text" className={styles.input} />
+            </div>
+            
             <div>
               <div className={styles.comment}>
                 <FontAwesomeIcon
@@ -293,19 +291,13 @@ const Travel = ({
                 General Comment
               </div>
               <br />
-              <textarea className={styles.textarea} ref={commentRef}></textarea>
+              <textarea className={styles.textarea}></textarea>
             </div>
           </div>
-        </div>
-        <div className={styles.buttons}>
-          <FontAwesomeIcon
-            icon={faEdit}
-            className={styles.edit}
-            onClick={setEditBtn}
-            size="lg"
-          />
-          <FontAwesomeIcon icon={faCheckSquare} size="lg" onClick={saveData} />
-        </div>
+          <button className={styles.button}> 
+            Save
+          </button>
+        </form>
       </section>
     </>
   );

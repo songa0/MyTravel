@@ -138,11 +138,18 @@
   flex-direction: column;
   cursor: pointer;
 }
-
-.edit {
-  margin-bottom: 1rem;
+.button {
+  background-color: makerLightRed;
+  color: makerWhite;
+  border: 0;
+  width: 160px;
+  height: 35px;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
-
 .hide {
   display: none;
 }
