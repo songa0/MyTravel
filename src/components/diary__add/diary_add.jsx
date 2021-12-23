@@ -34,10 +34,10 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
     const diary = {
       id: Date.now(),
       title: event.target[0].value || "",
-      location: event.target[1].value.split(","),
+      location: event.target[1].value|| "",
       startDate: event.target[2].value || "",
       endDate: event.target[3].value || "",
-      keyword: event.target[4].value || "",
+      keyword: event.target[4].value.split(","),
       like: 0,
       travel: "",
       imgUrl: [fileInfo?.secure_url || ""],
