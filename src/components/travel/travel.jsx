@@ -44,13 +44,14 @@ const Travel = ({
     formRef.current[1].value = travelDtl.location || "";
     formRef.current[2].value = travelDtl.startDate || "";
     formRef.current[3].value = travelDtl.endDate   || "";
-
+    
     formRef.current[5].value = travelDtl.sight     || "";
     formRef.current[6].value = travelDtl.smell     || "";
     formRef.current[7].value = travelDtl.taste   || "";
     formRef.current[8].value = travelDtl.hearing     || "";
     formRef.current[9].value = travelDtl.touch    || "";
     formRef.current[10].value = travelDtl.comment ||"";
+    
 
   };
   const saveData = (e) => {
@@ -224,7 +225,7 @@ const Travel = ({
           <div className={styles.photo}>
             <input type="file" />
             {travelDtl.imgUrl ? (
-              <img src={travelDtl.imgUrl} alt="uploaded" />
+              <img src={travelDtl.imgUrl[0]} alt="uploaded" />
             ) : (
               <div className={styles.noImage}>
                 <FontAwesomeIcon
