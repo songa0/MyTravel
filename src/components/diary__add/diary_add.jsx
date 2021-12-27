@@ -18,17 +18,28 @@ import styles from "./diary_add.module.css";
 const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
 
   const fileRef = useRef();
-  const addDiaryData = async (event) => {
+  const isValid = (e) =>{
     
-    event.preventDefault();
-    
-    if (!event.target[0].value) {
-      alert("Please enter Title");
-      return;
+    if (!e.target[0].value) {
+      alert("Please enter Title.");
+      return false;
     }
-    let fileInfo;
-    if (fileRef.current.files) {
-      fileInfo = await fileUploader.upload(fileRef.current.files[0]);
+
+    if(fileRef.current.files.length>5){
+      alert("You can select up to 5 files.");
+      return false;
+    }
+
+    return true;
+  }
+  const addDiaryData = async (event) => {
+    event.preventDefault();
+    if(!isValid(event))return;
+   
+    let fileInfo = new Array();
+    for(const item of fileRef.current.files){
+      const uploadedImg = await fileUploader.upload(item);
+      fileInfo.push(uploadedImg.secure_url);
     }
     
     const diary = {
@@ -40,14 +51,14 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
       keyword: event.target[4].value.split(","),
       like: 0,
       travel: "",
-      imgUrl: [fileInfo?.secure_url || ""],
+      imgUrl: fileInfo || "",
       sight: event.target[6].value || "",
       smell: event.target[7].value || "",
       taste: event.target[8].value || "",
       hearing: event.target[9].value || "",
       touch: event.target[10].value || "",
     };
-    console.log(diary);
+    
     addDiary(diary);
   };
   
@@ -107,7 +118,7 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
               <FontAwesomeIcon icon={faCamera} className={styles.icon} />
               Main Photo
             </div>
-            <input type="file" className={styles.input} ref={fileRef} />
+            <input type="file" className={styles.input} ref={fileRef} multiple="multiple" />
           </div>
           <hr />
           <div className={styles.right}>
