@@ -13,6 +13,8 @@ import {
   faAirFreshener,
   faExclamation,
   faComment,
+  faChevronLeft,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Travel = ({
@@ -23,7 +25,7 @@ const Travel = ({
   readDetailData,
 }) => {
   const formRef = useRef();
-
+  const [checkedSlide, setCheckedSlide] = useState(0);
   const [travelDtl, setTravelDtl] = useState({});
   const [clickEdit, setClickEdit] = useState(false);
 
@@ -83,6 +85,9 @@ const Travel = ({
       setTravelDtl(data);
     });
   };
+  const slideChange = (e) =>{
+    setCheckedSlide(parseInt(e.target.value));
+  }
   return (
     <>
       <header className={styles.header}>
@@ -112,8 +117,14 @@ const Travel = ({
             </div>
           </div>
           <div className={styles.photo}>
+            <div className={styles.slide}>
+          {travelDtl.imgUrl ? (
+              travelDtl.imgUrl.map((item, idx) => <input type="radio" name="slide" id={`slide${idx}`} value={idx} onChange={slideChange} checked={checkedSlide===idx}/>)
+            ) : null}
+            </div>
+            <ul>
             {travelDtl.imgUrl ? (
-              <img src={travelDtl.imgUrl[0]} alt="uploaded" />
+              travelDtl.imgUrl.map((item, idx) => <li id={idx}><img src={item} className={styles.img} alt="main" /></li>)
             ) : (
               <div className={styles.noImage}>
                 <FontAwesomeIcon
@@ -125,6 +136,7 @@ const Travel = ({
                 </div>
               </div>
             )}
+            </ul>
           </div>
           <div className={styles.sense}>
             {travelDtl.sight && (
