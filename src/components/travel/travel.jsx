@@ -87,6 +87,7 @@ const Travel = ({
   };
   const slideChange = (e) =>{
     setCheckedSlide(parseInt(e.target.value));
+
   }
   return (
     <>
@@ -116,15 +117,13 @@ const Travel = ({
               </span>
             </div>
           </div>
-          <div className={styles.photo}>
-            <div className={styles.slide}>
+          <div className={styles.photo}>  
           {travelDtl.imgUrl ? (
               travelDtl.imgUrl.map((item, idx) => <input type="radio" name="slide" id={`slide${idx}`} value={idx} onChange={slideChange} checked={checkedSlide===idx}/>)
-            ) : null}
-            </div>
+            ) : null}         
             <ul>
             {travelDtl.imgUrl ? (
-              travelDtl.imgUrl.map((item, idx) => <li id={idx}><img src={item} className={styles.img} alt="main" /></li>)
+              travelDtl.imgUrl.map((item, idx) => <li id={idx}><label for={`slide${idx!==0?idx-1:travelDtl.imgUrl.length-1}`} className={styles.leftBtn}><FontAwesomeIcon icon={faChevronLeft} /></label><img src={item} className={styles.img} alt="main" /><label for={`slide${idx!==travelDtl.imgUrl.length-1? idx+1 : 0}`} className={styles.rightBtn}><FontAwesomeIcon icon={faChevronRight} /></label></li>)
             ) : (
               <div className={styles.noImage}>
                 <FontAwesomeIcon
@@ -137,6 +136,7 @@ const Travel = ({
               </div>
             )}
             </ul>
+            
           </div>
           <div className={styles.sense}>
             {travelDtl.sight && (

@@ -35,10 +35,43 @@
   margin-top: 2rem;
   width: 100%;
   min-height: 20rem;
-  text-align: right;
 }
-.slide {
-  text-align: center;
+[id="slide0"]:checked ~ ul li {
+  transform: translateX(0%);
+}
+[id="slide1"]:checked ~ ul li {
+  transform: translateX(-100%);
+}
+[id="slide2"]:checked ~ ul li {
+  transform: translateX(-200%);
+}
+[id="slide3"]:checked ~ ul li {
+  transform: translateX(-300%);
+}
+[id="slide4"]:checked ~ ul li {
+  transform: translateX(-400%);
+}
+.leftBtn,
+.rightBtn {
+  position: absolute;
+  top: 50%;
+  background-color: makerLightGrey;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+.leftBtn {
+  left: 10px;
+}
+.rightBtn {
+  right: 10px;
+}
+.photo input[type="radio"] {
+  background: makerGrey;
+  color: makerGrey;
+}
+.photo input[type="radio"]:checked {
+  background: makerLightRed;
+  color: makerLightRed;
 }
 
 .photo ul {
