@@ -11,7 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const TravelListItem = ({ travelInfo, clickDetail, deleteData, detailId }) => {
-  const { title, imgUrl, location, startDate, endDate } = travelInfo;
+  const { title, imgInfo, location, startDate, endDate } = travelInfo;
   const [isMouseOn, setIsMouseOn] = useState(false);
 
   const mouseOver = () => {
@@ -42,8 +42,8 @@ const TravelListItem = ({ travelInfo, clickDetail, deleteData, detailId }) => {
       data-id={detailId}
     >
       <div className={styles.imgArea}>
-        {imgUrl ? (
-          <img src={imgUrl[0]} className={styles.img} alt="main" />
+        {imgInfo ? (
+          <img src={imgInfo[0].url} className={styles.img} alt="main" />
         ) : (
           <div className={[styles.noimage, styles.img].join(" ")}>
             <FontAwesomeIcon

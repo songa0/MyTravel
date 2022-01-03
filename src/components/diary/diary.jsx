@@ -156,6 +156,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
             openPopup={setDetailClick}
             detailId={detailId}
             userId={userId}
+            fileUploader={fileUploader}
           />
         </div>
       )}

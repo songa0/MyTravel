@@ -36,6 +36,16 @@
   width: 100%;
   min-height: 20rem;
 }
+.uploaded {
+  margin-left: 110px;
+}
+.paper_clip {
+  margin-right: 7px;
+  font-weight: 100;
+}
+.delete_img {
+  margin-left: 10px;
+}
 [id="slide0"]:checked ~ ul li {
   transform: translateX(0%);
 }
@@ -167,7 +177,7 @@
 
 .sense {
   text-align: left;
-  margin-top: 1rem;
+  margin-top: 3rem;
   padding: 0 1rem;
 }
 .sense > div {

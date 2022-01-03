@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkerAlt,
   faCalendar,
+  faCamera,
+  faPaperclip,
   faStar,
   faTimes,
   faEye,
@@ -14,7 +16,7 @@ import {
   faExclamation,
   faComment,
   faChevronLeft,
-  faChevronRight,
+  faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
 
 const Travel = ({
@@ -23,14 +25,17 @@ const Travel = ({
   detailId,
   userId,
   readDetailData,
+  fileUploader
 }) => {
   const formRef = useRef();
+  const fileRef = useRef();
   const [checkedSlide, setCheckedSlide] = useState(0);
   const [travelDtl, setTravelDtl] = useState({});
   const [clickEdit, setClickEdit] = useState(false);
 
   useEffect(() => {
     //history.location.state.detailId로 데이터 가져오기
+    
     readDetailData(userId, detailId, (data) => {
       setTravelDtl(data);
     });
@@ -56,12 +61,23 @@ const Travel = ({
     
 
   };
-  const saveData = (e) => {
+  const saveData = async(e) => {
     e.preventDefault();
 
     if (!clickEdit) {
       alert("Please click this button after editing.");
       return;
+    }
+    if(fileRef.current.files.length + travelDtl.imgInfo.length>5){
+      alert("You can select up to 5 files.");
+      return false;
+    }
+
+    let fileInfo = travelDtl.imgInfo;
+    for(const item of fileRef.current.files){
+      const uploadedImg = await fileUploader.upload(item);
+      fileInfo = [...fileInfo, {"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename}];
+      
     }
 
     const diary = {
@@ -76,6 +92,7 @@ const Travel = ({
       touch:     e.target[8].value || "",
       taste:     e.target[9].value || "",
       comment:   e.target[10].value || "",
+      imgInfo: fileInfo,
     };
     
     updateDiary(diary);
@@ -89,7 +106,7 @@ const Travel = ({
     setCheckedSlide(parseInt(e.target.value));
 
   }
-  return (
+   return (
     <>
       <header className={styles.header}>
         <FontAwesomeIcon
@@ -118,12 +135,12 @@ const Travel = ({
             </div>
           </div>
           <div className={styles.photo}>  
-          {travelDtl.imgUrl ? (
-              travelDtl.imgUrl.map((item, idx) => <input type="radio" name="slide" id={`slide${idx}`} value={idx} onChange={slideChange} checked={checkedSlide===idx}/>)
+          {travelDtl.imgInfo ? (
+              travelDtl.imgInfo.map((item, idx) => <input type="radio" key={`slide${idx}`} name="slide" id={`slide${idx}`} value={idx} onChange={slideChange} checked={checkedSlide===idx}/>)
             ) : null}         
             <ul>
-            {travelDtl.imgUrl ? (
-              travelDtl.imgUrl.map((item, idx) => <li id={idx}><label for={`slide${idx!==0?idx-1:travelDtl.imgUrl.length-1}`} className={styles.leftBtn}><FontAwesomeIcon icon={faChevronLeft} /></label><img src={item} className={styles.img} alt="main" /><label for={`slide${idx!==travelDtl.imgUrl.length-1? idx+1 : 0}`} className={styles.rightBtn}><FontAwesomeIcon icon={faChevronRight} /></label></li>)
+            {travelDtl.imgInfo ? (
+              travelDtl.imgInfo.map((item, idx) => <li key={idx}><label htmlFor={`slide${idx!==0?idx-1:travelDtl.imgInfo.length-1}`} className={styles.leftBtn}><FontAwesomeIcon icon={faChevronLeft} /></label><img src={item.url} className={styles.img} alt="main" /><label htmlFor={`slide${idx!==travelDtl.imgInfo.length-1? idx+1 : 0}`} className={styles.rightBtn}><FontAwesomeIcon icon={faChevronRight} /></label></li>)
             ) : (
               <div className={styles.noImage}>
                 <FontAwesomeIcon
@@ -234,23 +251,25 @@ const Travel = ({
               />
             </div>
           </div>
-          <div className={styles.photo}>
-            <input type="file" />
-            {travelDtl.imgUrl ? (
-              <img src={travelDtl.imgUrl[0]} alt="uploaded" />
-            ) : (
-              <div className={styles.noImage}>
-                <FontAwesomeIcon
-                  icon={faExclamation}
-                  className={styles.exclamation}
-                />
-                <div>
-                  No Image <br /> Available
-                </div>
-              </div>
-            )}
-          </div>
+           
           <div className={styles.sense}>
+          <div className={styles.sense__name}>
+              <FontAwesomeIcon icon={faCamera} className={styles.icon} />
+              Photo
+            </div>
+            <input type="file" ref={fileRef} className={styles.input} multiple="multiple" />
+
+            {travelDtl.imgInfo ? (
+              travelDtl.imgInfo.map((item, idx) => 
+                <div key={idx} className={styles.uploaded}>
+                  <FontAwesomeIcon icon={faPaperclip} className={styles.paper_clip}/>
+                  <span id={item.url}>{item.name}</span>
+                  <FontAwesomeIcon icon={faTimes} className={styles.delete_img}/>
+                </div>
+              )
+            ) : 
+              null
+            }
             <div>
               <div className={styles.sense__name}>
                 <FontAwesomeIcon icon={faEye} className={styles.icon} />

@@ -39,7 +39,8 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
     let fileInfo = new Array();
     for(const item of fileRef.current.files){
       const uploadedImg = await fileUploader.upload(item);
-      fileInfo.push(uploadedImg.secure_url);
+      fileInfo.push({url : uploadedImg.secure_url, name : uploadedImg.original_filename});
+      
     }
     
     const diary = {
@@ -51,7 +52,7 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
       keyword: event.target[4].value.split(","),
       like: 0,
       travel: "",
-      imgUrl: fileInfo || "",
+      imgInfo: fileInfo || "",
       sight: event.target[6].value || "",
       smell: event.target[7].value || "",
       taste: event.target[8].value || "",
@@ -116,7 +117,7 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
             />
             <div>
               <FontAwesomeIcon icon={faCamera} className={styles.icon} />
-              Main Photo
+              Photo
             </div>
             <input type="file" className={styles.input} ref={fileRef} multiple="multiple" />
           </div>
