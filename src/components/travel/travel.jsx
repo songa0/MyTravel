@@ -68,7 +68,7 @@ const Travel = ({
       alert("Please click this button after editing.");
       return;
     }
-    if(fileRef.current.files.length + travelDtl.imgInfo.length>5){
+    if(fileRef.current.files.length + travelDtl.imgInfo.filter(item=> item.use==="Y").length>5){
       alert("You can select up to 5 files.");
       return false;
     }
@@ -76,7 +76,7 @@ const Travel = ({
     let fileInfo = travelDtl.imgInfo;
     for(const item of fileRef.current.files){
       const uploadedImg = await fileUploader.upload(item);
-      fileInfo = [...fileInfo, {"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename}];
+      fileInfo = [...fileInfo, {"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "use" : "Y"}];
       
     }
 
@@ -136,11 +136,11 @@ const Travel = ({
           </div>
           <div className={styles.photo}>  
           {travelDtl.imgInfo ? (
-              travelDtl.imgInfo.map((item, idx) => <input type="radio" key={`slide${idx}`} name="slide" id={`slide${idx}`} value={idx} onChange={slideChange} checked={checkedSlide===idx}/>)
+              travelDtl.imgInfo.filter((item)=> item.use==="Y").map((item, idx) => <input type="radio" key={`slide${idx}`} name="slide" id={`slide${idx}`} value={idx} onChange={slideChange} checked={checkedSlide===idx}/>)
             ) : null}         
             <ul>
-            {travelDtl.imgInfo ? (
-              travelDtl.imgInfo.map((item, idx) => <li key={idx}><label htmlFor={`slide${idx!==0?idx-1:travelDtl.imgInfo.length-1}`} className={styles.leftBtn}><FontAwesomeIcon icon={faChevronLeft} /></label><img src={item.url} className={styles.img} alt="main" /><label htmlFor={`slide${idx!==travelDtl.imgInfo.length-1? idx+1 : 0}`} className={styles.rightBtn}><FontAwesomeIcon icon={faChevronRight} /></label></li>)
+            {travelDtl.imgInfo?.filter((item)=> item.use==="Y").length ? (
+              travelDtl.imgInfo.filter((item)=> item.use==="Y").map((item, idx) => <li key={idx}><label htmlFor={`slide${idx!==0?idx-1:travelDtl.imgInfo.length-1}`} className={styles.leftBtn}><FontAwesomeIcon icon={faChevronLeft} /></label><img src={item.url} className={styles.img} alt="main" /><label htmlFor={`slide${idx!==travelDtl.imgInfo.length-1? idx+1 : 0}`} className={styles.rightBtn}><FontAwesomeIcon icon={faChevronRight} /></label></li>)
             ) : (
               <div className={styles.noImage}>
                 <FontAwesomeIcon
