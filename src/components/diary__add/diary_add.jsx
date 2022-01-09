@@ -36,10 +36,10 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
     event.preventDefault();
     if(!isValid(event))return;
    
-    let fileInfo = new Array();
+    let fileInfo = [];
     for(const item of fileRef.current.files){
       const uploadedImg = await fileUploader.upload(item);
-      fileInfo.push({url : uploadedImg.secure_url, name : uploadedImg.original_filename});
+      fileInfo.push({url : uploadedImg.secure_url, name : uploadedImg.original_filename, use : "Y"});
       
     }
     
