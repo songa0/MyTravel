@@ -258,9 +258,8 @@ const Travel = ({
               Photo
             </div>
             <input type="file" ref={fileRef} className={styles.input} multiple="multiple" />
-
-            {travelDtl.imgInfo ? (
-              travelDtl.imgInfo.map((item, idx) => 
+            {travelDtl.imgInfo && travelDtl.imgInfo.filter(item => item.use==="Y").length ? (    
+              travelDtl.imgInfo.filter(item => item.use==="Y").map((item, idx) => 
                 <div key={idx} className={styles.uploaded}>
                   <FontAwesomeIcon icon={faPaperclip} className={styles.paper_clip}/>
                   <span id={item.url}>{item.name}</span>
@@ -269,7 +268,7 @@ const Travel = ({
               )
             ) : 
               null
-            }
+            }            
             <div>
               <div className={styles.sense__name}>
                 <FontAwesomeIcon icon={faEye} className={styles.icon} />
