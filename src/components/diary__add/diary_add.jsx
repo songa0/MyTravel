@@ -39,7 +39,7 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
     let fileInfo = [];
     for(const item of fileRef.current.files){
       const uploadedImg = await fileUploader.upload(item);
-      fileInfo.push({url : uploadedImg.secure_url, name : uploadedImg.original_filename, use : "Y"});
+      fileInfo.push({url : uploadedImg.secure_url, name : uploadedImg.original_filename, use : "Y", flag : "S"});
       
     }
     

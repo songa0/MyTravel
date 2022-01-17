@@ -41,7 +41,34 @@ const Travel = ({
     });
   }, [readDetailData, detailId, userId]);
 
-  const closeWindow = () => openPopup(false);
+  const closeWindow = () => {
+    if(clickEdit) {
+      let fileInfo = travelDtl.imgInfo;
+      for(let i = 0; i<fileInfo.length; i++){
+        if(fileInfo[i].flag === "I"){
+          fileInfo[i].use = "N";
+          fileInfo[i].flag = "D";
+        } else if(fileInfo[i].flag === "D"){
+          if(fileInfo[i].use  ==="Y"){
+            fileInfo[i].flag = "S";
+          }else{
+            fileInfo[i].flag = "D";
+          }
+        }
+    }
+    
+    const diary = {
+      ...travelDtl,
+      imgInfo: fileInfo,
+    }
+
+    updateDiary(diary);
+    }
+    
+
+    openPopup(false);
+  }
+  
   const setEditBtn = () => {
     if (clickEdit) {
       return;
@@ -61,6 +88,40 @@ const Travel = ({
     
 
   };
+  const fileChange = async(e) =>{
+
+    if(!travelDtl.imgInfo){
+      if(fileRef.current.files.length>5){
+        alert("You can select up to 5 files.");
+        fileRef.current.value = '';
+        return false;
+      }
+    }else if(fileRef.current.files.length + travelDtl.imgInfo.filter(item=> item.flag==="I"||item.flag==="S").length>5){
+      alert("You can select up to 5 files.");
+      fileRef.current.value = '';
+      return false;
+    }
+    //IMG USE 값 : Y 사용, N 삭제, I 추가, D 삭제
+    let fileInfo = travelDtl.imgInfo;
+    // console.log(fileInfo);
+    for(const item of fileRef.current.files){
+      const uploadedImg = await fileUploader.upload(item);
+      fileInfo = fileInfo?[...fileInfo, {"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "flag" : "I"}]:[{"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "flag" : "I"}];
+      //console.log(fileInfo);
+    }
+    fileRef.current.value = '';
+    const diary = {
+      ...travelDtl,
+      imgInfo: fileInfo,
+    }
+
+    updateDiary(diary);
+
+    readDetailData(userId, detailId, (data) => {
+      setTravelDtl(data);
+    });
+
+  }
   const saveData = async(e) => {
     e.preventDefault();
 
@@ -68,16 +129,16 @@ const Travel = ({
       alert("Please click this button after editing.");
       return;
     }
-    if(fileRef.current.files.length + travelDtl.imgInfo.filter(item=> item.use==="Y").length>5){
-      alert("You can select up to 5 files.");
-      return false;
-    }
+
 
     let fileInfo = travelDtl.imgInfo;
-    for(const item of fileRef.current.files){
-      const uploadedImg = await fileUploader.upload(item);
-      fileInfo = [...fileInfo, {"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "use" : "Y"}];
-      
+    for(let i = 0; i<fileInfo.length; i++){
+      if(fileInfo[i].flag === "I"){
+        fileInfo[i].use = "Y";
+        fileInfo[i].flag = "S";
+      } else if(fileInfo[i].flag === "D"){
+        fileInfo[i].use = "N";
+      }
     }
 
     const diary = {
@@ -105,6 +166,19 @@ const Travel = ({
   const slideChange = (e) =>{
     setCheckedSlide(parseInt(e.target.value));
 
+  }
+  const deleteImage = (fileUrl) =>{
+    let fileInfo = travelDtl.imgInfo;
+    for(let i = 0; i<fileInfo.length; i++){
+      if(fileInfo[i].url === fileUrl){
+        fileInfo[i].flag = "D";
+      } 
+    }
+    const diary = {
+      ...travelDtl,
+      imgInfo: fileInfo,
+    }
+    updateDiary(diary);
   }
    return (
     <>
@@ -257,10 +331,10 @@ const Travel = ({
               <FontAwesomeIcon icon={faCamera} className={styles.icon} />
               Photo
             </div>
-            <input type="file" ref={fileRef} className={styles.input} multiple="multiple" />
-            {travelDtl.imgInfo && travelDtl.imgInfo.filter(item => item.use==="Y").length ? (    
-              travelDtl.imgInfo.filter(item => item.use==="Y").map((item, idx) => 
-                <div key={idx} className={styles.uploaded}>
+            <input type="file" ref={fileRef} className={styles.input} multiple="multiple" onChange={fileChange}/>
+            {travelDtl.imgInfo && travelDtl.imgInfo.filter(item => item.flag==="S"||item.flag==="I").length ? (    
+              travelDtl.imgInfo.filter(item => item.flag==="S"||item.flag==="I").map((item, idx) => 
+                <div key={idx} className={styles.uploaded} onClick={() => deleteImage(item.url)}>
                   <FontAwesomeIcon icon={faPaperclip} className={styles.paper_clip}/>
                   <span id={item.url}>{item.name}</span>
                   <FontAwesomeIcon icon={faTimes} className={styles.delete_img}/>

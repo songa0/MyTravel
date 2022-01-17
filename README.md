@@ -38,6 +38,7 @@ URL : https://my-travel-diary.netlify.app/
  - 백엔드 구현없이 firebase realtime db를 사용하다보니, 검색 기능이 정교하지 않다.  
    검색 시, 텍스트의 앞부분이 일치하는 것만 반환한다.  
  - 사진 업로드 소요 시간이 길다.
+ - 사진 삭제 기능이 지원되지 않는다.
 <br/>
      
 **5. 프로젝트를 통해 알게된 것**
@@ -46,6 +47,6 @@ URL : https://my-travel-diary.netlify.app/
   - set -> array 만들때는 Array.from 함수를 사용한다.  
   - className을 여러 개 등록할 때는 배열로 만든 후 join 함수를 사용한다. ex) [a, b].join(' ')
   - Netlify 배포 후에 Firebase API를 사용하기 위해서는 Netlify에 API Key를 등록한다.
-
+  - Array 선언 시에 생성자를 사용하면, netlify 에서 빌드 시에 에러를 낸다.
 
 
