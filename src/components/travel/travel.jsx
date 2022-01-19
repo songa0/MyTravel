@@ -34,38 +34,86 @@ const Travel = ({
   const [clickEdit, setClickEdit] = useState(false);
 
   useEffect(() => {
-    //history.location.state.detailId로 데이터 가져오기
-    
     readDetailData(userId, detailId, (data) => {
       setTravelDtl(data);
     });
   }, [readDetailData, detailId, userId]);
 
-  const closeWindow = () => {
-    if(clickEdit) {
-      let fileInfo = travelDtl.imgInfo;
-      for(let i = 0; i<fileInfo.length; i++){
-        if(fileInfo[i].flag === "I"){
-          fileInfo[i].use = "N";
-          fileInfo[i].flag = "D";
-        } else if(fileInfo[i].flag === "D"){
-          if(fileInfo[i].use  ==="Y"){
-            fileInfo[i].flag = "S";
-          }else{
-            fileInfo[i].flag = "D";
-          }
-        }
+  const uploadImage = async(imgFile) =>{
+    // Use 값 : Y 사용, N 삭제
+    // Flag 값 : I 추가, D 삭제, S 조회
+    let fileInfo = imgFile;
+    for(const item of fileRef.current.files){
+      const uploadedImg = await fileUploader.upload(item);
+      fileInfo = fileInfo?[...fileInfo, {"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "flag" : "I"}]:[{"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "flag" : "I"}];
     }
-    
+
     const diary = {
       ...travelDtl,
       imgInfo: fileInfo,
     }
 
     updateDiary(diary);
-    }
-    
+  }
 
+  const setImageStatus = (imgFile) =>{ 
+    
+    let fileInfo = imgFile;
+    for(let i = 0; i<fileInfo.length; i++){
+      if(fileInfo[i].flag === "I"){
+        //Flag 값이 I인 파일
+        //Use : Y, Flag : S 세팅
+        fileInfo[i].use = "Y";
+        fileInfo[i].flag = "S";
+      } else if(fileInfo[i].flag === "D"){
+        //Flag 값이 D인 파일
+        //Use : N
+        fileInfo[i].use = "N";
+      }
+    }
+    return fileInfo;
+  }
+
+  const cancelImageUpload = (imgFile) =>{
+    let fileInfo = imgFile
+    for(let i = 0; i<fileInfo.length; i++){
+      if(fileInfo[i].flag === "I"){
+        fileInfo[i].use = "N";
+        fileInfo[i].flag = "D";
+      } else if(fileInfo[i].flag === "D"){
+        if(fileInfo[i].use  ==="Y"){
+          fileInfo[i].flag = "S";
+        }else{
+          fileInfo[i].flag = "D";
+        }
+      }
+    }
+    const diary = {
+      ...travelDtl,
+      imgInfo: fileInfo,
+    }
+
+    updateDiary(diary);
+  }
+
+  const deleteImage = (fileUrl) =>{
+    let fileInfo = travelDtl.imgInfo;
+    for(let i = 0; i<fileInfo.length; i++){
+      if(fileInfo[i].url === fileUrl){
+        fileInfo[i].flag = "D";
+      } 
+    }
+    const diary = {
+      ...travelDtl,
+      imgInfo: fileInfo,
+    }
+    updateDiary(diary);
+  }
+
+  const closeWindow = () => {
+    if(clickEdit) {
+      cancelImageUpload(travelDtl.imgInfo);
+    }
     openPopup(false);
   }
   
@@ -88,7 +136,7 @@ const Travel = ({
     
 
   };
-  const fileChange = async(e) =>{
+  const fileChange = async() =>{
 
     if(!travelDtl.imgInfo){
       if(fileRef.current.files.length>5){
@@ -101,22 +149,10 @@ const Travel = ({
       fileRef.current.value = '';
       return false;
     }
-    //IMG USE 값 : Y 사용, N 삭제, I 추가, D 삭제
-    let fileInfo = travelDtl.imgInfo;
-    // console.log(fileInfo);
-    for(const item of fileRef.current.files){
-      const uploadedImg = await fileUploader.upload(item);
-      fileInfo = fileInfo?[...fileInfo, {"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "flag" : "I"}]:[{"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "flag" : "I"}];
-      //console.log(fileInfo);
-    }
+  
+    uploadImage(travelDtl.imgInfo);
     fileRef.current.value = '';
-    const diary = {
-      ...travelDtl,
-      imgInfo: fileInfo,
-    }
-
-    updateDiary(diary);
-
+    
     readDetailData(userId, detailId, (data) => {
       setTravelDtl(data);
     });
@@ -130,16 +166,7 @@ const Travel = ({
       return;
     }
 
-
-    let fileInfo = travelDtl.imgInfo;
-    for(let i = 0; i<fileInfo.length; i++){
-      if(fileInfo[i].flag === "I"){
-        fileInfo[i].use = "Y";
-        fileInfo[i].flag = "S";
-      } else if(fileInfo[i].flag === "D"){
-        fileInfo[i].use = "N";
-      }
-    }
+    let fileInfo = setImageStatus(travelDtl.imgInfo);
 
     const diary = {
       ...travelDtl,
@@ -167,19 +194,7 @@ const Travel = ({
     setCheckedSlide(parseInt(e.target.value));
 
   }
-  const deleteImage = (fileUrl) =>{
-    let fileInfo = travelDtl.imgInfo;
-    for(let i = 0; i<fileInfo.length; i++){
-      if(fileInfo[i].url === fileUrl){
-        fileInfo[i].flag = "D";
-      } 
-    }
-    const diary = {
-      ...travelDtl,
-      imgInfo: fileInfo,
-    }
-    updateDiary(diary);
-  }
+
    return (
     <>
       <header className={styles.header}>
