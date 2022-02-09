@@ -73,10 +73,10 @@ class DBService {
     starCountRef
       .once("value", (snapshot) => {
         const data = snapshot.val();
-
         data && updateData(data);
       })
       .catch((error) => console.log(error));
+    return () => starCountRef.off();
   }
 
   deleteData(userId, detailId) {

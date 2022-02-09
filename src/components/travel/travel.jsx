@@ -34,9 +34,10 @@ const Travel = ({
   const [clickEdit, setClickEdit] = useState(false);
 
   useEffect(() => {
-    readDetailData(userId, detailId, (data) => {
+    const stopSync = readDetailData(userId, detailId, (data) => {
       setTravelDtl(data);
     });
+    return () => stopSync();
   }, [readDetailData, detailId, userId]);
 
   const uploadImage = async(imgFile) =>{
