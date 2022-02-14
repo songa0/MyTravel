@@ -28,7 +28,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
         });
       }
     });
-  }, []);
+  });
 
   useEffect(() => {
     const stopSync = dbService.readData(userId, (data) => {
@@ -51,7 +51,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
     return () => {
       window.removeEventListener("keydown", escPressFunc);
     };
-  }, []);
+  });
 
   const searchData = useCallback(
     (text) => {

@@ -28,7 +28,7 @@ const Travel = ({
   fileUploader
 }) => {
   const formRef = useRef();
-  const fileRef = useRef();
+  const fileUploadRef = useRef();
   const [checkedSlide, setCheckedSlide] = useState(0);
   const [travelDtl, setTravelDtl] = useState({});
   const [clickEdit, setClickEdit] = useState(false);
@@ -41,20 +41,7 @@ const Travel = ({
   }, [readDetailData, detailId, userId]);
 
   const uploadImage = async(imgFile) =>{
-    // Use 값 : Y 사용, N 삭제
-    // Flag 값 : I 추가, D 삭제, S 조회
-    let fileInfo = imgFile;
-    for(const item of fileRef.current.files){
-      const uploadedImg = await fileUploader.upload(item);
-      fileInfo = fileInfo?[...fileInfo, {"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "flag" : "I"}]:[{"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "flag" : "I"}];
-    }
-
-    const diary = {
-      ...travelDtl,
-      imgInfo: fileInfo,
-    }
-
-    updateDiary(diary);
+    
   }
 
   const setImageStatus = (imgFile) =>{ 
@@ -140,19 +127,31 @@ const Travel = ({
   const fileChange = async() =>{
 
     if(!travelDtl.imgInfo){
-      if(fileRef.current.files.length>5){
+      if(fileUploadRef.current.files.length>5){
         alert("You can select up to 5 files.");
-        fileRef.current.value = '';
+        fileUploadRef.current.value = '';
         return false;
       }
-    }else if(fileRef.current.files.length + travelDtl.imgInfo.filter(item=> item.flag==="I"||item.flag==="S").length>5){
+    }else if(fileUploadRef.current.files.length + travelDtl.imgInfo.filter(item=> item.flag==="I"||item.flag==="S").length>5){
       alert("You can select up to 5 files.");
-      fileRef.current.value = '';
+      fileUploadRef.current.value = '';
       return false;
     }
   
-    uploadImage(travelDtl.imgInfo);
-    fileRef.current.value = '';
+    // Use 값 : Y 사용, N 삭제
+    // Flag 값 : I 추가, D 삭제, S 조회
+    let fileInfo = travelDtl.imgInfo;
+    for(const item of fileUploadRef.current.files){
+      const uploadedImg = await fileUploader.upload(item);
+      fileInfo = fileInfo.length?[...fileInfo, {"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "flag" : "I"}]:[{"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "flag" : "I"}];    
+    }
+
+    const diary = {
+      ...travelDtl,
+      imgInfo: fileInfo,
+    }
+    updateDiary(diary);
+    fileUploadRef.current.value = '';
     
     readDetailData(userId, detailId, (data) => {
       setTravelDtl(data);
@@ -347,7 +346,7 @@ const Travel = ({
               <FontAwesomeIcon icon={faCamera} className={styles.icon} />
               Photo
             </div>
-            <input type="file" ref={fileRef} className={styles.input} multiple="multiple" onChange={fileChange}/>
+            <input type="file" ref={fileUploadRef} className={styles.input} multiple="multiple" onChange={fileChange}/>
             {travelDtl.imgInfo && travelDtl.imgInfo.filter(item => item.flag==="S"||item.flag==="I").length ? (    
               travelDtl.imgInfo.filter(item => item.flag==="S"||item.flag==="I").map((item, idx) => 
                 <div key={idx} className={styles.uploaded} onClick={() => deleteImage(item.url)}>
