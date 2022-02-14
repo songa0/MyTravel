@@ -28,13 +28,12 @@ const Diary = ({ authService, dbService, fileUploader }) => {
         });
       }
     });
-  });
+  }, []);
 
   useEffect(() => {
     const stopSync = dbService.readData(userId, (data) => {
       setTravel(data);
     });
-
     return () => stopSync();
   }, [userId, dbService]);
 
@@ -52,7 +51,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
     return () => {
       window.removeEventListener("keydown", escPressFunc);
     };
-  });
+  }, []);
 
   const searchData = useCallback(
     (text) => {
