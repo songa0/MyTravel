@@ -40,9 +40,6 @@ const Travel = ({
     return () => stopSync();
   }, [readDetailData, detailId, userId]);
 
-  const uploadImage = async(imgFile) =>{
-    
-  }
 
   const setImageStatus = (imgFile) =>{ 
     
