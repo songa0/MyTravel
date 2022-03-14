@@ -12,6 +12,7 @@ import {
   faHandSpock,
   faTeethOpen,
   faAirFreshener,
+  faAsterisk
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./diary_add.module.css";
 
@@ -78,7 +79,10 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
           <div className={styles.left}>
             <div className={styles.title}>
               <FontAwesomeIcon icon={faStar} className={styles.icon} />
-              Title
+              Title 
+              <sup className={styles.asterisk}>
+                <FontAwesomeIcon icon={faAsterisk}/>
+              </sup>
             </div>
             <input type="text" className={styles.input}/>
             <div>

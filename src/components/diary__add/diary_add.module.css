@@ -60,6 +60,11 @@
   margin-right: 0.5rem;
   color: makerGrey;
 }
+.asterisk {
+  color: makerGrey;
+  font-size: 0.5em;
+  text-align: start;
+}
 .close {
   color: makerBlack;
   cursor: pointer;
