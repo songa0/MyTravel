@@ -18,6 +18,7 @@
   margin: auto;
   margin-top: 5%;
   position: relative;
+  transition: all 0.2s ease;
 }
 .form {
   background-color: makerWhite;
@@ -73,6 +74,7 @@
 .right {
   width: 45%;
   margin: 1rem;
+  transition: all 0.2s ease;
 }
 
 .submit {

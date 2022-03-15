@@ -7,6 +7,8 @@
   flex-direction: column;
   border-top-left-radius: 15px;
   overflow-y: scroll;
+  padding: 64px 120px;
+  align-items: center;
 }
 .header {
   height: 50px;
@@ -18,7 +20,7 @@
   width: 50rem;
   min-width: 30rem;
   min-height: 48rem;
-  margin: 5rem auto;
+  transition: all 0.2s ease;
 }
 .list {
   list-style-type: none;

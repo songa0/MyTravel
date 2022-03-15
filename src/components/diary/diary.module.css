@@ -38,6 +38,7 @@
   text-align: left;
   width: 25%;
   height: 15%;
+  transition: all 0.2s ease;
 }
 
 .plus {
