@@ -59,18 +59,18 @@ const Diary = ({ authService, dbService, fileUploader }) => {
   const searchData = useCallback(
     (text) => {
       const stopSync = dbService.searchData(userId, "title", text, (data) =>
-        setTravel(data)
+        setTravel(data),
       );
       return () => stopSync();
     },
-    [dbService, userId]
+    [dbService, userId],
   );
 
   const deleteData = useCallback(
     (diaryId) => {
       dbService.deleteData(userId, diaryId);
     },
-    [dbService, userId]
+    [dbService, userId],
   );
 
   const filterData = useCallback(
@@ -79,11 +79,11 @@ const Diary = ({ authService, dbService, fileUploader }) => {
         userId,
         "keyword",
         text,
-        (data) => setTravel(data)
+        (data) => setTravel(data),
       );
       return () => stopSync();
     },
-    [dbService, userId]
+    [dbService, userId],
   );
 
   const closePopup = useCallback(() => {
@@ -98,14 +98,14 @@ const Diary = ({ authService, dbService, fileUploader }) => {
       dbService.writeData(userId, diary);
       closePopup();
     },
-    [dbService, userId, closePopup]
+    [dbService, userId, closePopup],
   );
 
   const updateDiary = useCallback(
     (diary) => {
       dbService.writeData(userId, diary);
     },
-    [dbService, userId]
+    [dbService, userId],
   );
   const openDetailPopup = useCallback((detailId) => {
     setDetailClick(true);
