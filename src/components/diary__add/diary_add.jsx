@@ -1,4 +1,5 @@
 import React, { memo, useRef } from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendar,
@@ -20,7 +21,7 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
 
   const fileRef = useRef();
   const isValid = (e) =>{
-    
+
     if (!e.target[0].value) {
       alert("Please enter Title.");
       return false;
@@ -36,14 +37,14 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
   const addDiaryData = async (event) => {
     event.preventDefault();
     if(!isValid(event))return;
-   
+
     let fileInfo = [];
     for(const item of fileRef.current.files){
       const uploadedImg = await fileUploader.upload(item);
       fileInfo.push({url : uploadedImg.secure_url, name : uploadedImg.original_filename, use : "Y", flag : "S"});
-      
+
     }
-    
+
     const diary = {
       id: Date.now(),
       title: event.target[0].value || "",
@@ -60,10 +61,10 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
       hearing: event.target[9].value || "",
       touch: event.target[10].value || "",
     };
-    
+
     addDiary(diary);
   };
-  
+
 
   return (
     <section className={styles.section}>
@@ -79,7 +80,7 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
           <div className={styles.left}>
             <div className={styles.title}>
               <FontAwesomeIcon icon={faStar} className={styles.icon} />
-              Title 
+              Title
               <sup className={styles.asterisk}>
                 <FontAwesomeIcon icon={faAsterisk}/>
               </sup>
@@ -99,14 +100,14 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
                 type="date"
                 className={[styles.input, styles.date].join(" ")}
                 placeholder="YYYY-MM-DD"
-                
+
               />
               &nbsp;&nbsp; ~ &nbsp;&nbsp;
               <input
                 type="date"
                 className={[styles.input, styles.date].join(" ")}
                 placeholder="YYYY-MM-DD"
-                
+
               />
             </div>
             <div>
@@ -116,7 +117,7 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
             <input
               type="text"
               className={styles.input}
-              
+
               placeholder="드라이브, 바다"
             />
             <div>
@@ -162,7 +163,7 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
           </div>
         </div>
         <div className={styles.button}>
-          <button className={styles.submit}> 
+          <button className={styles.submit}>
             Submit
           </button>
         </div>

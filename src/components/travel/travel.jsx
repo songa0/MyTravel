@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+
 import styles from "./travel.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -41,8 +42,8 @@ const Travel = ({
   }, [readDetailData, detailId, userId]);
 
 
-  const setImageStatus = (imgFile) =>{ 
-    
+  const setImageStatus = (imgFile) =>{
+
     let fileInfo = imgFile;
     for(let i = 0; i<fileInfo.length; i++){
       if(fileInfo[i].flag === "I"){
@@ -86,7 +87,7 @@ const Travel = ({
     for(let i = 0; i<fileInfo.length; i++){
       if(fileInfo[i].url === fileUrl){
         fileInfo[i].flag = "D";
-      } 
+      }
     }
     const diary = {
       ...travelDtl,
@@ -101,7 +102,7 @@ const Travel = ({
     }
     openPopup(false);
   }
-  
+
   const setEditBtn = () => {
     if (clickEdit) {
       return;
@@ -111,14 +112,14 @@ const Travel = ({
     formRef.current[1].value = travelDtl.location || "";
     formRef.current[2].value = travelDtl.startDate || "";
     formRef.current[3].value = travelDtl.endDate   || "";
-    
+
     formRef.current[5].value = travelDtl.sight     || "";
     formRef.current[6].value = travelDtl.smell     || "";
     formRef.current[7].value = travelDtl.taste   || "";
     formRef.current[8].value = travelDtl.hearing     || "";
     formRef.current[9].value = travelDtl.touch    || "";
     formRef.current[10].value = travelDtl.comment ||"";
-    
+
 
   };
   const fileChange = async() =>{
@@ -134,13 +135,13 @@ const Travel = ({
       fileUploadRef.current.value = '';
       return false;
     }
-  
+
     // Use 값 : Y 사용, N 삭제
     // Flag 값 : I 추가, D 삭제, S 조회
     let fileInfo = travelDtl.imgInfo;
     for(const item of fileUploadRef.current.files){
       const uploadedImg = await fileUploader.upload(item);
-      fileInfo = fileInfo.length?[...fileInfo, {"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "flag" : "I"}]:[{"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "flag" : "I"}];    
+      fileInfo = fileInfo.length?[...fileInfo, {"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "flag" : "I"}]:[{"url": uploadedImg.secure_url, "name" : uploadedImg.original_filename, "flag" : "I"}];
     }
 
     const diary = {
@@ -149,7 +150,7 @@ const Travel = ({
     }
     updateDiary(diary);
     fileUploadRef.current.value = '';
-    
+
     readDetailData(userId, detailId, (data) => {
       setTravelDtl(data);
     });
@@ -179,7 +180,7 @@ const Travel = ({
       comment:   e.target[10].value || "",
       imgInfo: fileInfo,
     };
-    
+
     updateDiary(diary);
     setClickEdit(false);
 
@@ -220,10 +221,10 @@ const Travel = ({
               </span>
             </div>
           </div>
-          <div className={styles.photo}>  
+          <div className={styles.photo}>
           {travelDtl.imgInfo ? (
               travelDtl.imgInfo.filter((item)=> item.use==="Y").map((item, idx) => <input type="radio" key={`slide${idx}`} name="slide" id={`slide${idx}`} value={idx} onChange={slideChange} checked={checkedSlide===idx}/>)
-            ) : null}         
+            ) : null}
             <ul>
             {travelDtl.imgInfo?.filter((item)=> item.use==="Y").length ? (
               travelDtl.imgInfo.filter((item)=> item.use==="Y").map((item, idx) => <li key={idx}><label htmlFor={`slide${idx!==0?idx-1:travelDtl.imgInfo.length-1}`} className={styles.leftBtn}><FontAwesomeIcon icon={faChevronLeft} /></label><img src={item.url} className={styles.img} alt="main" /><label htmlFor={`slide${idx!==travelDtl.imgInfo.length-1? idx+1 : 0}`} className={styles.rightBtn}><FontAwesomeIcon icon={faChevronRight} /></label></li>)
@@ -239,7 +240,7 @@ const Travel = ({
               </div>
             )}
             </ul>
-            
+
           </div>
           <div className={styles.sense}>
             {travelDtl.sight && (
@@ -307,9 +308,9 @@ const Travel = ({
                 <div>{travelDtl.comment}</div>
               </div>
             )}
-            
+
           </div>
-          <button className={styles.button} onClick={setEditBtn}> 
+          <button className={styles.button} onClick={setEditBtn}>
               Edit
             </button>
         </div>
@@ -337,24 +338,24 @@ const Travel = ({
               />
             </div>
           </div>
-           
+
           <div className={styles.sense}>
           <div className={styles.sense__name}>
               <FontAwesomeIcon icon={faCamera} className={styles.icon} />
               Photo
             </div>
             <input type="file" ref={fileUploadRef} className={styles.input} multiple="multiple" onChange={fileChange}/>
-            {travelDtl.imgInfo && travelDtl.imgInfo.filter(item => item.flag==="S"||item.flag==="I").length ? (    
-              travelDtl.imgInfo.filter(item => item.flag==="S"||item.flag==="I").map((item, idx) => 
+            {travelDtl.imgInfo && travelDtl.imgInfo.filter(item => item.flag==="S"||item.flag==="I").length ? (
+              travelDtl.imgInfo.filter(item => item.flag==="S"||item.flag==="I").map((item, idx) =>
                 <div key={idx} className={styles.uploaded} onClick={() => deleteImage(item.url)}>
                   <FontAwesomeIcon icon={faPaperclip} className={styles.paper_clip}/>
                   <span id={item.url}>{item.name}</span>
                   <FontAwesomeIcon icon={faTimes} className={styles.delete_img}/>
                 </div>
               )
-            ) : 
+            ) :
               null
-            }            
+            }
             <div>
               <div className={styles.sense__name}>
                 <FontAwesomeIcon icon={faEye} className={styles.icon} />
@@ -397,7 +398,7 @@ const Travel = ({
               </div>
               <input type="text" className={styles.input} />
             </div>
-            
+
             <div>
               <div className={styles.comment}>
                 <FontAwesomeIcon
@@ -411,7 +412,7 @@ const Travel = ({
               <textarea className={styles.textarea}></textarea>
             </div>
           </div>
-          <button className={styles.button}> 
+          <button className={styles.button}>
             Save
           </button>
         </form>

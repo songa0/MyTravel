@@ -1,14 +1,17 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Keyword from "../keyword/keyword";
-import styles from "./diary.module.css";
 import { useHistory } from "react-router";
+
+import styles from "./diary.module.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
 import DiaryListItem from "../diary__list__item/diary_list_item";
 import Nav from "../nav/nav";
 import Header from "../header/header";
 import DiaryAdd from "../diary__add/diary_add";
 import Travel from "../travel/travel";
+import Keyword from "../keyword/keyword";
 
 const Diary = ({ authService, dbService, fileUploader }) => {
   const history = useHistory();

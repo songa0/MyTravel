@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+
 import styles from "./nav.module.css";
 
 const Nav = memo(({ clickLogout }) => {
