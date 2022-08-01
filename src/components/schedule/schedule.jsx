@@ -1,6 +1,6 @@
 import React from "react";
 
-const Schedule = (props) => {
+const Schedule = () => {
   return <></>;
 };
 

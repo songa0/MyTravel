@@ -14,12 +14,12 @@ class authService {
   }
   getProvider(providerName) {
     switch (providerName) {
-      case "Google":
-        return googleAuthProvider;
-      case "Github":
-        return githubAuthProvider;
-      default:
-        Error("Invalid Provider Name");
+    case "Google":
+      return googleAuthProvider;
+    case "Github":
+      return githubAuthProvider;
+    default:
+      Error("Invalid Provider Name");
     }
   }
 

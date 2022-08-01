@@ -9,8 +9,8 @@ const Keyword = ({ travel, clickEvent }) => {
       (tKey) =>
         travel[tKey].keyword &&
         Object.keys(travel[tKey].keyword).map((kKey) =>
-          keywords.add(travel[tKey].keyword[kKey])
-        )
+          keywords.add(travel[tKey].keyword[kKey]),
+        ),
     );
 
   const keywordsArray = Array.from(keywords);

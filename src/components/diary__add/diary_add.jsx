@@ -1,4 +1,4 @@
-import React, { memo, useRef } from "react";
+import React, { useRef } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,21 +13,21 @@ import {
   faHandSpock,
   faTeethOpen,
   faAirFreshener,
-  faAsterisk
+  faAsterisk,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./diary_add.module.css";
 
-const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
+const DiaryAdd = ({ closePopup, addDiary, fileUploader }) => {
 
   const fileRef = useRef();
-  const isValid = (e) =>{
+  const isValid = (e) => {
 
     if (!e.target[0].value) {
       alert("Please enter Title.");
       return false;
     }
 
-    if(fileRef.current.files.length>5){
+    if (fileRef.current.files.length > 5) {
       alert("You can select up to 5 files.");
       return false;
     }
@@ -36,19 +36,20 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
   }
   const addDiaryData = async (event) => {
     event.preventDefault();
-    if(!isValid(event))return;
+    if (!isValid(event)) {
+      return;
+    }
 
     let fileInfo = [];
-    for(const item of fileRef.current.files){
+    for (const item of fileRef.current.files) {
       const uploadedImg = await fileUploader.upload(item);
-      fileInfo.push({url : uploadedImg.secure_url, name : uploadedImg.original_filename, use : "Y", flag : "S"});
-
+      fileInfo.push({ url: uploadedImg.secure_url, name: uploadedImg.original_filename, use: "Y", flag: "S" });
     }
 
     const diary = {
       id: Date.now(),
       title: event.target[0].value || "",
-      location: event.target[1].value|| "",
+      location: event.target[1].value || "",
       startDate: event.target[2].value || "",
       endDate: event.target[3].value || "",
       keyword: event.target[4].value.split(","),
@@ -75,7 +76,13 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
           onClick={closePopup}
         />
       </div>
-      <form className={styles.form} onSubmit={addDiaryData} onKeyPress={e=> {if(e.key==='Enter'){e.preventDefault();}}}>
+      <form className={styles.form} onSubmit={addDiaryData} onKeyPress={
+        e => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+          }
+        }
+      }>
         <div className={styles.item}>
           <div className={styles.left}>
             <div className={styles.title}>
@@ -170,6 +177,6 @@ const DiaryAdd = memo(({ closePopup, addDiary, fileUploader }) => {
       </form>
     </section>
   );
-});
+};
 
 export default DiaryAdd;

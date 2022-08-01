@@ -43,8 +43,8 @@ const TravelListItem = ({ travelInfo, clickDetail, deleteData, detailId }) => {
       data-id={detailId}
     >
       <div className={styles.imgArea}>
-        {imgInfo&& imgInfo.filter(item => item.use==="Y").length ? (
-          <img src={imgInfo.filter(item => item.use==="Y")[0].url} className={styles.img} alt="main" />
+        {imgInfo && imgInfo.filter(item => item.use === "Y").length ? (
+          <img src={imgInfo.filter(item => item.use === "Y")[0].url} className={styles.img} alt="main" />
         ) : (
           <div className={[styles.noimage, styles.img].join(" ")}>
             <FontAwesomeIcon

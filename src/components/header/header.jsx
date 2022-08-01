@@ -1,10 +1,10 @@
-import React, { memo, useRef } from "react";
+import React, { useRef } from "react";
 
 import styles from "./header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const Header = memo(({ buttonClick, searchBar }) => {
+const Header = ({ buttonClick, searchBar }) => {
   const searchInput = useRef();
 
   const handelKeyPress = (event) => {
@@ -45,6 +45,6 @@ const Header = memo(({ buttonClick, searchBar }) => {
       )}
     </div>
   );
-});
+};
 
 export default Header;

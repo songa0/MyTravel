@@ -13,7 +13,6 @@ const Login = ({ authService }) => {
         //result가 있으면 화면 이동
         if (user) {
           goToDiary(user.uid);
-        } else {
         }
       });
   };

@@ -1,8 +1,8 @@
-import React, { memo } from "react";
+import React from "react";
 
 import styles from "./nav.module.css";
 
-const Nav = memo(({ clickLogout }) => {
+const Nav = ({ clickLogout }) => {
 
   return (
     <div className={styles.header}>
@@ -12,6 +12,6 @@ const Nav = memo(({ clickLogout }) => {
       </ul>
     </div>
   );
-});
+};
 
 export default Nav;
