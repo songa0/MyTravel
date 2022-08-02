@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import styles from "./travel.module.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkerAlt,
@@ -43,8 +44,8 @@ const Travel = ({
 
 
   const setImageStatus = (imgFile) => {
-
     let fileInfo = imgFile;
+
     for (let i = 0; i < fileInfo.length; i++) {
       if (fileInfo[i].flag === "I") {
         //Flag 값이 I인 파일
@@ -61,7 +62,8 @@ const Travel = ({
   }
 
   const cancelImageUpload = (imgFile) => {
-    let fileInfo = imgFile
+    let fileInfo = imgFile;
+
     for (let i = 0; i < fileInfo.length; i++) {
       if (fileInfo[i].flag === "I") {
         fileInfo[i].use = "N";
@@ -74,6 +76,7 @@ const Travel = ({
         }
       }
     }
+
     const diary = {
       ...travelDtl,
       imgInfo: fileInfo,
@@ -89,10 +92,12 @@ const Travel = ({
         fileInfo[i].flag = "D";
       }
     }
+
     const diary = {
       ...travelDtl,
       imgInfo: fileInfo,
-    }
+    };
+
     updateDiary(diary);
   }
 
@@ -107,6 +112,7 @@ const Travel = ({
     if (clickEdit) {
       return;
     }
+
     setClickEdit(true);
     formRef.current[0].value = travelDtl.title || "";
     formRef.current[1].value = travelDtl.location || "";
@@ -119,11 +125,9 @@ const Travel = ({
     formRef.current[8].value = travelDtl.hearing || "";
     formRef.current[9].value = travelDtl.touch || "";
     formRef.current[10].value = travelDtl.comment || "";
-
-
   };
-  const fileChange = async() => {
 
+  const fileChange = async() => {
     if (!travelDtl.imgInfo) {
       if (fileUploadRef.current.files.length > 5) {
         alert("You can select up to 5 files.");
@@ -147,15 +151,16 @@ const Travel = ({
     const diary = {
       ...travelDtl,
       imgInfo: fileInfo,
-    }
+    };
+
     updateDiary(diary);
     fileUploadRef.current.value = '';
 
     readDetailData(userId, detailId, (data) => {
       setTravelDtl(data);
     });
-
   }
+
   const saveData = async(e) => {
     e.preventDefault();
 
@@ -188,6 +193,7 @@ const Travel = ({
       setTravelDtl(data);
     });
   };
+
   const slideChange = (e) => {
     setCheckedSlide(parseInt(e.target.value));
   }

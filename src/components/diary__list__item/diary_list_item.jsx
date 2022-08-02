@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import styles from "./diary_list_item.module.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
@@ -18,12 +19,14 @@ const TravelListItem = ({ travelInfo, clickDetail, deleteData, detailId }) => {
   const mouseOver = () => {
     setIsMouseOn(true);
   };
+
   const mouseOut = () => {
     setIsMouseOn(false);
   };
 
   const onClickItem = (event) => {
     const id = event.currentTarget.dataset.id;
+
     if (
       event.target.dataset.type === "delete" ||
       event.target.parentNode.dataset.type === "delete" ||
@@ -34,6 +37,7 @@ const TravelListItem = ({ travelInfo, clickDetail, deleteData, detailId }) => {
       clickDetail(id);
     }
   };
+
   return (
     <div
       className={styles.item}

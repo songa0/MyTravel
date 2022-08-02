@@ -1,16 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router";
 
 import styles from "./login.module.css";
 
 const Login = ({ authService }) => {
   const history = useHistory();
-  const googleLogin = useRef();
+
   const onLogin = (event) => {
     authService //
       .login(event.target.alt)
       .then(({ user }) => {
-        //result가 있으면 화면 이동
         if (user) {
           goToDiary(user.uid);
         }
@@ -29,6 +28,7 @@ const Login = ({ authService }) => {
       user && goToDiary(user.uid);
     });
   });
+
   return (
     <div className={styles.bg}>
       <section className={styles.section}>
@@ -41,7 +41,6 @@ const Login = ({ authService }) => {
             <button
               className={styles.button}
               onClick={onLogin}
-              ref={googleLogin}
             >
               <img src="./images/google_signin_dark.png" alt="Google" />
             </button>

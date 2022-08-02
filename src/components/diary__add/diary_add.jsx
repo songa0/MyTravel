@@ -15,13 +15,13 @@ import {
   faAirFreshener,
   faAsterisk,
 } from "@fortawesome/free-solid-svg-icons";
+
 import styles from "./diary_add.module.css";
 
 const DiaryAdd = ({ closePopup, addDiary, fileUploader }) => {
 
   const fileRef = useRef();
   const isValid = (e) => {
-
     if (!e.target[0].value) {
       alert("Please enter Title.");
       return false;
@@ -34,6 +34,7 @@ const DiaryAdd = ({ closePopup, addDiary, fileUploader }) => {
 
     return true;
   }
+
   const addDiaryData = async (event) => {
     event.preventDefault();
     if (!isValid(event)) {
@@ -41,6 +42,7 @@ const DiaryAdd = ({ closePopup, addDiary, fileUploader }) => {
     }
 
     let fileInfo = [];
+
     for (const item of fileRef.current.files) {
       const uploadedImg = await fileUploader.upload(item);
       fileInfo.push({ url: uploadedImg.secure_url, name: uploadedImg.original_filename, use: "Y", flag: "S" });

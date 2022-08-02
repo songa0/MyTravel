@@ -15,6 +15,7 @@ import Keyword from "../keyword/keyword";
 
 const Diary = ({ authService, dbService, fileUploader }) => {
   const history = useHistory();
+
   const [userId, setUserId] = useState(null);
   const [popupClick, setPopupClick] = useState(false);
   const [travel, setTravel] = useState({});
@@ -89,6 +90,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
   const closePopup = useCallback(() => {
     setPopupClick(false);
   }, []);
+
   const openPopup = useCallback(() => {
     setPopupClick(true);
   }, []);
@@ -107,6 +109,7 @@ const Diary = ({ authService, dbService, fileUploader }) => {
     },
     [dbService, userId],
   );
+
   const openDetailPopup = useCallback((detailId) => {
     setDetailClick(true);
     setDetailId(detailId);

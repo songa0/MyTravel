@@ -15,6 +15,7 @@ class DBService {
 
     return () => starCountRef.off();
   }
+
   //userId, 기준, 찾을 Text, callback 함수
   searchData(userId, criteria, text, updateData) {
     if (text) {

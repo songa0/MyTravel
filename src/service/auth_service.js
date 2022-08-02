@@ -9,9 +9,11 @@ class authService {
     const provider = this.getProvider(providerName);
     return firebaseAuth.signInWithPopup(provider);
   }
+
   logout() {
     return firebaseAuth.signOut();
   }
+
   getProvider(providerName) {
     switch (providerName) {
     case "Google":
